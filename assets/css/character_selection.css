@@ -1,0 +1,296 @@
+.go_back_text{
+  float:left;
+  color:white;
+  margin-top: 5%;
+  font-size:25px;
+  font-family:"Allerta Stencil";
+}
+.text-center{
+  text-align: center;
+}
+.player_effects{
+  position: absolute;
+  left:30%;
+  top:15%;
+}
+.enemy_effects{
+  position: absolute;
+  right:15%;
+  top:15%;
+}
+.selected_box_animation{
+  position: absolute;
+
+
+  opacity:0;
+  border-radius: 50%;
+  top:80px;
+  animation: selected_box_animation  1 ease-out;
+}
+@keyframes selected_box_animation {
+  0%{
+  top:350px;
+  opacity:1;
+
+  }
+
+  100%{
+    top:50px;
+    opacity:0;
+
+    height:10px;
+    width:10px;
+  }
+}
+.selected_character_row{
+  margin-top:7.5%;
+}
+.character_available_name{
+  text-align: center;
+  font-family:"Allerta Stencil";
+  font-size:25px;
+
+}
+
+.character_available_box .description_text{
+  height:0px;
+  opacity:0;
+}
+
+.selected_character_details{
+  font-size: 25px !important;
+}
+.active_description{
+  opacity:1;
+}
+.type_text{
+  font-size:30px;
+  border:3px solid;
+  text-align: center;
+  margin-top: 20%;
+  color:black;
+
+}
+.margin-left-10{
+  margin-left: 10%;
+}
+.selected_specialty{
+  font-size: 25px !important;
+  margin-left:25% !important;
+}
+.selected_character_item_name{
+  font-size: 30px !important;
+}
+.margin-left{
+  margin-left:5%;
+
+}
+.selected_moves{
+  font-size:15px !important;
+}
+.ice_background p{
+  background:rgb(200,233,233) !important;
+}
+.ice_text p{
+  color:rgb(200,233,233) !important;
+}
+.ice_text {
+  color:rgb(200,233,233) !important;
+}
+.ice_text strong {
+  color:rgb(200,233,233) !important;
+}
+.ice_border_color{
+  border-color:rgb(200,233,233) !important;
+}
+.width-100{
+  width:100%;
+}
+@keyframes rotateIt {
+  0%{
+    transform:rotate(2deg);
+    border-color:white;
+  }
+  50%{
+    transform:rotate(-2deg);
+    border-color:#38B6FF;
+
+  }
+  100%{
+    transform:rotate(2deg);
+    border-color: white;
+  }
+}
+.character_available_box{
+  background:black;
+
+  border: white 2px solid;
+
+}
+
+.character_available_box:hover{
+  animation-iteration-count: infinite;
+  animation-name:rotateIt;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+
+}
+
+.go_back_text_container{
+  margin-top:2%;
+  position: relative;
+  right:60px;
+}
+.selected_character_detail_item {
+  color:white;
+  font-size:18px;
+  font-family:"Allerta Stencil";
+
+}
+.selected_character_item_name{
+  color:white;
+  font-size:20px;
+  position: relative;
+  bottom:35px;
+  margin-left: 10%;
+  text-align: center;
+  font-family:"Allerta Stencil";
+}
+.go_back_arrow{
+  transform:rotate(180deg);
+  width:50%;
+  margin-left: 5%;
+}
+
+.go_back_arrow:hover{
+  filter:brightness(190);
+}
+
+.selected_character_box{
+
+  border-radius:50%;
+  background:black;
+  filter:brightness(.1);
+  padding:5%;
+
+}
+
+.active_selected_character_box{
+
+  border-radius:50%;
+
+  background:black;
+  padding:5%;
+  padding-bottom:7.5% !important;
+  border:5px solid teal;
+  animation:select_character_appear 2s ease-in 1;
+
+
+
+}
+
+
+@keyframes select_character_appear {
+  0%{
+  opacity:0%;
+
+  }
+
+50%{
+  opacity:50%;
+}
+
+  100%{
+  opacity:100%
+
+  }
+}
+.active_selected_character_box img{
+  width:100%;
+
+  border-radius:50%;
+position: relative;
+}
+.selected_moves{
+  font-size:15px;
+}
+.selected_character_detail_item{
+  font-size:20px;
+}
+.selected_character_image{
+  width:100%;
+
+}
+
+
+
+.width-100{
+  width:100%;
+}
+.selected_character_details{
+  width:100%;
+  height:300px;
+}
+.float-left{
+  float:left;
+}
+.float-right{
+  float:right;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.character_select_title{
+    font-size:40px;
+    font-family:"Allerta Stencil";
+    animation:white_to_light_blue .5s 1 ease-in;
+    text-align: center;
+    font-weight: bold;
+    color:white;
+    width:100%;
+}
+
+
+
+
+.ease_left{
+  animation: ease_left .5s 1 ease-in;
+}
+
+.ease_right{
+  animation: ease_right .5s 1 ease-in;
+}
+
+@keyframes ease_right {
+  0%{
+    position: relative;
+    left:200px;
+    opacity:0;
+  }
+  100%{
+    position: relative;
+    left:0px;
+    opacity:1;
+  }
+}
+
+
+@keyframes ease_left {
+  0%{
+    position: relative;
+    left:-200px;
+    opacity:0;
+  }
+  100%{
+    position: relative;
+    left:0px;
+    opacity:1;
+  }
+}
+
+.width-100{
+  width:100%;
+}

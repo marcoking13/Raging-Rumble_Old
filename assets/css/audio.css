@@ -1,0 +1,30 @@
+.audio_button_container{
+  position:absolute;
+  width:3%;
+  left:5%;
+  top:90%;
+  z-index:99;
+
+}
+
+.audio_icon{
+  width:100%;
+
+}
+
+.inactive{
+  opacity:.5;
+}
+
+.active{
+  opacity:1
+}
+.audio_icon_character{
+  position:absolute;
+  width:3%;
+  right:5%;
+  background:black;
+  border-radius:50%;
+  top:5%;
+  z-index:99;
+}

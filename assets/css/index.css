@@ -1,0 +1,185 @@
+.app_background{
+
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:-999;
+
+}
+.test{
+  position: absolute;
+  width:10%;
+  top:25%;
+  left:10%;
+  z-index:99;
+}
+.title_2{
+  font-size: 0px;
+}
+.app_background{
+  background:url('./../imgs/app_background.png');
+}
+.title_1{
+  font-size: 0px;
+}
+.width-100{
+  width:100%;
+}
+.app_title{
+  animation: title .5s ease-in-out infinite ;
+  letter-spacing: 5px;
+  color:white;
+  z-index:1000;
+  width:100%;
+  text-align:center;
+  position: relative;
+  margin-top:2.5%;
+  font-family:"Allerta Stencil";
+  opacity:0;
+}
+
+.title_ani_1{
+  -webkit-animation-name: title1;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 0s;
+   color:#38B6FF;
+   font-size:100px;
+   opacity:1;
+   left:0px
+
+}
+.title_ani_2{
+  -webkit-animation-name: title1;
+  color:#38B6FF;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-duration: .5s;
+    font-size:100px;
+    margin-left: 1%;
+    opacity:1;
+    bottom:0px;
+
+
+
+}
+
+.app_subtitle{
+  color:white;
+  text-align: center;
+  font-size: 30px;
+  font-family: "Roboto Condensed";
+  position: absolute;
+  opacity:0;
+  top:25%;
+  width:100%;
+
+
+}
+
+.subtitle_ani{
+  -webkit-animation-name: subtitle;
+  opacity:1;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-duration: 2s;
+}
+
+
+@keyframes subtitle{
+  0%{
+    opacity:0;
+    top:40%;
+  }
+
+  50%{
+    opacity:.5;
+
+  }
+  100%{
+      top:25%;
+      opacity:1;
+  }
+}
+@keyframes title1 {
+
+  0%{
+    color:white;
+    left:-50px;
+    opacity:0;
+  }
+  50%{
+    opacity:.5;
+  }
+
+  100%{
+    color:#38B6FF;
+    left:0px;
+    opacity:1;
+  }
+
+}
+@keyframes title2 {
+
+  0%{
+    color:white;
+    left:50px;
+    opacity:0;
+  }
+
+  100%{
+    color:#38B6FF;
+    left:0px;
+    opacity:1;
+  }
+
+}
+
+@keyframes white_to_light_blue {
+
+  0%{
+    color:#38B6FF;
+
+  }
+
+  100%{
+    color:white;
+
+  }
+
+}
+
+
+.start_game{
+  position: absolute;
+  width:100%;
+  top:50%;
+  text-align:center;
+  font-family: monospace;
+  color:#FFDE59;
+  letter-spacing: 5px;
+  font-size:40px;
+  opacity:0;
+
+}
+
+.start_game_ani{
+  -webkit-animation-name: start_text;
+  opacity:1;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 1s;
+}
+
+
+@keyframes start_text{
+  0%{
+    opacity:0%;
+  }
+  50%{
+    opacity:100%
+
+  }
+  100%{
+    opacity:0
+  }
+}
