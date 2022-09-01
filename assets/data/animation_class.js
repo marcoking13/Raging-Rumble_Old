@@ -23,8 +23,8 @@ class AnimationSheet {
       }
       var sheet = [];
 
-      for(var i = 0; i < limit ; i ++){
-        sheet.push(`${ext}${prefix}_${i + 1}.png`);
+      for(var i = 0; i <= limit; i ++){
+        sheet.push(`${ext}${prefix}_${i}.png`);
       }
       return sheet;
 

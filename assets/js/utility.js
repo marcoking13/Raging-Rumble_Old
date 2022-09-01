@@ -20,7 +20,19 @@ const EmptyContainer = (element) =>{
 
    }
 
-// 
+   const RemoveClassFromElements = (targetClass,className) =>{
+
+         var target = document.getElementsByClassName(targetClass);
+
+          for (var i = 0; i < target.length; ++i) {
+             var item = target[i];
+             item.classList.remove(className);
+
+          }
+
+      }
+
+//
 // const EffectGenerator = async(container,element,limit,ms) =>{
 //
 //   const delay = (ms) => new Promise(resolve => setTimeout(resolve, 400));
@@ -91,12 +103,20 @@ const Delay = (i,element,limit,folder,sprite_name,speed) =>{
 
 
 
-const SpriteAnimator = async (element,sheet,ms) => {
+const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
+  ms_passed = 0;
+
   console.log(element);
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     var k = 1;
     for (let i = 1; i <= 3000;i++) {
       k++;
+      ms_passed += ms;
+      if(ms_passed >= total_ms){
+          element.setAttribute("src",`${display}`);
+        break;
+
+      }
       if(k >= sheet.animation_sheet.length){
         k = 1;
       }

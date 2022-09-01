@@ -1,0 +1,549 @@
+.fire_strike_ani{
+
+
+  position: absolute;
+  width:40%;
+  animation: move_left_then_get_big 2s 1 ease-in;
+  opacity:0;
+
+}
+.fire_strike_ani_enemy{
+  animation: move_right_then_get_big 2s 1 ease-in;
+}
+
+.glacier_thrust_ani{
+  position: absolute;
+  width:30%;
+  animation: move_left_then_get_big 3s 1 ease-in;
+  opacity:0;
+  top:20%;
+
+}
+
+.glacier_thrust_ani_enemy{
+  animation: move_right_then_get_big 3s 1 ease-in !important;
+}
+
+
+
+.ice_sling_ani{
+  position: absolute;
+  width:40%;
+  animation: move_left_then_get_big 2s 1 ease-in;
+  opacity:0;
+}
+
+
+
+.enemy_character{
+  transform:rotateY(180deg);
+}
+
+.ice_sling_ani_enemy{
+    animation: move_right_then_get_big 1s 1 ease-in !important;
+}
+
+.fire_sling_ani{
+
+
+  position: absolute;
+  width:40%;
+  z-index:999;
+  left:130%;
+  animation: explosion 2s 1 ease-in;
+  opacity:0;
+  top:20%;
+}
+
+.fire_sling_ani_enemy{
+    animation: explosion 2s 1 ease-in !important;
+    left:-70% !important;
+}
+
+.blinding_light_ani_enemy{
+    left:-70% !important;
+    animation: blinding_light 1s 1 ease-in;
+}
+
+.blinding_light_ani{
+
+  position: absolute;
+  width:45%;
+  left:130%;
+  animation: blinding_light 1s 1 ease-in;
+  opacity:0%;
+  top:15%;
+}
+
+.hypno_stare_ani{
+
+  position: absolute;
+  width:35%;
+  left:130%;
+  border-radius:50%;
+  animation: hypno_stare 2s 1 ease-in;
+  opacity:0%;
+  top:15%;
+  z-index:99;
+
+}
+
+.hypno_stare_ani_enemy{
+  left:-70%;
+}
+
+.hells_escape_ani{
+  position: absolute;
+  width:45%;
+  left:130%;
+  animation: hells_escape 2s 1 ease-in;
+  opacity:0%;
+  top:15%;
+
+}
+
+
+.hells_escape_ani_enemy{
+  left:-70% !important;
+  animation: hells_escape 2s 1 ease-in;
+}
+
+@keyframes explosion{
+  0%{
+    opacity:100%;
+    transform: scale(.4);
+  }
+  50%{
+    opacity:70%;
+  }
+  100%{
+    opacity:100%;
+    transform: scale(2);
+  }
+}
+
+.hurt{
+  filter:contrast(1);
+  animation: hurt 3 .4s ease-in-out;
+}
+
+
+@keyframes hypno_stare{
+  0%{
+    opacity:0%;
+    transform: scale(.4);
+  }
+  30%{
+    opacity:100%;
+    transform: scale(1.4);
+  }
+  90%{
+    opacity:100%;
+    transform: scale(1.4);
+  }
+  100%{
+    opacity:0%;
+      transform: scale(1.4);
+  }
+}
+@keyframes hurt{
+  0%{
+    opacity:100%;
+  }
+  20%{
+   opacity:20%;
+  }
+  40%{
+  opacity:100%;
+  }
+  60%{
+    opacity:20%;
+  }
+  80%{
+  opacity:100%;
+  }
+  100%{
+    opacity:100%;
+  }
+}
+@keyframes blinding_light{
+  0%{
+    top:30%;
+    transform: scale(.4);
+    opacity:1;
+
+  }
+
+  50%{
+    top:15%;
+    transform: scale(4);
+    transform:rotate(60deg);
+  }
+  100%{
+    opacity:0;
+  }
+}
+
+.venom_boost_ani{
+  position: absolute;
+  left:140%;
+  top:20%;
+  animation: venom_boost .5s 1 ease-in-out;
+  filter:saturate(180);
+  opacity:0;
+  width:20%;
+}
+
+.blood_ani{
+  animation:blood_ani .5s 1 ease-in;
+}
+
+.flying_rush_ani{
+  position: absolute;
+  left:140%;
+  top:20%;
+  z-index:999;
+  animation: move_left 1s 1 ease-in;
+  opacity:0;
+  width:20%;
+}
+
+.flying_rush_ani_enemy{
+  left:-65%;
+  animation: move_right 1s 1 ease-in !important;
+}
+
+
+.life_drain_ani{
+  position: absolute;
+  left:135%;
+  width:30%;
+  top:20%;
+  animation: life_drain_player .5s 1 ease-in;
+  opacity:0;
+}
+
+
+.life_drain_ani_enemy{
+  left:-40%;
+  animation: life_drain_enemy .5s 1 ease-in !important;
+}
+
+.venom_boost_ani_enemy{
+
+  left:-60%;
+}
+
+@keyframes venom_boost{
+  0%{
+    transform: scale(1.5);
+    opacity:30%;
+
+  }
+  30%{
+    opacity:100%;
+    transform: scale(.5);
+  }
+  60%{
+    opacity:30%;
+    transform: scale(1);
+  }
+
+  90%{
+    opacity:100%;
+
+    transform: scale(.7);
+  }
+
+  100%{
+    opacity:0%
+  }
+
+}
+
+@keyframes hells_escape{
+  0%{
+    transform:rotate(60deg);
+    transform:scale(1);
+    opacity:1;
+  }
+
+  20%{
+  opacity:.7;
+  transform: scale(.4);
+
+  }
+  30%{
+  opacity:.4;
+  transform: scale(2);
+
+  }
+  40%{
+  opacity:.7;
+  transform: scale(.4);
+
+  }
+  50%{
+  opacity:.4;
+  transform: scale(2);
+
+  }
+  60%{
+  opacity:.7;
+  transform: scale(.4);
+
+  }
+  70%{
+  opacity:.4;
+  transform: scale(2);
+
+  }
+  80%{
+  opacity:.7;
+  transform: scale(.4);
+
+  }
+  90%{
+    transform: scale(2);
+  opacity:.4;
+
+  }
+  100%{
+
+    opacity:0;
+    transform:rotate(180deg);
+  }
+}
+
+.effect_box{
+  position: relative;
+}
+
+
+
+@keyframes move_left{
+  0%{
+
+    left:-70%;
+    transform: scale(.5);
+
+    opacity:1;
+  }
+
+  20%{
+    transform:scale(2);
+  }
+
+  40%{
+
+      left:135%;
+        opacity:1;
+
+  }
+
+  80%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+
+  }
+}
+
+
+@keyframes move_right{
+  0%{
+
+    left:135%;
+  transform: scale(.5);
+
+    opacity:1;
+  }
+
+
+    20%{
+      transform:scale(2);
+    }
+
+  40%{
+    left:-70%;
+      opacity:1;
+
+  }
+
+  80%{
+    opacity:1;
+      transform:scale(2);
+  }
+
+
+  100%{
+    opacity:0;
+
+  }
+}
+
+
+
+@keyframes move_left_then_get_big{
+  0%{
+    left:-45%;
+    transform: scale(1);
+
+    opacity:1;
+  }
+
+
+  25%{
+    left:135%;
+    transform: scale(1);
+
+
+  }
+
+  50%{
+
+
+    transform: scale(1);
+  }
+
+  80%{
+      left:135%;
+    transform: scale(1.5);
+
+    opacity:1;
+  }
+  100%{
+    left:130%;
+
+      opacity:0;
+  }
+}
+
+
+@keyframes move_right_then_get_big{
+  0%{
+
+    left:135%;
+    transform: scale(1);
+
+    opacity:1;
+  }
+
+  50%{
+
+  left:-50%;
+    transform: scale(1);
+  }
+
+  80%{
+
+    transform: scale(1.5);
+
+    opacity:1;
+  }
+  100%{
+    left:-50%;
+
+      opacity:0;
+  }
+}
+
+
+
+@keyframes move_left{
+  0%{
+
+    left:-70%;
+    transform: scale(.5);
+
+    opacity:1;
+  }
+
+  20%{
+    transform:scale(2);
+  }
+
+  40%{
+
+      left:135%;
+        opacity:1;
+
+  }
+
+  80%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+
+  }
+}
+
+
+@keyframes life_drain_enemy{
+
+  0%{
+    left:-70%;
+    transform: scale(1);
+    opacity:1;
+  }
+
+
+  60%{
+      left:130%;
+      opacity:1;
+
+  }
+
+
+  100%{
+    opacity:0;
+    transform:scale(.2);
+    left:130%;
+
+  }
+
+
+}
+
+@keyframes blood_ani{
+  0%{
+    background:black;
+  }
+  100%{
+    background:red;
+  }
+}
+
+@keyframes life_drain_player{
+
+  0%{
+    left:130%;
+    transform: scale(1);
+    opacity:1;
+  }
+
+
+  60%{
+
+      opacity:1;
+        left:-65%;
+
+
+  }
+
+
+
+
+  100%{
+    opacity:0;
+    left:-65%;
+    transform:scale(.2);
+  }
+
+
+
+}

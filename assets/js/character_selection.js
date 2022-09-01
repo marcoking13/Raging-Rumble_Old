@@ -1,6 +1,8 @@
 const placeholder_image = `./assets/imgs/placeholder.png`;
-const available_boxes = 9;
-const available_wizards = return_available_wizards(1,available_boxes);
+const available_boxes = 6;
+var ready = false;
+var fight_starting = false;
+const available_wizards = return_available_wizards(6,available_boxes);
 
 const placeholder_player = {
   id:null,
@@ -8,6 +10,12 @@ const placeholder_player = {
   type:"N/A",
   moves:[{name:"N/A"},{name:"N/A"},{name:"N/A"},{name:'N/A'}],
   description:"N/A",
+  stats:{
+    attack:0,
+    defense:0,
+    speed:0,
+    luck:0
+  },
   display_image:placeholder_image
 }
 
@@ -19,17 +27,42 @@ const placeholder_player = {
 // }
 
 
-const CreateSelectedCharacterData = (character) => {
+const GenerateStatBar = (stat,stats_point,color,showBar) =>{
+  console.log(stat,stats_point,color);
+  var stats_point_style = stats_point;
+  if(stats_point > 105){
+    stats_point_style = 100;
+  }
+  const bar = showBar ? `    <div  class="stat_bar" style="background:${color};width:${stats_point_style}%;margin-top:7.5%;height:10px;border-radius:30px"></div>`:"";
+  const html = `
+  <div class="row">
+    <div class="col-4">
+      <p style="color:white;font-size:20px;font-family:'Allerta Stencil'">${stat}</p>
+    </div>
+    <div class="col-6">
+    ${bar}
+    </div>
+    <div class="col-2">
+      <p style="font-size:20px;color:white">${stats_point}</p>
+    </div>
+  </div>`
+  return html;
+ }
 
+const CreateSelectedCharacterData = (character,isPlayer) => {
 
+  var text_effect = isPlayer? "player_name" : "enemy_name";
   var moves = character.moves;
 
-
+console.log(character);
 
   const html = `<div class="col-6 selected_data ${character.type}_text">
-    <div class="selected_character_details margin-left-10">
-      <p class="selected_character_detail_item width-100">Specialty: <strong class="selected_specialty"> ${CapitalizeFirstLetter(character.type)}</strong></p>
-      <p class="selected_character_detail_item ">Moves<strong class="selected_moves margin-left-5"> <br> ${" "+moves[0].name} <br> ${" "+moves[1].name} <br> ${" "+moves[2].name} <br> ${" "+moves[3].name}</strong></p>
+    <div class="selected_character_details">
+      <p class="selected_character_detail_item width-100 ">Specialty: <strong class="selected_specialty ${text_effect}"> ${CapitalizeFirstLetter(character.type)}</strong></p>
+      ${GenerateStatBar("Attack",character.stats.attack,"#EB4646",true)}
+      ${GenerateStatBar("Defense",character.stats.defense,"#5EDB28",true)}
+      ${GenerateStatBar("Speed",character.stats.speed,"#38B6FF",true)}
+      ${GenerateStatBar("Luck",character.stats.luck,"#FFBD59",true)}
 
    </div>
   </div>`;
@@ -49,18 +82,53 @@ const SelectWizard = (wizard) =>{
   selected_wizard.player = wizard;
   selected_wizard.enemy = available_wizards[Math.floor(Math.random() * available_wizards.length)];
   console.log(selected_wizard)
-  var active_box = document.querySelector("."+wizard.id);
+  var active_player_box = document.querySelector(".wizard_id_"+wizard.id);
+  var active_enemy_box = document.querySelector(".wizard_id_"+selected_wizard.enemy.id);
 
+  RemoveClassFromElements("character_available_box","active_character_available_box");
+  active_enemy_box.classList.add("active_character_available_box");
+  active_player_box.classList.add("active_character_available_box");
 
-  SpriteAnimator(active_box,selected_wizard.player.animation_sheet.idle,500);
+  console.log(active_enemy_box,active_player_box);
 
+  var fight_btn = document.querySelector(".fight_btn");
+  fight_btn.classList.add("active");
+  fight_btn.classList.remove("no-point");
+
+  fight_btn.addEventListener("click",()=>{
+    console.log(selected_wizard);
+    StartFight(selected_wizard.player,selected_wizard.enemy);
+
+  });
+
+  ready = true;
   GenerateSelectedCharacters(selected_wizard.player,selected_wizard.enemy,true,false);
   GenerateSelectedCharacters(selected_wizard.player,selected_wizard.enemy,true,true);
   var selected_box = document.querySelector(`.selected_`+wizard.id);
+  var selected_enemy_box = document.querySelector(`.selected_`+selected_wizard.enemy.id);
   console.log(selected_box);
-  SpriteAnimator(selected_box,selected_wizard.player.animation_sheet.idle,500);
+  SpriteAnimator(selected_box,selected_wizard.player.animation_sheet.idle,200);
+  SpriteAnimator(selected_enemy_box,selected_wizard.enemy.animation_sheet.idle,200);
+
+  RefreshModal(selected_wizard.player,selected_wizard.enemy);
 
 
+}
+
+const StartFight = (player,enemy)=>{
+  if(ready && !fight_starting){
+    console.log(4);
+    document.body.classList.add("no-point");
+    fight_starting = true;
+    var modal = document.querySelector(".modal");
+    modal.classList.add("active_modal");
+    var vs = document.querySelector(".vs_text");
+    vs.classList.add("active_vs");
+    console.log(vs);
+    ResetCountdown();
+    Countdown(player,enemy);
+
+  }
 }
 
 const PlayerSelectedSpecialEffect = async (isPlayer)=>{
@@ -76,16 +144,17 @@ const PlayerSelectedSpecialEffect = async (isPlayer)=>{
   //  await delay;
     var duration = Math.random() * 2;
     var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+
     var random = plusOrMinus *(Math.random() * 150);
     var size = Math.floor(Math.random() * 100);
+
     var g = Math.floor(Math.random() * 255);
     var r = Math.floor(Math.random() * 255);
     var b = Math.floor(Math.random() * 255);
 
-
-
     var effect = document.createElement("div");
     var animation_class = "selected_box_animation";
+
     effect.style.background = `rgb(${r},${g},${b})`;
     effect.classList.add(animation_class);
     effect.style.animationDuration = duration.toString() + "s";
@@ -107,7 +176,9 @@ const GenerateCharacterBox = (wizard,rotation) => {
 
   function returnImage(){
     if(wizard.display_image){
-      return `  <img class="character_available_image width-100 ${wizard.id}" src= ${wizard.display_image} />`
+      var enlarge = wizard.name == "Ebin the Terrible"? "enlarge" : "";
+      console.log( wizard.name)
+      return `  <img class="  width-100  ${enlarge} character_available_image${wizard.id}" src= ${wizard.display_image} />`
     }else{
       return `<div></div>`
     }
@@ -134,14 +205,21 @@ const GenerateCharacterBox = (wizard,rotation) => {
    html.innerHTML = `
 
   <div class="character_available_box ${wizard.type}_text width-100 wizard_id_${wizard.id}"style="transform:rotate(${rotation}deg)"  >
+  <div style="height:250px">
     ${image}
+  </div>
     <p class="text-center character_available_name">${wizard.name}</p>
-    <span class="type_container">
-      <p class="type_text ${wizard.type}_border_color ${wizard.type}_background" >${CapitalizeFirstLetter(wizard.type)}</p>
-    </span>
+    <br />
 
-        <p class="description_text " > This is some descriptive text to be used for later</p>
-
+    <div class='row'>
+      <div class="col-1"></div>
+      <div class="col-9">
+      ${GenerateStatBar("Attack",wizard.stats.attack,"#EB4646",false)}
+      ${GenerateStatBar("Defense",wizard.stats.defense,"#5EDB28",false)}
+      ${GenerateStatBar("Speed",wizard.stats.speed,"#38B6FF",false)}
+      ${GenerateStatBar("Luck",wizard.stats.luck,"#FFBD59",false)}
+      </div>
+    </div>
 
   </div>
   `;
@@ -177,12 +255,18 @@ const CreateSelectedCharacterBox = (character,isPlayer) => {
 
       var active_class = character.id ? "active_selected_character_box" : "selected_character_box right_selected_box";
       var effects = isPlayer? "player_effects" : "enemy_effects";
+      console.log(character);
+      var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
+      var flip = character.flip_sprite ? 180 : 0;
+      var is_enemy_flip = isPlayer ?  0  : 180;
+      flip += is_enemy_flip;
+      var text_effect = isPlayer? "player_name" : "enemy_name";
       console.log(character.id);
       const html = `
 
-      <div class="col-6 selected_player_container">
+      <div class="col-5 selected_player_container">
         <div class="${active_class}">
-          <img class="width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
+          <img style="transform:rotateY(${flip.toString()}deg)" class=" ${enlarge} width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
 
         </div>
         <div class=${effects}></div>
@@ -191,7 +275,7 @@ const CreateSelectedCharacterBox = (character,isPlayer) => {
 
       <div class="col-6">
         <div class="selected_character_name">
-            <p class="selected_character_item_name ">${character.name}</p>
+            <p class="selected_character_item_name ${text_effect}">${character.name}</p>
         </div>
 
       </div>`;
@@ -208,10 +292,14 @@ const CreateSelectedCharacterColumn = (character,ease,isPlayer) => {
          <div class="col-5 character_box ${ease}">
             <div class="row">
              ${CreateSelectedCharacterData(character,isPlayer)}
-
+              <div class="col-1"></div>
               ${CreateSelectedCharacterBox(character,isPlayer)}
 
+
+
             </div>
+
+
 
           </div>
           `
@@ -268,6 +356,8 @@ const GenerateSelectedCharacters = (player,enemy,playerSelected) => {
 
 
 
+
+
 const GenerateHeader = () =>{
 
     var title_element = document.createElement("div");
@@ -306,6 +396,16 @@ const GenerateHeader = () =>{
       header_container.append(header_element);
       title_container.append(title_element);
 
+
+}
+
+
+
+const RefreshModal = (player,enemy)=>{
+
+    var container = document.querySelector(".fight_showcase_modal");
+    EmptyContainer(container);
+    container.innerHTML = GenerateModal(player,enemy);
 
 }
 

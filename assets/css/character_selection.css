@@ -5,46 +5,113 @@
   font-size:25px;
   font-family:"Allerta Stencil";
 }
+.player_modal_img{
+  width:100%;
+}
+.margin-top-5{
+  margin-top:5%;
+}
+.rubik{
+  font-family: "Rubik Moonrocks"
+}
 .text-center{
   text-align: center;
 }
+.fight_btn:hover {
+  background:red !important;
+
+
+  color:white !important;
+}
+
+.active_modal{
+  animation:appear .3s 1 ease-in;
+}
+.active_vs{
+  animation:vs_ani 1.5s infinite ease-in-out;
+  animation-delay: .4s;
+  color:#38B6FF;
+}
+.no-point{
+  pointer-events: none;
+}
+
+@keyframes appear {
+  0%{
+  position:absolute;
+  top:-50%;
+
+  opacity:0
+  }
+  100%{
+    position:absolute;
+    top:0%;
+    opacity:1;
+  }
+}
+
+@keyframes vs_ani {
+  0%{
+    color:#38B6FF;
+  }
+  50%{
+    color:#FF5757;
+    transform:rotateY(90deg);
+  }
+  100%{
+    color:#38B6FF;
+    transform:rotateY(0deg);
+  }
+}
+.fight_btn{
+    margin-top:5%;
+}
 .player_effects{
   position: absolute;
-  left:30%;
+  left:31%;
   top:15%;
+}
+.inactive{
+  opacity:.5;
+}
+.active{
+  opacity:1;
 }
 .enemy_effects{
   position: absolute;
-  right:15%;
+  right:12%;
   top:15%;
 }
+
 .selected_box_animation{
   position: absolute;
-
-
+  padding-bottom:10%;
   opacity:0;
-  border-radius: 50%;
   top:80px;
   animation: selected_box_animation  1 ease-out;
 }
+
 @keyframes selected_box_animation {
-  0%{
+
+0%{
   top:350px;
   opacity:1;
+  border-radius:20%;
+}
 
-  }
-
-  100%{
+100%{
     top:50px;
     opacity:0;
-
-    height:10px;
-    width:10px;
+    border-radius:50%;
+    transform:rotateY(90deg);
   }
+
 }
+
 .selected_character_row{
   margin-top:7.5%;
 }
+
 .character_available_name{
   text-align: center;
   font-family:"Allerta Stencil";
@@ -60,9 +127,11 @@
 .selected_character_details{
   font-size: 25px !important;
 }
+
 .active_description{
   opacity:1;
 }
+
 .type_text{
   font-size:30px;
   border:3px solid;
@@ -76,13 +145,31 @@
 }
 .selected_specialty{
   font-size: 25px !important;
-  margin-left:25% !important;
+  margin-left:5% !important;
 }
 .selected_character_item_name{
   font-size: 30px !important;
 }
 .margin-left{
   margin-left:5%;
+
+}
+
+.stat_bar{
+  animation:stat_appear 1s 1 ease-in;
+}
+@keyframes stat_appear {
+  0%{
+    opacity:0;
+    border-radius:0px;
+  }
+  50%{
+    opacity:.6;
+  }
+  100%{
+    border-radius:30px;
+    opacity:1;
+  }
 
 }
 .selected_moves{
@@ -123,9 +210,40 @@
 }
 .character_available_box{
   background:black;
-
+  height:550px;
+  color:white;
+  margin-bottom:2.5%;
+  margin-top:2.5%;
   border: white 2px solid;
 
+}
+
+.selected_character_item_name{
+  animation: text_select .6s 1 ease-in;
+}
+
+.enemy_name{
+  color:#FF5757 !important;
+}
+.player_name{
+  color:#38B6FF !important;
+}
+
+
+@keyframes text_select {
+  0%{
+    position: relative;
+    bottom:30px;
+    opacity:0;
+  }
+  50%{
+    opacity:.6;
+  }
+  100%{
+    bottom:0px;
+    position:relative;
+    opacity:1;
+  }
 }
 
 .character_available_box:hover{
@@ -135,6 +253,14 @@
   animation-duration: 1s;
 
 }
+.active_character_available_box{
+  animation-iteration-count: infinite;
+  animation-name:rotateIt;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+
+}
+
 
 .go_back_text_container{
   margin-top:2%;
@@ -151,7 +277,7 @@
   color:white;
   font-size:20px;
   position: relative;
-  bottom:35px;
+
   margin-left: 10%;
   text-align: center;
   font-family:"Allerta Stencil";
@@ -175,20 +301,31 @@
 
 }
 
+.rotate-180{
+  transform:rotateY(180deg);
+}
+
+.enlarge{
+  width:120% !important;
+  position: relative;
+  bottom:20px;
+  right:20px;
+}
+
 .active_selected_character_box{
 
-  border-radius:50%;
 
-  background:black;
-  padding:5%;
-  padding-bottom:7.5% !important;
-  border:5px solid teal;
+  height:300px;
+
+
   animation:select_character_appear 2s ease-in 1;
 
 
 
 }
-
+.selected_specialty{
+  animation: select_character_appear .5s 1 ease-in;
+}
 
 @keyframes select_character_appear {
   0%{
@@ -208,7 +345,6 @@
 .active_selected_character_box img{
   width:100%;
 
-  border-radius:50%;
 position: relative;
 }
 .selected_moves{

@@ -10,6 +10,7 @@
 .audio_icon{
   width:100%;
 
+
 }
 
 .inactive{
@@ -25,6 +26,7 @@
   right:5%;
   background:black;
   border-radius:50%;
-  top:5%;
+  margin-top:2%;
+  top:7%;
   z-index:99;
 }
