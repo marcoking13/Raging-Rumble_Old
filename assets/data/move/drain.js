@@ -7,8 +7,6 @@ class Drain {
 
       health += Math.floor(damage / 1.5);
 
-      console.log(health);
-
       if(health >= 100){
         health = 100;
       }
