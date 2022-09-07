@@ -10,24 +10,24 @@ class Boost {
 
       var stage_multiplier = (this.stage_points * this.stages);
       var boost_or_lower_stat = stage_multiplier * this.lower;
-
+      console.log(character_stats)
 
       switch(stat_type){
         case "attack":
-          character_stats.attack +=  Math.floor(character_stats.attack * boost_or_lower_stat);
+          character_stats.attack.stat +=  Math.floor(character_stats.attack.stat * boost_or_lower_stat);
           return character_stats
         case "defense":
         console.log(character_stats.defense)
-           character_stats.defense +=  Math.floor(character_stats.defense * boost_or_lower_stat);
+           character_stats.defense.stat +=  Math.floor(character_stats.defense.stat * boost_or_lower_stat);
            console.log(character_stats.defense)
            return character_stats
 
         case "speed":
-           character_stats.speed +=  Math.floor( character_stats.speed *  boost_or_lower_stat);
+           character_stats.speed +=  Math.floor( character_stats.speed.stat *  boost_or_lower_stat);
            console.log(character_stats)
            return character_stats
         case "luck":
-           character_stats.luck += Math.floor(character_stats.luck * boost_or_lower_stat);
+           character_stats.luck.stat += Math.floor(character_stats.luck.stat * boost_or_lower_stat);
            return character_stats
       }
 

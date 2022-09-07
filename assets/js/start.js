@@ -1,6 +1,5 @@
 const game_container = document.querySelector(".game_container");
 
-
 const GenerateStartScreen = () =>{
 
     EmptyContainer(game_container);
@@ -15,15 +14,14 @@ const GenerateStartScreen = () =>{
       window.location.assign("./character_selection.html");
     })
 
-    const startScreenHTML = `<div class="container-fluid witch_queen_vengence_container">
+    const startScreenHTML = `
+    <div class="container-fluid witch_queen_vengence_container">
 
       <img class="app_background" src = "./assets/imgs/app_background.png" />
       <div class='start_screen'>
-          <h1 class="app_title title_1"> Sorcery <strong class="app_title title_2 title_ani_2 ">Arena </strong></h1>
-          <p class="app_subtitle"> <strong class="purple">Can You Defeat All the Sorcerers? </p>
-
+          <h1 class="app_title title_1"> Raging <strong class="app_title title_2 title_ani_2 ">Rumble </strong></h1>
+          <p class="app_subtitle"> <strong class="purple">Can You Defeat All the Fighters? </p>
       </div>
-
 
     </div>`;
 
@@ -40,9 +38,6 @@ const GenerateStartScreen = () =>{
     setTimeout(()=>{AddClassToElement(title_1,"title_ani_1")},500);
     setTimeout(()=>{AddClassToElement(subtitle,"subtitle_ani")},1000);
     setTimeout(()=>{AddClassToElement(start_text,"start_game_ani")},1000);
-
-
-
 
 }
 

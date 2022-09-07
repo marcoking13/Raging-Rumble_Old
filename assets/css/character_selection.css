@@ -5,78 +5,77 @@
   font-size:25px;
   font-family:"Allerta Stencil";
 }
+
 .player_modal_img{
   width:100%;
 }
+
+.stat_point_number{
+  font-size:20px;
+  color:white;
+}
+
+.stat_point_character_selection{
+  color:white;
+  font-size:20px;
+  font-family:'Allerta Stencil';
+}
+
+.stat_bar_character_selection {
+  margin-top:7.5%;
+  height:10px;
+  border-radius:30px;
+}
+
 .margin-top-5{
   margin-top:5%;
 }
+
 .rubik{
   font-family: "Rubik Moonrocks"
 }
+
 .text-center{
   text-align: center;
 }
+
 .fight_btn:hover {
   background:red !important;
-
-
   color:white !important;
 }
 
 .active_modal{
   animation:appear .3s 1 ease-in;
 }
+
 .active_vs{
   animation:vs_ani 1.5s infinite ease-in-out;
   animation-delay: .4s;
   color:#38B6FF;
 }
+
 .no-point{
   pointer-events: none;
 }
 
-@keyframes appear {
-  0%{
-  position:absolute;
-  top:-50%;
-
-  opacity:0
-  }
-  100%{
-    position:absolute;
-    top:0%;
-    opacity:1;
-  }
-}
-
-@keyframes vs_ani {
-  0%{
-    color:#38B6FF;
-  }
-  50%{
-    color:#FF5757;
-    transform:rotateY(90deg);
-  }
-  100%{
-    color:#38B6FF;
-    transform:rotateY(0deg);
-  }
-}
 .fight_btn{
     margin-top:5%;
 }
+
 .player_effects{
   position: absolute;
   left:31%;
   top:15%;
 }
+
 .inactive{
   opacity:.5;
 }
+
 .active{
   opacity:1;
 }
+
 .enemy_effects{
   position: absolute;
   right:12%;
@@ -89,23 +88,6 @@
   opacity:0;
   top:80px;
   animation: selected_box_animation  1 ease-out;
-}
-
-@keyframes selected_box_animation {
-
-0%{
-  top:350px;
-  opacity:1;
-  border-radius:20%;
-}
-
-100%{
-    top:50px;
-    opacity:0;
-    border-radius:50%;
-    transform:rotateY(90deg);
-  }
-
 }
 
 .selected_character_row{
@@ -138,76 +120,57 @@
   text-align: center;
   margin-top: 20%;
   color:black;
-
 }
+
 .margin-left-10{
   margin-left: 10%;
 }
+
 .selected_specialty{
   font-size: 25px !important;
   margin-left:5% !important;
 }
+
 .selected_character_item_name{
   font-size: 30px !important;
 }
+
 .margin-left{
   margin-left:5%;
-
 }
 
 .stat_bar{
   animation:stat_appear 1s 1 ease-in;
 }
-@keyframes stat_appear {
-  0%{
-    opacity:0;
-    border-radius:0px;
-  }
-  50%{
-    opacity:.6;
-  }
-  100%{
-    border-radius:30px;
-    opacity:1;
-  }
 
-}
 .selected_moves{
   font-size:15px !important;
 }
+
 .ice_background p{
   background:rgb(200,233,233) !important;
 }
+
 .ice_text p{
   color:rgb(200,233,233) !important;
 }
+
 .ice_text {
   color:rgb(200,233,233) !important;
 }
+
 .ice_text strong {
   color:rgb(200,233,233) !important;
 }
+
 .ice_border_color{
   border-color:rgb(200,233,233) !important;
 }
+
 .width-100{
   width:100%;
 }
-@keyframes rotateIt {
-  0%{
-    transform:rotate(2deg);
-    border-color:white;
-  }
-  50%{
-    transform:rotate(-2deg);
-    border-color:#38B6FF;
 
-  }
-  100%{
-    transform:rotate(2deg);
-    border-color: white;
-  }
-}
 .character_available_box{
   background:black;
   height:550px;
@@ -215,7 +178,6 @@
   margin-bottom:2.5%;
   margin-top:2.5%;
   border: white 2px solid;
-
 }
 
 .selected_character_item_name{
@@ -225,25 +187,9 @@
 .enemy_name{
   color:#FF5757 !important;
 }
+
 .player_name{
   color:#38B6FF !important;
-}
-
-
-@keyframes text_select {
-  0%{
-    position: relative;
-    bottom:30px;
-    opacity:0;
-  }
-  50%{
-    opacity:.6;
-  }
-  100%{
-    bottom:0px;
-    position:relative;
-    opacity:1;
-  }
 }
 
 .character_available_box:hover{
@@ -251,37 +197,36 @@
   animation-name:rotateIt;
   animation-timing-function: ease-in-out;
   animation-duration: 1s;
-
 }
+
 .active_character_available_box{
   animation-iteration-count: infinite;
   animation-name:rotateIt;
   animation-timing-function: ease-in-out;
   animation-duration: 1s;
-
 }
-
 
 .go_back_text_container{
   margin-top:2%;
   position: relative;
   right:60px;
 }
+
 .selected_character_detail_item {
   color:white;
   font-size:18px;
   font-family:"Allerta Stencil";
-
 }
+
 .selected_character_item_name{
   color:white;
   font-size:20px;
   position: relative;
-
   margin-left: 10%;
   text-align: center;
   font-family:"Allerta Stencil";
 }
+
 .go_back_arrow{
   transform:rotate(180deg);
   width:50%;
@@ -293,12 +238,10 @@
 }
 
 .selected_character_box{
-
   border-radius:50%;
   background:black;
   filter:brightness(.1);
   padding:5%;
-
 }
 
 .rotate-180{
@@ -313,84 +256,69 @@
 }
 
 .active_selected_character_box{
-
-
   height:300px;
-
-
   animation:select_character_appear 2s ease-in 1;
-
-
-
 }
+
 .selected_specialty{
   animation: select_character_appear .5s 1 ease-in;
 }
 
-@keyframes select_character_appear {
-  0%{
-  opacity:0%;
-
-  }
-
-50%{
-  opacity:50%;
-}
-
-  100%{
-  opacity:100%
-
-  }
-}
 .active_selected_character_box img{
   width:100%;
-
-position: relative;
+  position: relative;
 }
+
 .selected_moves{
   font-size:15px;
 }
+
 .selected_character_detail_item{
   font-size:20px;
 }
+
 .selected_character_image{
   width:100%;
-
 }
-
-
 
 .width-100{
   width:100%;
 }
+
 .selected_character_details{
   width:100%;
   height:300px;
 }
+
 .float-left{
   float:left;
 }
+
 .float-right{
   float:right;
 }
+
 .text-right{
   text-align: right;
 }
+
 .text-left{
   text-align: left;
 }
+
 .character_select_title{
-    font-size:40px;
-    font-family:"Allerta Stencil";
-    animation:white_to_light_blue .5s 1 ease-in;
-    text-align: center;
-    font-weight: bold;
-    color:white;
-    width:100%;
+  font-size:40px;
+  font-family:"Allerta Stencil";
+  animation:white_to_light_blue .5s 1 ease-in;
+  text-align: center;
+  font-weight: bold;
+  color:white;
+  width:100%;
 }
 
-
-
+.width-100{
+  width:100%;
+}
 
 .ease_left{
   animation: ease_left .5s 1 ease-in;
@@ -413,7 +341,6 @@ position: relative;
   }
 }
 
-
 @keyframes ease_left {
   0%{
     position: relative;
@@ -427,6 +354,113 @@ position: relative;
   }
 }
 
-.width-100{
-  width:100%;
+@keyframes select_character_appear {
+
+  0%{
+    opacity:0%;
+  }
+
+  50%{
+    opacity:50%;
+  }
+
+  100%{
+    opacity:100%
+  }
+
+}
+
+@keyframes appear {
+
+  0%{
+    position:absolute;
+    top:-50%;
+    opacity:0;
+  }
+  100%{
+    position:absolute;
+    top:0%;
+    opacity:1;
+  }
+
+}
+
+@keyframes vs_ani {
+  0%{
+    color:#38B6FF;
+  }
+  50%{
+    color:#FF5757;
+    transform:rotateY(90deg);
+  }
+  100%{
+    color:#38B6FF;
+    transform:rotateY(0deg);
+  }
+
+}
+
+@keyframes selected_box_animation {
+
+0%{
+  top:350px;
+  opacity:1;
+  border-radius:20%;
+}
+
+100%{
+  top:50px;
+  opacity:0;
+  border-radius:50%;
+  transform:rotateY(90deg);
+ }
+
+}
+
+@keyframes stat_appear {
+  0%{
+    opacity:0;
+    border-radius:0px;
+  }
+  50%{
+    opacity:.6;
+  }
+  100%{
+    border-radius:30px;
+    opacity:1;
+  }
+
+}
+
+@keyframes text_select {
+  0%{
+    position: relative;
+    bottom:30px;
+    opacity:0;
+  }
+  50%{
+    opacity:.6;
+  }
+  100%{
+    bottom:0px;
+    position:relative;
+    opacity:1;
+  }
+
+}
+
+@keyframes rotateIt {
+  0%{
+    transform:rotate(2deg);
+    border-color:white;
+  }
+  50%{
+    transform:rotate(-2deg);
+    border-color:#38B6FF;
+  }
+  100%{
+    transform:rotate(2deg);
+    border-color: white;
+  }
+
 }

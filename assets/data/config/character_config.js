@@ -1,4 +1,3 @@
-
 const animation_key = {
   attack:"Attack",
   idle:"Idle"
@@ -11,9 +10,30 @@ const jackolatern_dir ="./assets/imgs/jackolatern_sprites/";
 const rikon_dir ="./assets/imgs/rikon_sprites/";
 const frost_dir ="./assets/imgs/frost_sprites/";
 
-const wizardConfig =
+var stat_config = {
+
+  attack:{
+    name:"Attack",
+    color:"red"
+  },
+  defense:{
+    name:"Defense",
+    color:"green"
+  },
+  speed:{
+    name:"Speed",
+    color:"purple"
+  },
+  luck:{
+    name:"Luck",
+    color:"teal"
+  }
+
+}
+
+const characters =
   [
-     {
+    {
     name:"Ebin the Terrible",
     folder:"./assets/imgs/eban_sprites/",
     id:"F0001",
@@ -24,32 +44,43 @@ const wizardConfig =
     },
     display_image : `${eban_dir}${animation_key.idle}_1.png`,
     description:"",
-       flip_sprite:false,
-    stats: new Stats(170,70,10,10),
+    flip_sprite:false,
+    stats:{
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,180),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,180),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,40),
+     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+    },
     moves:[
       new Moves(MoveBase["glacier thrust"]),
       new Moves(MoveBase["ice sling"]),
       new Moves(MoveBase["ice punch"]),
-      new Moves(MoveBase["dark void"]),
+      new Moves(MoveBase["magical chaos"]),
     ]
   },
   {
  name:"Jack O' Latern",
  folder:"./assets/imgs/jackolatern_sprites/",
  id:"F00031",
- type:"all-around",
- stats: new Stats(75,85,75,15),
+ type:"Defense",
+ stats:{
+   attack:new Stat(stat_config.attack.name,stat_config.attack.color,115),
+   defense:new Stat(stat_config.defense.name,stat_config.defense.color,240),
+   speed:new Stat(stat_config.speed.name,stat_config.speed.color,65),
+   luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+
+ },
  animation_sheet: {
    idle: new AnimationSheet(jackolatern_dir,4,animation_key.idle),
    attack: new AnimationSheet(jackolatern_dir,4,animation_key.attack),
  },
-    flip_sprite:false,
+ flip_sprite:false,
  display_image : `${jackolatern_dir}${animation_key.idle}_1.png`,
  description:"",
  moves:[
    new Moves(MoveBase["fire strike"]),
    new Moves(MoveBase["fire sling"]),
-   new Moves(MoveBase["dark void"]),
+   new Moves(MoveBase["magical chaos"]),
    new Moves(MoveBase["gorgon stare"]),
  ]
 },
@@ -57,9 +88,14 @@ const wizardConfig =
    name:"Mr. Hands",
    folder:"./assets/imgs/mrhands/",
    id:"F00035",
-   type:"strategy",
+   type:"Defense",
    flip_sprite:false,
-   stats: new Stats(40,100,110,46),
+   stats:{
+       attack:new Stat(stat_config.attack.name,stat_config.attack.color,50),
+       defense:new Stat(stat_config.defense.name,stat_config.defense.color,400),
+       speed:new Stat(stat_config.speed.name,stat_config.speed.color,120),
+       luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+     },
    animation_sheet: {
      idle: new AnimationSheet(mrhands_dir,6,animation_key.idle),
      attack: new AnimationSheet(mrhands_dir,4,animation_key.attack),
@@ -79,7 +115,12 @@ const wizardConfig =
    flip_sprite:true,
    id:"F00236",
    type:"power",
-   stats: new Stats(80,70,100,6),
+   stats:{
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,110),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,90),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,150),
+     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+   },
    animation_sheet: {
      idle: new AnimationSheet(rikon_dir,14,animation_key.idle),
      attack: new AnimationSheet(rikon_dir,10,animation_key.idle),
@@ -99,7 +140,12 @@ const wizardConfig =
    flip_sprite:false,
    id:"F02436",
    type:"all around",
-   stats: new Stats(85,75,70,6),
+   stats:{
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,115),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,140),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,60),
+     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+   },
    animation_sheet: {
      idle: new AnimationSheet(frost_dir,3,animation_key.idle),
      attack: new AnimationSheet(frost_dir,4,animation_key.attack),
@@ -110,7 +156,7 @@ const wizardConfig =
      new Moves(MoveBase["ice sling"]),
      new Moves(MoveBase["gorgon stare"]),
      new Moves(MoveBase["ice punch"]),
-     new Moves(MoveBase["dark void"]),
+     new Moves(MoveBase["magical chaos"]),
    ]
   },
    {
@@ -118,7 +164,13 @@ const wizardConfig =
   folder:"./assets/imgs/johnathan_sprites/",
   id:"F0002",
   flip_sprite:false,
-  stats:new Stats(70,90,75,20),
+  stats:{
+    attack:new Stat(stat_config.attack.name,stat_config.attack.color,100),
+    defense:new Stat(stat_config.defense.name,stat_config.defense.color,140),
+    speed:new Stat(stat_config.speed.name,stat_config.speed.color,100),
+    luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+
+  },
   type:"strategy",
   animation_sheet: {
     idle: new AnimationSheet(johnathan_dir,3,animation_key.idle),
@@ -137,44 +189,47 @@ const wizardConfig =
   name:"N/A",
   id:"F0003",
   type:"N/A",
-   stats: new Stats(0,0,0,0),
+   stats:{
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,8),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,8),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,8),
+     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+
+   },
   animation_sheet: {
     idle: new AnimationSheet(null,0,null),
     attack: new AnimationSheet(null,0,null),
   },
-     flip_sprite:false,
+  flip_sprite:false,
   display_image : "./assets/imgs/placeholder_wizard.png",
   description:"",
   moves:[{name:"N/A"},{name:"N/A"},{name:"N/A"},{name:'N/A'}]
 
-}
+  }
 ]
 
+function return_available_characters(cut_off,limit){
 
-
-
-
-function return_available_wizards(cut_off,limit){
-
-  const available_wizards = [];
+  const available_characters = [];
   var counter = 0;
-  for(var i = 0; i < 9; i ++){
-    console.log(wizardConfig[counter]);
+
+  for(var i = 0; i < cut_off; i ++){
 
     if(counter >= cut_off){
-        available_wizards.push(new Wizard(wizardConfig[wizardConfig.length -1]));
+        available_characters.push(new Character(characters[characters.length - 1]));
     }else{
 
-        available_wizards.push(new Wizard(wizardConfig[counter]));
+        available_characters.push(new Character(characters[counter]));
     }
-
 
     counter ++;
 
   }
 
-  return available_wizards;
+  return available_characters;
 
 }
 
-//name,type,damage,animation_sheet,class_animation
+function return_placeholder_character(){
+    return new Character(characters[characters.length - 1]);
+}

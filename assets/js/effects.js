@@ -1,4 +1,3 @@
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const GenerateMove = async (move,isEnemy,isRandom) =>{
 
@@ -29,13 +28,13 @@ const GenerateMove = async (move,isEnemy,isRandom) =>{
 
    return total_delay;
 
-
 }
 
 const CreateSoundElement = (sound) => {
 
   var audio = document.createElement("audio");
   var source = document.createElement("source");
+
   source.setAttribute("type","audio/wav");
   source.setAttribute("src",sound);
 
@@ -52,32 +51,41 @@ const GenerateElementsLoop = async (className,enemy_animation,audio,src,limit,ms
   var milliseconds = 0;
 
   for (let i =0; i<=limit;i++){
+
       milliseconds += ms;
 
-
-      console.log(i);
       const element = document.createElement("div");
+
       if(playOnce && i <= 1){
+
         CreateSoundElement(audio)
+
       }else if(!playOnce){
+
         CreateSoundElement(audio)
+
       }
+
       var container = document.querySelector(".effect_box");
-      console.log(isRandom)
+
       if(isRandom){
+
           var size = Math.floor(Math.random() * 30) +5;
           var delay_time = Math.floor(Math.random() * 50);
+
           element.innerHTML =`<img style = "transform:rotate(${Math.floor(Math.random() * 360)}deg);height:${size.toString()}%;width:${size.toString()}%" class="${className} ${enemy_animation}" src ="${src}"/>`
           container.append(element);
+
           await delay(delay_time);
+
       }else{
+
         element.innerHTML =`<img class="${className} ${enemy_animation}" src ="${src}"/>`
         container.append(element);
+
         await delay(ms);
     }
 
   }
-
-  console.log(milliseconds);
 
 }

@@ -4,13 +4,10 @@
   left:5%;
   top:90%;
   z-index:99;
-
 }
 
 .audio_icon{
   width:100%;
-
-
 }
 
 .inactive{
@@ -20,6 +17,7 @@
 .active{
   opacity:1
 }
+
 .audio_icon_character{
   position:absolute;
   width:3%;

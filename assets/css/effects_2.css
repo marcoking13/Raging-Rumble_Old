@@ -1,6 +1,5 @@
 .ghost_fire_ani{
 
-
   position: absolute;
   width:10%;
   z-index:999;
@@ -13,7 +12,6 @@
 
 .spirit_chant_ani{
 
-
   position: absolute;
   width:20%;
   left:130%;
@@ -23,8 +21,8 @@
   top:30%;
 
 }
-.ice_punch_ani{
 
+.ice_punch_ani{
 
   position: absolute;
   width:20%;
@@ -35,17 +33,14 @@
   top:30%;
 
 }
+
 .ice_punch_ani_enemy{
-
-
 
   left:-60%;
 
-
-
 }
-.ghost_claw_ani{
 
+.ghost_claw_ani{
 
   position: absolute;
   width:20%;
@@ -56,6 +51,7 @@
   top:30%;
 
 }
+
 .ghost_claw_ani_enemy{
 
   left:-70%;
@@ -63,7 +59,6 @@
 }
 
 .raging_thunder_ani{
-
 
   position: absolute;
   width:5%;
@@ -74,15 +69,13 @@
   top:50%;
 
 }
+
 .raging_thunder_ani_enemy{
-
-
 
   left:-70%;
 
-  
-
 }
+
 .spirit_chant_ani_enemy{
 
   left:-70%;
@@ -101,22 +94,23 @@
   }
   20%{
     transform:scale(2);
-      opacity:20%;
+    opacity:20%;
   }
   40%{
-  opacity:100%;
+    opacity:100%;
   }
   60%{
     opacity:20%;
     transform:scale(3);
   }
   80%{
-  opacity:100%;
+    opacity:100%;
   }
   100%{
     opacity:0%;
     transform:scale(1);
   }
+
 }
 
 @keyframes ice_punch{
@@ -138,9 +132,10 @@
     transform:scale(5);
 
   }
-}
-.robotic_bite_ani{
 
+}
+
+.robotic_bite_ani{
 
   position: absolute;
   width:25%;
@@ -159,20 +154,19 @@
 
 }
 
-
 @keyframes spirit_chant {
 
   0%{
     transform: scale(1);
     opacity:1;
     top:40%;
-      transform:rotate(0deg);
+    transform:rotate(0deg);
   }
 
   50%{
     top:20%;
-      transform: scale(2);
-      opacity:.5;
+    transform: scale(2);
+    opacity:.5;
   }
   100%{
     opacity:0;
@@ -188,7 +182,7 @@
     transform: scale(2);
     opacity:1;
     top:5%;
-      transform:rotate(0deg);
+    transform:rotate(0deg);
 
   }
 
@@ -199,7 +193,7 @@
   }
   100%{
     opacity:0;
-      transform:rotate(0deg);
+    transform:rotate(0deg);
   }
 
 }
@@ -244,14 +238,11 @@
   50%{
     top:25%;
     transform: scale(1.2);
-
-
   }
 
   60%{
     top:20%;
     transform: scale(1);
-
   }
 
   70%{
@@ -267,8 +258,6 @@
     transform:rotate(0deg);
 
   }
-
-
 
 }
 
@@ -286,20 +275,16 @@
     top:25%;
     transform: scale(1.2);
     opacity:1;
-
-
   }
 
   20%{
     top:20%;
     transform: scale(1);
-
   }
 
   30%{
     top:25%;
     transform: scale(1.2);
-
   }
 
   40%{
@@ -311,14 +296,11 @@
   50%{
     top:25%;
     transform: scale(1.2);
-
-
   }
 
   60%{
     top:20%;
     transform: scale(1);
-
   }
 
   70%{
@@ -328,14 +310,10 @@
   }
 
   100%{
-
     transform: scale(2);
     opacity:.5;
     top:20%;
     transform:rotate(0deg);
-
   }
-
-
 
 }
