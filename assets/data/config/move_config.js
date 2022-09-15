@@ -17,10 +17,10 @@ const MoveBase = {
   "raging thunder":{
     damage:60,
     audio:"assets/audio/moves/raging_thunder.mp3",
-    side_effects:null,
+    side_effects:new Recharge(1,false),
     description:"A very strong thunder attack; must recharge",
     name:"raging thunder",
-    effectChance:new Recharge(1,false),
+    effectChance:null,
     image:"assets/imgs/moves/raging_thunder.png",
     accuracy:70,
     isRandom:true,

@@ -89,17 +89,17 @@ const ReturnCharacterCol = (character,isEnemy) =>{
 
 }
 
-const CalculateDamage = (health,character,damage) =>{
+const CalculateDamage = (health,character,enemy,damage) =>{
 
   var random_damage = Math.floor(Math.random() * 4) + 3;
   var level = 50;
 
   var level_calc = ((level * 2 / 5) + 2);
-  var defensive_calc = (character.stats.attack.stat / (character.stats.defense.stat));
+  var defensive_calc = (character.stats.attack.stat / (enemy.stats.defense.stat));
 
-  var damage_dealt  = (((level_calc + 2) * (20 + damage ) * defensive_calc) / 50 + 2) + random_damage;
+  var damage_dealt  = (damage  * defensive_calc);
 
-  return Math.floor(damage_dealt);
+  return Math.ceil(damage_dealt);
 
 }
 
@@ -204,9 +204,9 @@ const SideEffects = (side_effects,isEnemy,damage) => {
   if(side_effects){
 
     var recharge_turns = side_effects.name == "recharge" ? side_effects.turns : null;
-
+    console.log(side_effects.name);
      if(side_effects.name == "recharge"){
-
+       console.log(recharge_turns);
        if(!isEnemy){
 
          player_recharge_turns = recharge_turns;
@@ -219,27 +219,36 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
      }
      else if(side_effects.name == "boost"){
-
+      console.log(isEnemy);
        if(isEnemy){
 
          saved_characters.enemy.stats = side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type);
+         console.log(saved_characters.enemy.stats)
 
        }else{
 
          saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
+         console.log(saved_characters.player.stats)
 
        }
 
      }
      else if(side_effects.name == "drain"){
 
-       if(isEnemy){
+       if(!isEnemy){
 
-          player_health = side_effects.effect(enemy_health,damage,"enemy_blood");
+          player_health = side_effects.effect(player_health,damage,"player_blood");
+          var health_element = document.querySelector(".player_blood");
+          health_element.style.width = player_health + "%";
+          health_element.innerHTML = player_health;
+
 
         }else{
 
-          enemy_health = side_effects.effect(player_health,damage,"player_blood");
+          enemy_health = side_effects.effect(enemy_health,damage,"enemy_blood");
+          var health_element = document.querySelector(".enemy_blood");
+          health_element.style.width = enemy_health + "%";
+          health_element.innerHTML = enemy_health;
 
         }
 
@@ -272,12 +281,13 @@ const DisplayDamageCalculations = (selected_move,isEnemy) =>{
     var is_enemy_health = isEnemy ? player_health : enemy_health;
 
     var is_enemy_character = isEnemy ? saved_characters.enemy :  saved_characters.player ;
+    var is_player_character = isEnemy ? saved_characters.player :  saved_characters.enemy ;
 
     var is_enemy_blood = isEnemy ? "player_blood" : "enemy_blood";
 
     var side_effects = selected_move.side_effects;
 
-    var damage = CalculateDamage(is_enemy_health,is_enemy_character,selected_move.damage);
+    var damage = CalculateDamage(is_enemy_health,is_enemy_character,is_player_character,selected_move.damage);
 
     if(isEnemy){
 

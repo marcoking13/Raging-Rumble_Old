@@ -17,7 +17,7 @@ const RenderWinnerEffect = (won) =>{
 
       html += `
       <div class="winner_effect"
-        style="top:${y.toString()}%;animation-duration:${duration.toString()}s;background:rgb(${r.toString()},${g.toString()},${b.toString()})">
+        style="left:${y.toString()}%;bottom:0%;animation-duration:${duration.toString()}s;background:rgb(${r.toString()},${g.toString()},${b.toString()})">
       </div>
       `
       duration += .02;
@@ -90,7 +90,7 @@ const RenderEndPage = async(character,player_won) =>{
 
   var effect_container = document.querySelector(".effect_container");
 
-  await delay(50000);
+  await delay(5000);
 
   window.location.assign("./character_selection.html");
 

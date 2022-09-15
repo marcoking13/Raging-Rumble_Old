@@ -17,7 +17,7 @@
   z-index:-2;
   opacity:0;
   background:green;
-  top:20%;
+  bottom:0%;
   animation:winner_effect 1 .5s ease-in-out;
 }
 
@@ -189,14 +189,14 @@
 @keyframes winner_effect {
   0%{
     opacity:0;
-    left:0%;
-    transform:rotateY(0deg);
+    bottom:0%;
+    transform:rotateX(0deg);
   }
   0%{
     opacity:.5;
   }
   50%{
-    transform:rotateY(480deg);
+    transform:rotateX(480deg);
     opacity:1;
   }
 
@@ -204,9 +204,9 @@
     opacity:.5;
   }
   100%{
-    transform:rotateY(-480deg);
+    transform:rotateX(-480deg);
     opacity:0;
-    left:98%;
+    bottom:98%;
   }
 }
 

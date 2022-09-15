@@ -5,16 +5,13 @@ class Drain {
 
     this.effect = function drain(health,damage,health_class){
 
-      health += Math.floor(damage / 1.5);
+      var health_regained = Math.floor(damage / 2);
 
+      console.log(health_regained);
+      health = health + health_regained;
       if(health >= 100){
         health = 100;
       }
-
-      var health_element = document.querySelector("."+health_class);
-
-      health_element.style.width = health + "%";
-      health_element.innerHTML = health;
 
       return health;
 
