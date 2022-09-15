@@ -242,7 +242,12 @@ const RenderAvailableBox = (character,rotation) => {
       <div class='row'>
 
         <div class="col-10">
+          <div class="row">
+          <div class="col-1"></div>
+          <div class="col-11">
          ${StatBarLoop([stats.attack,stats.defense,stats.speed,stats.luck])}
+         </div>
+         </div>
         </div>
 
       </div>
