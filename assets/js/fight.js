@@ -21,9 +21,15 @@ const RenderHeader = () =>{
         </div>
     </div>`;
 
+
+
     const container = document.querySelector(".header_container");
 
     container.innerHTML = html;
+
+    const button = document.querySelector(".quit_button").addEventListener("click",()=>{
+      window.location.assign("./character_selection.html");
+    })
 
 }
 
@@ -213,9 +219,9 @@ const SideEffects = (side_effects,isEnemy,damage) => {
   if(side_effects){
 
     var recharge_turns = side_effects.name == "recharge" ? side_effects.turns : null;
-    console.log(side_effects.name);
+
      if(side_effects.name == "recharge"){
-       console.log(recharge_turns);
+
        if(!isEnemy){
 
          player_recharge_turns = recharge_turns;
@@ -228,16 +234,15 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
      }
      else if(side_effects.name == "boost"){
-      console.log(isEnemy);
+
        if(isEnemy){
 
          saved_characters.enemy.stats = side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type);
-         console.log(saved_characters.enemy.stats)
+
 
        }else{
 
          saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
-         console.log(saved_characters.player.stats)
 
        }
 
@@ -432,6 +437,7 @@ const Battle = async (id) =>{
 
     var winner = DetermineWinner();
 
+    console.log(DetermineWinner());
     if(winner){
       RenderEndPage(winner.character,winner.win);
     }else{
@@ -442,64 +448,69 @@ const Battle = async (id) =>{
 
       document.body.classList.remove("no-point");
 
-   }
+    }
+
+
 
   }
 
 }
 
+
+
 const Attack = async(move,isEnemy) => {
 
-  var is_enemy_image = isEnemy ? "enemy_character" : "player_character";
-  var is_alert = isEnemy ? "Enemy" : "Player";
-  var is_enemy_health = isEnemy ? player_health : enemy_health;
-  var is_enemy_sheet_idle = isEnemy ? saved_characters.enemy.animation_sheet.idle : saved_characters.player.animation_sheet.idle;
-  var is_drained_health = isEnemy ? enemy_health : player_health;
-  var is_enemy_recharge = isEnemy ? enemy_recharge_turns : player_recharge_turns;
-  var is_enemy_character = isEnemy ? saved_characters.enemy :  saved_characters.player ;
-  var is_enemy_blood = isEnemy ? "player_blood" : "enemy_blood";
-  var character_health_element = document.querySelector("."+is_enemy_blood);
-  var is_enemy_character = isEnemy ? saved_characters.enemy :  saved_characters.player ;
-  var is_enemy_sheet = isEnemy ? saved_characters.enemy.animation_sheet.attack : saved_characters.player.animation_sheet.attack;
-  var character_image = document.querySelector("."+is_enemy_image);
+    var is_enemy_image = isEnemy ? "enemy_character" : "player_character";
+    var is_alert = isEnemy ? "Enemy" : "Player";
+    var is_enemy_health = isEnemy ? player_health : enemy_health;
+    var is_enemy_sheet_idle = isEnemy ? saved_characters.enemy.animation_sheet.idle : saved_characters.player.animation_sheet.idle;
+    var is_drained_health = isEnemy ? enemy_health : player_health;
+    var is_enemy_recharge = isEnemy ? enemy_recharge_turns : player_recharge_turns;
+    var is_enemy_character = isEnemy ? saved_characters.enemy :  saved_characters.player ;
+    var is_enemy_blood = isEnemy ? "player_blood" : "enemy_blood";
+    var character_health_element = document.querySelector("."+is_enemy_blood);
+    var is_enemy_character = isEnemy ? saved_characters.enemy :  saved_characters.player ;
+    var is_enemy_sheet = isEnemy ? saved_characters.enemy.animation_sheet.attack : saved_characters.player.animation_sheet.attack;
+    var character_image = document.querySelector("."+is_enemy_image);
 
-   if(is_enemy_recharge <= 0){
+     if(is_enemy_recharge <= 0){
 
-    if(move.accuracy > Math.floor(Math.random() * 100 + 1)){
+      if(move.accuracy > Math.floor(Math.random() * 100 + 1)){
 
-      var total_delay = move.effects * move.milliseconds + 1300;
+        var total_delay = move.effects * move.milliseconds + 1300;
 
-      SpriteAnimator(character_image,is_enemy_sheet,200,total_delay,is_enemy_character.display_image);
+        SpriteAnimator(character_image,is_enemy_sheet,200,total_delay,is_enemy_character.display_image);
 
-      GenerateMove(move,isEnemy,move.isRandom);
+        GenerateMove(move,isEnemy,move.isRandom);
 
-      await delay(total_delay);
+        await delay(total_delay);
 
-      DisplayDamageCalculations(move,isEnemy);
+        DisplayDamageCalculations(move,isEnemy);
 
-      return total_delay + 1000;
+        return total_delay + 1000;
 
-    }else{
+      }else{
 
-      alert(`${is_alert} Missed!`)
+        alert(`${is_alert} Missed!`)
 
-    }
-
-  }else{
-
-    if(isEnemy){
-
-      enemy_recharge_turns--;
+      }
 
     }else{
 
-      player_recharge_turns--;
+      if(isEnemy){
 
-    }
+        enemy_recharge_turns--;
 
-    alert(`${is_alert} needs to recharge`);
+      }else{
 
-    }
+        player_recharge_turns--;
+
+      }
+
+      alert(`${is_alert} needs to recharge`);
+
+      }
+
 
 }
 
