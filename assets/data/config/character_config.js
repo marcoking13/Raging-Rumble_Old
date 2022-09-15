@@ -47,8 +47,8 @@ const characters =
     flip_sprite:false,
     stats:{
      attack:new Stat(stat_config.attack.name,stat_config.attack.color,100),
-     defense:new Stat(stat_config.defense.name,stat_config.defense.color,80),
-     speed:new Stat(stat_config.speed.name,stat_config.speed.color,40),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,110),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,10),
      luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
     },
     moves:[
@@ -65,7 +65,7 @@ const characters =
  type:"Defense",
  stats:{
    attack:new Stat(stat_config.attack.name,stat_config.attack.color,65),
-   defense:new Stat(stat_config.defense.name,stat_config.defense.color,110),
+   defense:new Stat(stat_config.defense.name,stat_config.defense.color,115),
    speed:new Stat(stat_config.speed.name,stat_config.speed.color,75),
    luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
 
@@ -92,7 +92,7 @@ const characters =
    flip_sprite:false,
    stats:{
        attack:new Stat(stat_config.attack.name,stat_config.attack.color,20),
-       defense:new Stat(stat_config.defense.name,stat_config.defense.color,100),
+       defense:new Stat(stat_config.defense.name,stat_config.defense.color,120),
        speed:new Stat(stat_config.speed.name,stat_config.speed.color,120),
        luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
      },
@@ -116,8 +116,8 @@ const characters =
    id:"F00236",
    type:"power",
    stats:{
-     attack:new Stat(stat_config.attack.name,stat_config.attack.color,110),
-     defense:new Stat(stat_config.defense.name,stat_config.defense.color,65),
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,95),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,60),
      speed:new Stat(stat_config.speed.name,stat_config.speed.color,110),
      luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
    },
@@ -141,9 +141,9 @@ const characters =
    id:"F02436",
    type:"all around",
    stats:{
-     attack:new Stat(stat_config.attack.name,stat_config.attack.color,85),
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,80),
      defense:new Stat(stat_config.defense.name,stat_config.defense.color,85),
-     speed:new Stat(stat_config.speed.name,stat_config.speed.color,85),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,80),
      luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
    },
    animation_sheet: {
@@ -165,8 +165,8 @@ const characters =
   id:"F0002",
   flip_sprite:false,
   stats:{
-    attack:new Stat(stat_config.attack.name,stat_config.attack.color,80),
-    defense:new Stat(stat_config.defense.name,stat_config.defense.color,90),
+    attack:new Stat(stat_config.attack.name,stat_config.attack.color,70),
+    defense:new Stat(stat_config.defense.name,stat_config.defense.color,100),
     speed:new Stat(stat_config.speed.name,stat_config.speed.color,50),
     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
 

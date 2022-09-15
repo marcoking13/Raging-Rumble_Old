@@ -9,7 +9,9 @@
 .player_modal_img{
   width:100%;
 }
-
+.app_background{
+  padding-bottom:5%;
+}
 .stat_point_number{
   font-size:20px;
   color:white;
