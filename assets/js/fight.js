@@ -54,7 +54,7 @@ const ReturnCharacterCol = (character,isEnemy) =>{
   var is_enemy_class = isEnemy ? "enemy_character" : "player_character";
   var is_enemy_blood = isEnemy ? "enemy_blood" : "player_blood";
   var is_enemy_health = isEnemy ? enemy_health : player_health;
-  var rotate = 0;
+  var rotation = 0;
   var is_enemy_rotation = isEnemy ? 180 : 0;
   var is_sprite_rotation = character.flip_sprite ? 180 : 0;
 
