@@ -1,6 +1,6 @@
 const MoveBase = {
   "fire strike":{
-    damage:55,
+    damage:50,
     audio:"assets/audio/moves/fire_strike.wav",
     side_effects:null,
     description:"A strong fire attack",
@@ -15,14 +15,14 @@ const MoveBase = {
     milliseconds:1
   },
   "raging thunder":{
-    damage:60,
+    damage:80,
     audio:"assets/audio/moves/raging_thunder.mp3",
     side_effects:new Recharge(1,false),
     description:"A very strong thunder attack; must recharge",
     name:"raging thunder",
     effectChance:null,
     image:"assets/imgs/moves/raging_thunder.png",
-    accuracy:70,
+    accuracy:90,
     isRandom:true,
     playOnce:true,
     class_animation:"raging_thunder_ani",
@@ -30,14 +30,14 @@ const MoveBase = {
     milliseconds:10
   },
   "robotic bite":{
-    damage:40,
+    damage:50,
     audio:"assets/audio/moves/robotic_bite.wav",
     side_effects:new Boost("defense",1,-1),
     description:"A strong fire attack",
     name:"robotic bite",
     effectChance:null,
     image:"assets/imgs/moves/venom_boost.png",
-    accuracy:80,
+    accuracy:100,
     isRandom:false,
     playOnce:true,
     class_animation:"robotic_bite_ani",
@@ -60,14 +60,14 @@ const MoveBase = {
     milliseconds:1
   },
   "spirit chant":{
-    damage:30,
+    damage:25,
     audio:"assets/audio/moves/ghost_claw.mp3",
     side_effects:new Boost("attack",4,1),
     description:"A strong ice attack; must recharge",
     name:"spirit chant",
     effectChance:100,
     image:"assets/imgs/moves/spirit_chant.png",
-    accuracy:90,
+    accuracy:100,
     isRandom:true,
     playOnce:true,
     class_animation:"spirit_chant_ani",
@@ -75,14 +75,14 @@ const MoveBase = {
     milliseconds:100
   },
   "ghost fire":{
-    damage:60,
+    damage:70,
     audio:"assets/audio/moves/ghost_fire.wav",
     side_effects:new Recharge(1,false),
     description:"A strong ghost attack; must recharge",
     name:"ghost fire",
     effectChance:100,
     image:"assets/imgs/moves/ghost_fire.png",
-    accuracy:80,
+    accuracy:85,
     isRandom:false,
     playOnce:true,
     class_animation:"ghost_fire_ani",
@@ -105,7 +105,7 @@ const MoveBase = {
     milliseconds:100
   },
   "glacier thrust":{
-    damage:65,
+    damage:75,
     audio:"assets/audio/moves/glacier_thrust.mp3",
     side_effects:new Recharge(1,false),
     description:"A strong ice attack; must recharge",
@@ -120,14 +120,14 @@ const MoveBase = {
     milliseconds:100
   },
   "ice punch":{
-    damage:35,
+    damage:50,
     audio:"assets/audio/moves/ice_punch.mp3",
     side_effects:null,
     description:"A strong ice punch",
     name:"ice punch",
     effectChance:null,
     image:"assets/imgs/moves/ice_punch.png",
-    accuracy:90,
+    accuracy:80,
     isRandom:false,
     playOnce:true,
     class_animation:"ice_punch_ani",
@@ -151,12 +151,12 @@ const MoveBase = {
     milliseconds:100
   },
   "blinding light":{
-    damage:25,
+    damage:70,
     isRandom:false,
     audio:"assets/audio/moves/blinding_light.wav",
     playOnce:true,
-    description:"A light that slightly damages the enemy; 20% chance to blind enemy for a turn",
-    side_effects:new Boost("speed",1,1),
+    description:"A powerful light spiral but lowers user's attack after",
+    side_effects:new Boost("attack",1,-1),
     effectChance:20,
     name:'blinding light',
     accuracy:100,
@@ -172,7 +172,7 @@ const MoveBase = {
     audio:"assets/audio/moves/hells_escape.wav",
     description:"Opens a void of shadows that consumes the enemy for massive damage",
     name:"magical chaos",
-    accuracy:55,
+    accuracy:65,
     side_effects:null,
     effects:1,
     playOnce:true,
@@ -181,7 +181,7 @@ const MoveBase = {
     milliseconds:100
   },
   "venom boost":{
-    damage:30,
+    damage:20,
     isRandom:false,
     audio:"assets/audio/moves/venom_boost.wav",
     side_effects:new Boost("speed",1,1),
@@ -196,7 +196,7 @@ const MoveBase = {
     class_animation:"venom_boost_ani"
   },
   "gorgon stare":{
-    damage:5,
+    damage:15,
     effects:1,
     isRandom:false,
     audio:"assets/audio/moves/hypno_stare.mp3",
@@ -211,7 +211,7 @@ const MoveBase = {
     class_animation:"hypno_stare_ani"
   },
   "flying rush":{
-    damage:35,
+    damage:45,
     side_effects:null,
     isRandom:false,
     name:"flying rush",
@@ -227,7 +227,7 @@ const MoveBase = {
     class_animation:"flying_rush_ani"
   },
   "life drain":{
-    damage:25,
+    damage:30,
     side_effects:new Drain(),
     effects:26,
     audio:"assets/audio/moves/life_drain.mp3",
