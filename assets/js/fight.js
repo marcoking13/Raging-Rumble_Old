@@ -54,7 +54,12 @@ const ReturnCharacterCol = (character,isEnemy) =>{
   var is_enemy_class = isEnemy ? "enemy_character" : "player_character";
   var is_enemy_blood = isEnemy ? "enemy_blood" : "player_blood";
   var is_enemy_health = isEnemy ? enemy_health : player_health;
+  var rotate = 0;
   var is_enemy_rotation = isEnemy ? 180 : 0;
+  var is_sprite_rotation = character.flip_sprite ? 180 : 0;
+
+  rotate = is_enemy_rotation + is_sprite_rotation;
+
 
   var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
 
@@ -66,7 +71,7 @@ const ReturnCharacterCol = (character,isEnemy) =>{
       <div class="col-3"></div>
 
       <div class="col-6 character_img_container">
-        <img style = "transform:rotateY(${is_enemy_rotation.toString()}deg)" src = "${character.display_image}" class="width-100 character_image ${is_enemy_class} ${enlarge}"/>
+        <img style = "transform:rotateY(${rotation.toString()}deg)" src = "${character.display_image}" class="width-100 character_image ${is_enemy_class} ${enlarge}"/>
       </div>
 
       <div class="col-3"></div>
