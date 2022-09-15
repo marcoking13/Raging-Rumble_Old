@@ -14,6 +14,7 @@ const CreateAudioSound = (sound,type,autoPlay) => {
     audio.autoplay = true;
   }
 
+  console.log("s");
   audio.append(source);
   document.body.append(audio);
 
