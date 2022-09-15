@@ -56,9 +56,10 @@ const ReturnCharacterCol = (character,isEnemy) =>{
   var is_enemy_health = isEnemy ? enemy_health : player_health;
   var rotation = 0;
   var is_enemy_rotation = isEnemy ? 180 : 0;
-  var is_sprite_rotation = character.flip_sprite ? 180 : 0;
 
-  rotate = is_enemy_rotation + is_sprite_rotation;
+  var is_sprite_rotation = character.flip_sprite ? 180 : 0;
+  console.log(is_sprite_rotation);
+  rotation = is_enemy_rotation + is_sprite_rotation;
 
 
   var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
