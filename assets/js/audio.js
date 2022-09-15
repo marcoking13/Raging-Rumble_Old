@@ -2,7 +2,7 @@ var hasPlayed = false;
 
 var music_active = false;
 
-const CreateAudioSound = (sound,type,autoPlay) => {
+const CreateAudioSound = (sound,type) => {
 
   var audio = document.createElement("audio");
   var source = document.createElement("source");
@@ -10,11 +10,6 @@ const CreateAudioSound = (sound,type,autoPlay) => {
   source.setAttribute("type",`audio/wav`);
   source.setAttribute("src",sound);
 
-  if(autoPlay){
-    audio.autoplay = true;
-  }
-
-  console.log("s");
   audio.append(source);
   document.body.append(audio);
 
