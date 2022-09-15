@@ -31,6 +31,7 @@ const MoveLoop = (moves,className,isEnemy) =>{
 
   var html = ``;
 
+  if(!isEnemy){
   for(var i = 0; i < moves.length; i++){
 
     html +=   `
@@ -39,6 +40,7 @@ const MoveLoop = (moves,className,isEnemy) =>{
       </div>`
 
   }
+}
 
   return html;
 
