@@ -201,7 +201,7 @@ const characters =
     attack: new AnimationSheet(null,0,null),
   },
   flip_sprite:false,
-  display_image : "./assets/imgs/placeholder_wizard.png",
+  display_image : "./assets/imgs/placeholder_wizard.gif",
   description:"",
   moves:[{name:"N/A"},{name:"N/A"},{name:"N/A"},{name:'N/A'}]
 

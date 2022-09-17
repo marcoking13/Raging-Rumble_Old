@@ -210,7 +210,39 @@
     bottom:98%;
   }
 }
+.fall_overlay{
+  position: absolute;
+  z-index: -1;
+  background:none;
+  top:40%;
+  width:100%;
+  left:0;
+}
+.death {
 
+  opacity:0;
+  position: relative;
+  top:1000px;
+  animation: death 1s 1 ease-in;
+}
+
+@keyframes death {
+  0%{
+    filter:grayscale(0);
+    opacity:1;
+      top:0px;
+    z-index:2;
+  }
+  30%{
+      filter:grayscale(40);
+      top:inherit;
+
+      opacity:.5;
+  }
+  100%{
+      opacity:0;
+  }
+}
 
 @keyframes ending_border {
   0%{
@@ -229,3 +261,7 @@
     border-color:red;
   }
 }
+
+
+
+@keyframes

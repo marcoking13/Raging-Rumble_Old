@@ -5,6 +5,8 @@ const saved_characters = {
 
 var disable = false;
 
+music_active = true;
+
 var enemy_health = 100;
 var player_health = 100;
 
@@ -237,16 +239,16 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
        if(isEnemy){
 
-         saved_characters.enemy.stats = side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type);
-
-
-       }else{
-
-         saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
-
+          saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
+          console.log(saved_characters)
        }
 
+       else{
+
+            saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type)
+       }
      }
+
      else if(side_effects.name == "drain"){
 
        if(!isEnemy){
@@ -267,10 +269,11 @@ const SideEffects = (side_effects,isEnemy,damage) => {
         }
 
       }
+    }
+    }
 
-   }
 
-}
+
 
 const ChangeHealthBarWidth = (query,isEnemy) =>{
 
@@ -387,24 +390,32 @@ const BattleSequence = async(is_player_faster,player_args) => {
 
     if(player_health > 0){
       Attack(player_args.move,player_args.isEnemy);
+    }else{
+      DeathAnimation(document.querySelector(".player_character"))
     }
 
-    await delay(2000);
+    await delay(2500);
 
     if(enemy_health > 0){
       EnemyAttacks();
+    }else{
+      DeathAnimation(document.querySelector(".enemy_character"))
     }
 
   }else{
 
     if(enemy_health > 0){
       EnemyAttacks();
+    }else{
+      DeathAnimation(document.querySelector(".enemy_character"))
     }
 
-    await delay(2000);
+    await delay(2500);
 
     if(player_health > 0){
       Attack(player_args.move,player_args.isEnemy);
+    }else{
+      DeathAnimation(document.querySelector(".player_character"))
     }
 
   }
@@ -433,7 +444,7 @@ const Battle = async (id) =>{
 
     BattleSequence(is_player_faster,player_args);
 
-    await delay(4000);
+    await delay(4500);
 
     var winner = DetermineWinner();
 
@@ -525,6 +536,13 @@ const IntializeGame = () =>{
 }
 
 
+const DeathAnimation = async(characterElement) => {
+  characterElement.classList.add("death");
+  var audio = document.querySelector(".death_sound");
+  audio.play();
+  await delay(1000);
+}
+
 const DetermineWinner = () =>{
 
   if(player_health <= 0 || enemy_health <= 0){
@@ -550,5 +568,6 @@ const DetermineWinner = () =>{
   }
 
 }
-
-IntializeGame();
+if(window.innerWidth >= 680){
+  IntializeGame();
+}

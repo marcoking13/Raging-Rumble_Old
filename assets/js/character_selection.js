@@ -432,5 +432,6 @@ RenderCharacterSelectionPage = (player,enemy) => {
   RenderCharactersAvailable(available_characters);
 
 }
-
-RenderCharacterSelectionPage(placeholder_character,placeholder_character);
+if(window.innerWidth >= 680){
+  RenderCharacterSelectionPage(placeholder_character,placeholder_character);
+}

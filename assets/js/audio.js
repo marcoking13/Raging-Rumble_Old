@@ -51,4 +51,6 @@ audio_button.addEventListener("click",(e)=>{
 
   StopOrPlayAudio(audioSource,music_active);
 
-})
+});
+
+StopOrPlayAudio(document.querySelector(".game_music"),music_active)

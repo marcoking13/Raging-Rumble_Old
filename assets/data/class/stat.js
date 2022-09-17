@@ -5,7 +5,6 @@ class Stat {
     this.name = name;
     this.color = color;
     this.stat = stat;
-    
   }
 
 

@@ -524,3 +524,24 @@ body{
 .paragraph{
   font-size:14px;
 }
+
+
+
+
+@media only screen and (max-width:680px){
+
+  .desktop {
+    opacity:0 !important;
+    height:0;
+    visibility: hidden;
+    width:0;
+  }
+
+  .app_background{
+    background-image:url("./../imgs/mobile_background.png") !important;
+    height:1080px !important;
+    position: relative !important;
+  }
+
+
+}

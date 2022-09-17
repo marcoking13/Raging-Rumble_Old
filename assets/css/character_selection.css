@@ -16,7 +16,9 @@
   font-size:20px;
   color:white;
 }
-
+.selected_character_image{
+  border-radius:50%;
+}
 .stat_point_character_selection{
   color:white;
   font-size:20px;

@@ -1,5 +1,5 @@
 class Boost {
-  
+
   constructor(stat_type,stages,lower){
 
     this.stages = stages;
@@ -16,22 +16,22 @@ class Boost {
 
         case "attack":
 
-          character_stats.attack.stat +=  Math.floor(character_stats.attack.stat * boost_or_lower_stat);
+          character_stats.attack.stat +=  Math.floor(character_stats.attack.stat * boost_or_lower_stat)
           return character_stats
 
         case "defense":
 
-           character_stats.defense.stat +=  Math.floor(character_stats.defense.stat * boost_or_lower_stat);
+           character_stats.defense.stat +=  Math.floor(character_stats.defense.stat * boost_or_lower_stat)
            return character_stats
 
         case "speed":
 
-           character_stats.speed.stat +=  Math.floor( character_stats.speed.stat *  boost_or_lower_stat);
+           character_stats.speed.stat += Math.floor( character_stats.speed.stat *  boost_or_lower_stat);
            return character_stats
 
         case "luck":
 
-           character_stats.luck.stat += Math.floor(character_stats.luck.stat * boost_or_lower_stat);
+           character_stats.luck.stat +=  Math.floor(character_stats.luck.stat * boost_or_lower_stat);
            return character_stats
 
       }

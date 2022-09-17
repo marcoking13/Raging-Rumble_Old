@@ -41,4 +41,6 @@ const GenerateStartScreen = () =>{
 
 }
 
-GenerateStartScreen();
+if(window.innerWidth >= 680){
+  GenerateStartScreen();
+}
