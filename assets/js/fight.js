@@ -12,13 +12,25 @@ var player_health = 100;
 
 var enemy_recharge_turns = 0;
 var player_recharge_turns = 0;
-var enemy_stages = 0;
-var player_stages = 0;
+var enemy_stages = -5;
+var player_stages = -5;
 
 
 
-const RenderBoost =(container)=>{
-  var html = `<img src = "./assets/imgs/buff.png" class="boost_icon buff"/>`;
+const Recharging = (charging_turns,element) =>{
+  if(charging_turns > 0){
+    element.classList.add("recharging");
+  }else{
+    element.classList.remove("recharging");
+  }
+}
+
+const RenderBoost =(container, isEnemy, lower)=>{
+
+  var float = isEnemy ? "right" : "left"
+  console.log(lower)
+  var buff = lower > 0 ? "buff" : "debuff";
+  var html = `<img src = "./assets/imgs/buff.png" class="boost_icon ${buff}" style="float:${float}"/>`;
 
   var element = document.createElement("div");
 
@@ -252,21 +264,19 @@ const SideEffects = (side_effects,isEnemy,damage) => {
      else if(side_effects.name == "boost"){
 
        if(isEnemy){
-         if(enemy_stages <= 4 && enemy_stages >= -4){
+
             saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
             enemy_stages += side_effects.stages * side_effects.lower;
-        }else{
-          alert("Stages reached limit");
-        }
+            RenderBoost(document.querySelector(".boost_enemy"),true,side_effects.lower)
+
        }
 
        else{
-          if(player_stages <= 4 && player_stages >= -4){
+
             saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
             player_stages += side_effects.stages * side_effects.lower;
-          }else{
-            alert("Stages reached limit");
-          }
+            RenderBoost(document.querySelector(".boost_player"),false,side_effects.lower)
+
        }
      }
 
@@ -407,6 +417,9 @@ const AddEventToMoves = () =>{
 
 const BattleSequence = async(is_player_faster,player_args) => {
 
+
+
+
   if(is_player_faster){
 
     if(player_health > 0){
@@ -505,6 +518,9 @@ const Attack = async(move,isEnemy) => {
     var is_enemy_sheet = isEnemy ? saved_characters.enemy.animation_sheet.attack : saved_characters.player.animation_sheet.attack;
     var character_image = document.querySelector("."+is_enemy_image);
 
+    Recharging(player_recharge_turns,document.querySelector(".player_character"))
+    Recharging(enemy_recharge_turns,document.querySelector(".enemy_character"))
+
      if(is_enemy_recharge <= 0){
 
       if(move.accuracy > Math.floor(Math.random() * 100 + 1)){
@@ -521,10 +537,6 @@ const Attack = async(move,isEnemy) => {
 
         return total_delay + 1000;
 
-      }else{
-
-        alert(`${is_alert} Missed!`)
-
       }
 
     }else{
@@ -539,7 +551,7 @@ const Attack = async(move,isEnemy) => {
 
       }
 
-      alert(`${is_alert} needs to recharge`);
+
 
       }
 

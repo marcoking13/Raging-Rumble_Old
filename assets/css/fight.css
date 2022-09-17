@@ -213,7 +213,7 @@
 
 .boost_container{
   position: absolute;
-  top:45%;
+  top:60%;
   height:100px;
   width:20%;
 
@@ -223,18 +223,23 @@
   float:left;
 }
 .boost_enemy{
-  left:60%;
+  left:50%;
 }
 
 .boost_player{
-  left:20%;
+  left:30%;
 }
 
 .buff{
+  filter:invert(100%) sepia(42%) saturate(2621%) hue-rotate(38deg) brightness(90%) contrast(87%);
+  transform:rotateY(0deg) !important;
 
 }
 .debuff{
-  transform:rotateY(90)
+  transform:rotateZ(180deg) !important;
+  filter:invert(71%) sepia(17%) saturate(3153%) hue-rotate(325deg) brightness(103%) contrast(101%);
+
+
 }
 .fall_overlay{
   position: absolute;
@@ -290,4 +295,25 @@
 
 
 
-@keyframes
+.recharging {
+  animation: recharge 1 ease-in infinite !important;
+  opacity:.5 !important;
+  transform: scale(.6);
+}
+
+
+@keyframes recharge {
+  0%{
+    filter:grayscale(0);
+    opacity:1
+  }
+  50%{
+      filter:grayscale(60);
+      opacity:.5
+
+  }
+  100%{
+    filter:grayscale(0);
+    opacity:1
+  }
+}
