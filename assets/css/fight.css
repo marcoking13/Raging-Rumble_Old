@@ -210,6 +210,32 @@
     bottom:98%;
   }
 }
+
+.boost_container{
+  position: absolute;
+  top:45%;
+  height:100px;
+  width:20%;
+
+}
+.boost_icon{
+  width:20%;
+  float:left;
+}
+.boost_enemy{
+  left:60%;
+}
+
+.boost_player{
+  left:20%;
+}
+
+.buff{
+
+}
+.debuff{
+  transform:rotateY(90)
+}
 .fall_overlay{
   position: absolute;
   z-index: -1;

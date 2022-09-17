@@ -12,7 +12,21 @@ var player_health = 100;
 
 var enemy_recharge_turns = 0;
 var player_recharge_turns = 0;
+var enemy_stages = 0;
+var player_stages = 0;
 
+
+
+const RenderBoost =(container)=>{
+  var html = `<img src = "./assets/imgs/buff.png" class="boost_icon buff"/>`;
+
+  var element = document.createElement("div");
+
+  element.innerHTML = html;
+
+  container.append(element);
+
+}
 const RenderHeader = () =>{
 
     const html = `
@@ -238,14 +252,21 @@ const SideEffects = (side_effects,isEnemy,damage) => {
      else if(side_effects.name == "boost"){
 
        if(isEnemy){
-
-          saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
-          console.log(saved_characters)
+         if(enemy_stages <= 4 && enemy_stages >= -4){
+            saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
+            enemy_stages += side_effects.stages * side_effects.lower;
+        }else{
+          alert("Stages reached limit");
+        }
        }
 
        else{
-
-            saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type)
+          if(player_stages <= 4 && player_stages >= -4){
+            saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
+            player_stages += side_effects.stages * side_effects.lower;
+          }else{
+            alert("Stages reached limit");
+          }
        }
      }
 
