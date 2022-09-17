@@ -267,6 +267,7 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
             saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
             enemy_stages += side_effects.stages * side_effects.lower;
+            console.log(side_effects.lower)
             RenderBoost(document.querySelector(".boost_enemy"),true,side_effects.lower)
 
        }
