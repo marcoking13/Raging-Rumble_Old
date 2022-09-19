@@ -91,7 +91,7 @@ const characters =
    type:"Strategy",
    flip_sprite:false,
    stats:{
-       attack:new Stat(stat_config.attack.name,stat_config.attack.color,20),
+       attack:new Stat(stat_config.attack.name,stat_config.attack.color,35),
        defense:new Stat(stat_config.defense.name,stat_config.defense.color,120),
        speed:new Stat(stat_config.speed.name,stat_config.speed.color,120),
        luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
@@ -141,9 +141,9 @@ const characters =
    id:"F02436",
    type:"all around",
    stats:{
-     attack:new Stat(stat_config.attack.name,stat_config.attack.color,80),
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,70),
      defense:new Stat(stat_config.defense.name,stat_config.defense.color,85),
-     speed:new Stat(stat_config.speed.name,stat_config.speed.color,80),
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,110),
      luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
    },
    animation_sheet: {

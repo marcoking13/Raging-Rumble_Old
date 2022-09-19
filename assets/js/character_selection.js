@@ -142,6 +142,15 @@ const SelectCharacter = (character) =>{
 
 }
 
+
+
+const SaveCharacters = (player,enemy) =>{
+
+  localStorage.setItem('player', JSON.stringify(player));
+  localStorage.setItem('enemy', JSON.stringify(enemy));
+
+}
+
 const StartFight = (player,enemy)=>{
 
   if(ready && !fight_starting){
@@ -155,6 +164,10 @@ const StartFight = (player,enemy)=>{
 
     var vs = document.querySelector(".vs_text");
     vs.classList.add("active_vs");
+
+
+    SaveCharacters(player,enemy);
+
 
     ResetCountdown();
 

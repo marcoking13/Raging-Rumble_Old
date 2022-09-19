@@ -62,7 +62,7 @@ const MoveBase = {
   "spirit chant":{
     damage:25,
     audio:"assets/audio/moves/ghost_claw.mp3",
-    side_effects:new Boost("attack",4,1),
+    side_effects:new Boost("attack",2,1),
     description:"A strong ice attack; must recharge",
     name:"spirit chant",
     effectChance:100,
@@ -183,7 +183,7 @@ const MoveBase = {
   "venom boost":{
     damage:20,
     isRandom:false,
-    audio:"assets/audio/moves/venom_boost.wav",
+    audio:"assets/audio/moves/venom_boost.mp3",
     side_effects:new Boost("speed",1,1),
     name:"venom boost",
     effects:1,

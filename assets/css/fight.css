@@ -9,6 +9,39 @@
   width:100%;
 }
 
+.miss_icon{
+  width:50%;
+  position:relative;
+  opacity:0;
+  animation: miss 1s ease-in 1;
+}
+
+@keyframes miss {
+  0%{
+    top:30px;
+    opacity:0;
+    transform:scale(1)
+  }
+  50%{
+      top:0px;
+      opacity:1;
+      transform:scale(1.5)
+  }
+  100%{
+    opacity:0;
+  }
+}
+.miss_container{
+  position: absolute;
+  top:20%;
+}
+.enemy_miss{
+  left:30%;
+}
+.player_miss{
+  left:50%;
+}
+
 .winner_effect{
   border-radius:50%;
   width:25px;
@@ -136,10 +169,18 @@
 }
 
 .move_box:hover{
-  background:white;
-  color:black;
-  border-color:black;
+  color:red;
+  border-color:white;
+  position: relative;
 }
+
+
+.move_box:hover > .boost_icon{
+  position: relative;
+  top:20px;
+}
+
+
 
 .fight_row{
   margin-top:5%;
@@ -220,7 +261,9 @@
 }
 .boost_icon{
   width:20%;
+
   float:left;
+
 }
 .boost_enemy{
   left:50%;

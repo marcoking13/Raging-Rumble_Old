@@ -12,8 +12,8 @@ var player_health = 100;
 
 var enemy_recharge_turns = 0;
 var player_recharge_turns = 0;
-var enemy_stages = -5;
-var player_stages = -5;
+var enemy_stages = 0;
+var player_stages = 0;
 
 
 
@@ -25,18 +25,21 @@ const Recharging = (charging_turns,element) =>{
   }
 }
 
-const RenderBoost =(container, isEnemy, lower)=>{
+const RenderBoost =(container, isEnemy, lower, stages)=>{
 
   var float = isEnemy ? "right" : "left"
   console.log(lower)
   var buff = lower > 0 ? "buff" : "debuff";
-  var html = `<img src = "./assets/imgs/buff.png" class="boost_icon ${buff}" style="float:${float}"/>`;
+  for(var i = 0; i <stages; i ++){
+    var html = `<img src = "./assets/imgs/buff.png" class="boost_icon ${buff}" style="float:${float}"/>`;
 
-  var element = document.createElement("div");
+    var element = document.createElement("div");
 
-  element.innerHTML = html;
+    element.innerHTML = html;
 
-  container.append(element);
+    container.append(element);
+  }
+
 
 }
 const RenderHeader = () =>{
@@ -264,20 +267,26 @@ const SideEffects = (side_effects,isEnemy,damage) => {
      else if(side_effects.name == "boost"){
 
        if(isEnemy){
-
+          if(enemy_stages < 4){
             saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
-            enemy_stages += side_effects.stages * side_effects.lower;
-            console.log(side_effects.lower)
-            RenderBoost(document.querySelector(".boost_enemy"),true,side_effects.lower)
+            enemy_stages ++;
+            console.log(side_effects.stages * side_effects.lower);
+            console.log(enemy_stages)
+            RenderBoost(document.querySelector(".boost_enemy"),true,side_effects.lower,side_effects.stages)
+          }
 
        }
 
        else{
-
+          if(player_stages < 4){
             saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
-            player_stages += side_effects.stages * side_effects.lower;
-            RenderBoost(document.querySelector(".boost_player"),false,side_effects.lower)
 
+            player_stages ++;
+            console.log(side_effects.stages * side_effects.lower);
+            console.log(side_effects.stages);
+            console.log(player_stages)
+            RenderBoost(document.querySelector(".boost_player"),false,side_effects.lower,side_effects.stages)
+          }
        }
      }
 
@@ -425,32 +434,24 @@ const BattleSequence = async(is_player_faster,player_args) => {
 
     if(player_health > 0){
       Attack(player_args.move,player_args.isEnemy);
-    }else{
-      DeathAnimation(document.querySelector(".player_character"))
     }
 
     await delay(2500);
 
     if(enemy_health > 0){
       EnemyAttacks();
-    }else{
-      DeathAnimation(document.querySelector(".enemy_character"))
     }
 
   }else{
 
     if(enemy_health > 0){
       EnemyAttacks();
-    }else{
-      DeathAnimation(document.querySelector(".enemy_character"))
     }
 
     await delay(2500);
 
     if(player_health > 0){
       Attack(player_args.move,player_args.isEnemy);
-    }else{
-      DeathAnimation(document.querySelector(".player_character"))
     }
 
   }
@@ -480,10 +481,10 @@ const Battle = async (id) =>{
     BattleSequence(is_player_faster,player_args);
 
     await delay(4500);
-
+    Death();
     var winner = DetermineWinner();
-
-    console.log(DetermineWinner());
+    console.log(winner);
+    await delay(1000);
     if(winner){
       RenderEndPage(winner.character,winner.win);
     }else{
@@ -499,6 +500,22 @@ const Battle = async (id) =>{
 
 
   }
+
+}
+
+
+const RenderMiss = (isEnemy) =>{
+  is_enemy_class = isEnemy ? "enemy_miss" : "player_miss";
+
+  const div = document.createElement("div");
+  const audio = document.querySelector(".miss_sound");
+  audio.play();
+  var html = `<div class="${is_enemy_class} miss_container"><img class="miss_icon" src = "./assets/imgs/miss.png"/></div>`;
+  div.innerHTML = html;
+  const container = document.querySelector(".fight_container");
+  container.append(div);
+
+
 
 }
 
@@ -538,6 +555,8 @@ const Attack = async(move,isEnemy) => {
 
         return total_delay + 1000;
 
+      }else{
+        RenderMiss(isEnemy);
       }
 
     }else{
@@ -569,6 +588,15 @@ const IntializeGame = () =>{
 
 }
 
+
+const Death = () =>{
+  if(player_health <=0){
+    DeathAnimation(document.querySelector(".player_character"))
+  }
+  if(enemy_health <=0){
+    DeathAnimation(document.querySelector(".enemy_character"))
+  }
+}
 
 const DeathAnimation = async(characterElement) => {
   characterElement.classList.add("death");

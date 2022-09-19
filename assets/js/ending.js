@@ -43,7 +43,7 @@ const RenderEndPage = async(character,player_won) =>{
   var win_color = player_won ? "green" : "red";
 
   var html = `
-  <div class="container-fluid ending_container">
+  <div class="container-fluid ending_container style="padding-bottom:10%">
 
     ${RenderWinnerEffect(player_won)}
 
@@ -68,13 +68,13 @@ const RenderEndPage = async(character,player_won) =>{
         <div class="col-4"></div>
 
         <div class="col-4">
-          <img class="width-100 ending_image" src="${character.display_image}"/>
+          <img class="width-100 ending_image"style="position:relative;bottom:50px" src="${character.display_image}"/>
         </div>
         <div class="col-4"></div>
 
       </div>
 
-      <h1 class="text-center winner_name">${character.name}</h1>
+      <h1 class="text-center winner_name"style="position:relative;bottom:50px">${character.name}</h1>
 
   </div>
   `

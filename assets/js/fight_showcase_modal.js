@@ -6,17 +6,9 @@ const ResetCountdown = () =>{
 }
 
 
-const SaveCharacters = (player,enemy) =>{
-
-  localStorage.setItem('player', JSON.stringify(player));
-  localStorage.setItem('enemy', JSON.stringify(enemy));
-
-}
 
 const Countdown = async(player,enemy) =>{
   var countdown = 5;
-
-  SaveCharacters(player,enemy);
 
   while(countdown >= 0){
 
