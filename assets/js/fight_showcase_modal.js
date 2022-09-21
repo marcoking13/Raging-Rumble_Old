@@ -5,7 +5,15 @@ const ResetCountdown = () =>{
   countdown = 5;
 }
 
+const RefreshModal = (player,enemy)=>{
 
+    var container = document.querySelector(".fight_showcase_modal");
+
+    EmptyContainer(container);
+
+    container.innerHTML = GenerateModal(player,enemy,true);
+
+}
 
 const Countdown = async(player,enemy) =>{
   var countdown = 5;

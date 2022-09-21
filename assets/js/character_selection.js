@@ -87,7 +87,7 @@ const RenderSelectedCharacterData = (character,is_player) => {
         </strong>
       </p>
 
-      ${StatBarLoop([stats.attack,stats.defense,stats.speed,stats.luck],true)}
+      ${StatBarLoop([stats.health,stats.attack,stats.defense,stats.speed],true)}
 
     </div>
 
@@ -142,15 +142,6 @@ const SelectCharacter = (character) =>{
 
 }
 
-
-
-const SaveCharacters = (player,enemy) =>{
-
-  localStorage.setItem('player', JSON.stringify(player));
-  localStorage.setItem('enemy', JSON.stringify(enemy));
-
-}
-
 const StartFight = (player,enemy)=>{
 
   if(ready && !fight_starting){
@@ -172,42 +163,6 @@ const StartFight = (player,enemy)=>{
     ResetCountdown();
 
     Countdown(player,enemy);
-
-  }
-
-}
-
-const PlayerSelectedSpecialEffect = async (is_player) => {
-
-  var container_class = is_player ? "player_effects" : "enemy_effects";
-
-  var container = document.querySelector("."+container_class);
-
-  var limit = 400;
-
-  for (let i =0; i <= 100; i++){
-
-    var duration = Math.random() * 2;
-    var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-
-    var random = plusOrMinus *(Math.random() * 150);
-    var size = Math.floor(Math.random() * 100);
-
-    var g = Math.floor(Math.random() * 255);
-    var r = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
-
-    var effect = document.createElement("div");
-    var animation_class = "selected_box_animation";
-
-    effect.style.background = `rgb(${r},${g},${b})`;
-    effect.classList.add(animation_class);
-    effect.style.animationDuration = duration.toString() + "s";
-    effect.style.left = random.toString() +"px";
-    effect.style.width = size.toString() +'px';
-    effect.style.height = size.toString() +'px';
-
-    container.append(effect);
 
   }
 
@@ -258,7 +213,7 @@ const RenderAvailableBox = (character,rotation) => {
           <div class="row">
           <div class="col-1"></div>
           <div class="col-10">
-         ${StatBarLoop([stats.attack,stats.defense,stats.speed,stats.luck])}
+         ${StatBarLoop([stats.health,stats.attack,stats.defense,stats.speed])}
          </div>
          </div>
         </div>
@@ -425,17 +380,6 @@ const RenderHeader = () =>{
 
 }
 
-const RefreshModal = (player,enemy)=>{
-
-    var container = document.querySelector(".fight_showcase_modal");
-
-    EmptyContainer(container);
-
-    container.innerHTML = GenerateModal(player,enemy,true);
-
-}
-
-
 RenderCharacterSelectionPage = (player,enemy) => {
 
   RenderHeader();
@@ -445,6 +389,8 @@ RenderCharacterSelectionPage = (player,enemy) => {
   RenderCharactersAvailable(available_characters);
 
 }
+
+
 if(window.innerWidth >= 680){
   RenderCharacterSelectionPage(placeholder_character,placeholder_character);
 }

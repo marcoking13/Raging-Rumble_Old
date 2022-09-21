@@ -9,6 +9,7 @@ class Character {
      this.name = character.name;
      this.type = character.type;
      this.stats = character.stats;
+     this.stages = 0;
      this.moves = character.moves;
      this.description = character.description;
      this.animation_sheet = character.animation_sheet;

@@ -8,6 +8,55 @@ const CapitalizeFirstLetter =(string)=> {
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+
+const PlayerSelectedSpecialEffect = async (is_player) => {
+
+  var container_class = is_player ? "player_effects" : "enemy_effects";
+
+  var container = document.querySelector("."+container_class);
+
+  var limit = 400;
+
+  for (let i =0; i <= 100; i++){
+
+    var duration = Math.random() * 2;
+    var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+
+    var random = plusOrMinus *(Math.random() * 150);
+    var size = Math.floor(Math.random() * 100);
+
+    var g = Math.floor(Math.random() * 255);
+    var r = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+
+    var effect = document.createElement("div");
+    var animation_class = "selected_box_animation";
+
+    effect.style.background = `rgb(${r},${g},${b})`;
+    effect.classList.add(animation_class);
+    effect.style.animationDuration = duration.toString() + "s";
+    effect.style.left = random.toString() +"px";
+    effect.style.width = size.toString() +'px';
+    effect.style.height = size.toString() +'px';
+
+    container.append(effect);
+
+  }
+
+}
+
+
+
+
+
+const SaveCharacters = (player,enemy) =>{
+
+  localStorage.setItem('player', JSON.stringify(player));
+  localStorage.setItem('enemy', JSON.stringify(enemy));
+
+}
+
+
 const EmptyContainer = (element) =>{
 
        var child = element.lastElementChild;

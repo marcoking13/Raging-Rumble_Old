@@ -1,0 +1,101 @@
+const saved_characters = {
+  player:null,
+  enemy:null
+}
+
+var disable = false;
+
+music_active = true;
+
+var enemy_health = 100;
+var player_health = 100;
+
+var enemy_recharge_turns = 0;
+var player_recharge_turns = 0;
+
+var enemy_stages = 0;
+var player_stages = 0;
+
+
+
+const MoveLoop = (moves,className,isEnemy) =>{
+
+  var html = ``;
+
+  if(!isEnemy){
+
+    for(var i = 0; i < moves.length; i++){
+
+      html +=   `
+        <div class="move_box ${className}_box col-6" id="${moves[i].name}" isEnemy = "${isEnemy}">
+          ${moves[i].name}
+        </div>`
+
+    }
+
+  }
+
+  return html;
+
+}
+
+
+const GetCharactersFromLocalStorage = () =>{
+
+  var player = localStorage.getItem('player');
+  var enemy = localStorage.getItem('enemy');
+
+  saved_characters.player = JSON.parse(player);
+  saved_characters.enemy = JSON.parse(enemy);
+
+}
+
+
+
+
+const AddEventToMoves = () =>{
+
+  var moves = document.getElementsByClassName("move_box");
+
+  document.querySelectorAll('.player_character_box').forEach(move => {
+
+      move.addEventListener('mouseover', e => {
+
+        var id = e.target.getAttribute("id");
+
+        UpdateDescription(MoveBase[id]);
+
+      });
+
+      move.addEventListener("click", async(e) => {
+
+        selected_move_id = e.target.getAttribute("id");
+        Battle(selected_move_id);
+
+      });
+
+  })
+
+}
+
+const IntializeGame = () =>{
+
+  GetCharactersFromLocalStorage();
+
+  // player_health = saved_characters.player.stats.health.stat;
+  // enemy_health = saved_characters.enemy.stats.health.stat;
+
+  player_health = saved_characters.player.stats.health.stat
+  enemy_health = saved_characters.enemy.stats.health.stat;
+  RenderHeader();
+  RenderFightRow(saved_characters.player,saved_characters.enemy);
+  RenderDescriptionRow();
+  AddEventToMoves();
+
+}
+
+
+if(window.innerWidth >= 680){
+  IntializeGame();
+  StopOrPlayAudio(document.querySelector(".game_music"),music_active)
+}

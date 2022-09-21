@@ -33,6 +33,9 @@ const RenderWinnerEffect = (won) =>{
 
 }
 
+
+
+
 const RenderEndPage = async(character,player_won) =>{
 
   var page = document.querySelector(".fight_page");
@@ -42,8 +45,10 @@ const RenderEndPage = async(character,player_won) =>{
   var win_text = player_won ? "Won" : "Lost";
   var win_color = player_won ? "green" : "red";
 
+  var background = player_won ? "./assets/imgs/win.gif" : "./assets/imgs/lose.gif"
+
   var html = `
-  <div class="container-fluid ending_container style="padding-bottom:10%">
+  <div class="container-fluid ending_container" style="padding-bottom:10%;background:url('${background}')">
 
     ${RenderWinnerEffect(player_won)}
 
@@ -81,6 +86,7 @@ const RenderEndPage = async(character,player_won) =>{
 
   EmptyContainer(page);
 
+
   var container = document.createElement("div");
   container.classList.add("ending_page");
 
@@ -95,5 +101,7 @@ const RenderEndPage = async(character,player_won) =>{
   window.location.assign("./character_selection.html");
 
   EmptyContainer(effect_container);
+
+
 
 }

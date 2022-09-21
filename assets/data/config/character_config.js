@@ -14,19 +14,19 @@ var stat_config = {
 
   attack:{
     name:"Attack",
-    color:"red"
+    color:"#FF5757"
   },
   defense:{
     name:"Defense",
-    color:"green"
+    color:"#38B6FF"
   },
   speed:{
     name:"Speed",
-    color:"purple"
+    color:"#00C2CB"
   },
-  luck:{
-    name:"Luck",
-    color:"teal"
+  health:{
+    name:"Health",
+    color:"#7ED957"
   }
 
 }
@@ -49,7 +49,7 @@ const characters =
      attack:new Stat(stat_config.attack.name,stat_config.attack.color,100),
      defense:new Stat(stat_config.defense.name,stat_config.defense.color,110),
      speed:new Stat(stat_config.speed.name,stat_config.speed.color,10),
-     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+     health:new Stat(stat_config.health.name,stat_config.health.color,150)
     },
     moves:[
       new Moves(MoveBase["glacier thrust"]),
@@ -65,9 +65,9 @@ const characters =
  type:"Defense",
  stats:{
    attack:new Stat(stat_config.attack.name,stat_config.attack.color,65),
-   defense:new Stat(stat_config.defense.name,stat_config.defense.color,115),
-   speed:new Stat(stat_config.speed.name,stat_config.speed.color,75),
-   luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+   defense:new Stat(stat_config.defense.name,stat_config.defense.color,125),
+   speed:new Stat(stat_config.speed.name,stat_config.speed.color,65),
+   health:new Stat(stat_config.health.name,stat_config.health.color,170)
 
  },
  animation_sheet: {
@@ -94,7 +94,7 @@ const characters =
        attack:new Stat(stat_config.attack.name,stat_config.attack.color,35),
        defense:new Stat(stat_config.defense.name,stat_config.defense.color,120),
        speed:new Stat(stat_config.speed.name,stat_config.speed.color,120),
-       luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+       health:new Stat(stat_config.health.name,stat_config.health.color,200)
      },
    animation_sheet: {
      idle: new AnimationSheet(mrhands_dir,6,animation_key.idle),
@@ -117,9 +117,9 @@ const characters =
    type:"power",
    stats:{
      attack:new Stat(stat_config.attack.name,stat_config.attack.color,95),
-     defense:new Stat(stat_config.defense.name,stat_config.defense.color,60),
+     defense:new Stat(stat_config.defense.name,stat_config.defense.color,70),
      speed:new Stat(stat_config.speed.name,stat_config.speed.color,110),
-     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+     health:new Stat(stat_config.health.name,stat_config.health.color,130)
    },
    animation_sheet: {
      idle: new AnimationSheet(rikon_dir,14,animation_key.idle),
@@ -141,10 +141,10 @@ const characters =
    id:"F02436",
    type:"all around",
    stats:{
-     attack:new Stat(stat_config.attack.name,stat_config.attack.color,70),
+     attack:new Stat(stat_config.attack.name,stat_config.attack.color,80),
      defense:new Stat(stat_config.defense.name,stat_config.defense.color,85),
-     speed:new Stat(stat_config.speed.name,stat_config.speed.color,110),
-     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+     speed:new Stat(stat_config.speed.name,stat_config.speed.color,90),
+     health:new Stat(stat_config.health.name,stat_config.health.color,130)
    },
    animation_sheet: {
      idle: new AnimationSheet(frost_dir,3,animation_key.idle),
@@ -156,7 +156,7 @@ const characters =
      new Moves(MoveBase["ice sling"]),
      new Moves(MoveBase["gorgon stare"]),
      new Moves(MoveBase["ice punch"]),
-     new Moves(MoveBase["magical chaos"]),
+     new Moves(MoveBase["blinding light"]),
    ]
   },
    {
@@ -167,8 +167,8 @@ const characters =
   stats:{
     attack:new Stat(stat_config.attack.name,stat_config.attack.color,70),
     defense:new Stat(stat_config.defense.name,stat_config.defense.color,100),
-    speed:new Stat(stat_config.speed.name,stat_config.speed.color,50),
-    luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+    speed:new Stat(stat_config.speed.name,stat_config.speed.color,70),
+    health:new Stat(stat_config.health.name,stat_config.health.color,150)
 
   },
   type:"strategy",
@@ -193,7 +193,7 @@ const characters =
      attack:new Stat(stat_config.attack.name,stat_config.attack.color,8),
      defense:new Stat(stat_config.defense.name,stat_config.defense.color,8),
      speed:new Stat(stat_config.speed.name,stat_config.speed.color,8),
-     luck:new Stat(stat_config.luck.name,stat_config.luck.color,8)
+     health:new Stat(stat_config.health.name,stat_config.health.color,8)
 
    },
   animation_sheet: {
@@ -214,8 +214,9 @@ function return_available_characters(cut_off,limit){
   var counter = 0;
 
   for(var i = 0; i < cut_off; i ++){
-
+    console.log(characters[i])
     if(counter >= cut_off){
+
         available_characters.push(new Character(characters[characters.length - 1]));
     }else{
 
