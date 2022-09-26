@@ -3,10 +3,27 @@ const saved_characters = {
   enemy:null
 }
 
+class Engine {
+  constructor(iterator,health,recharge,stages){
+    this.iterator = iterator;
+    this.health = health;
+    this.recharge = recharge;
+    this.stages = stages;
+  }
+}
+
+
+var player_engine = new Engine(null,0,0,0);
+var enemy_engine = new Engine(null,0,0,0);
+
+var player_element = null;
+var enemy_element = null;
+
 var disable = false;
 
 music_active = true;
-
+var player_iterator = null;
+var enemy_iterator = null;
 var enemy_health = 100;
 var player_health = 100;
 
@@ -91,6 +108,8 @@ const IntializeGame = () =>{
   RenderFightRow(saved_characters.player,saved_characters.enemy);
   RenderDescriptionRow();
   AddEventToMoves();
+  player_element = document.querySelector(".player_character");
+  enemy_element = document.querySelector(".enemy_character")
 
 }
 

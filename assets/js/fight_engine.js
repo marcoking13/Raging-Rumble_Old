@@ -13,17 +13,32 @@ const Attack = async(move,isEnemy) => {
     if(attacker_health > 0){
 
      if(attacker_recharge <= 0){
-       console.log(move);
 
       if(move.accuracy > Math.floor(Math.random() * 100 + 1)){
 
         var total_delay = move.effects * move.milliseconds + 1300;
 
-        SpriteAnimator(attacker_element,attacker_animation,200,total_delay,attacker.display_image);
+        if(!isEnemy){
+          console.log(player_iterator,enemy_iterator);
+          clearInterval(player_iterator);
+          player_iterator = await SpriteAnimator2(player_element,saved_characters.player.animation_sheet.attack,200);
+            console.log(player_iterator,enemy_iterator);
+        }else{
+          clearInterval(enemy_iterator);
+          enemy_iterator = await SpriteAnimator2(enemy_element,saved_characters.enemy.animation_sheet.attack,200);
+        }
 
         GenerateMove(move,isEnemy,move.isRandom);
 
         await delay(total_delay);
+
+        if(!isEnemy){
+          clearInterval(player_iterator);
+          player_iterator = await SpriteAnimator2(player_element,saved_characters.player.animation_sheet.idle,200);
+        }else{
+          clearInterval(enemy_iterator);
+          enemy_iterator = await SpriteAnimator2(enemy_element,saved_characters.enemy.animation_sheet.idle,200);
+      }
 
         DisplayDamageCalculations(move,isEnemy);
 
@@ -117,9 +132,10 @@ const Battle = async (id) =>{
 
     var winner = DetermineWinner();
 
+
     Death(true);
     Death(false);
-    
+
     await delay(1000);
 
     if(winner){
