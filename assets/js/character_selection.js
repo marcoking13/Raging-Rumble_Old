@@ -1,8 +1,7 @@
 const available_boxes = 6;
 var ready = false;
 var fight_starting = false;
-var player_iterator = null;
-var enemy_iterator = null;
+
 const available_characters = return_available_characters(6,available_boxes);
 const placeholder_character = return_placeholder_character();
 
@@ -136,10 +135,8 @@ const SelectCharacter = (character) =>{
   var selected_box = document.querySelector(`.selected_`+player.id);
   var selected_enemy_box = document.querySelector(`.selected_`+enemy.id);
 
-  clearInterval(player_iterator);
-  clearInterval(enemy_iterator);
-  player_iterator = SpriteAnimator2(selected_box,player.animation_sheet.idle,200);
-  enemy_iterator = SpriteAnimator2(selected_enemy_box,enemy.animation_sheet.idle,200);
+  AnimateCharacter(selected_box,false,selected_character.player.animation_sheet.idle,200)
+  AnimateCharacter(selected_enemy_box,true,selected_character.enemy.animation_sheet.idle,200)
 
   RefreshModal(player,enemy);
 
@@ -159,9 +156,7 @@ const StartFight = (player,enemy)=>{
     var vs = document.querySelector(".vs_text");
     vs.classList.add("active_vs");
 
-
     SaveCharacters(player,enemy);
-
 
     ResetCountdown();
 

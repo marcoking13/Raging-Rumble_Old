@@ -1,10 +1,13 @@
+
 const Attack = async(move,isEnemy) => {
 
     var attacker_query = isEnemy ? "enemy_character" : "player_character";
+    var iterator = isEnemy ? enemy_iterator : player_iterator;
     var attacker_health = isEnemy ? enemy_health : player_health;
     var attacker_recharge = isEnemy ? enemy_recharge_turns : player_recharge_turns;
     var attacker = isEnemy ? saved_characters.enemy :  saved_characters.player ;
-    var attacker_animation = attacker.animation_sheet.attack;
+    var attacking_animation = attacker.animation_sheet.attack;
+    var idle_animation = attacker.animation_sheet.idle;
     var attacker_element = document.querySelector("."+attacker_query);
 
     Recharging(player_recharge_turns,document.querySelector(".player_character"))
@@ -18,33 +21,17 @@ const Attack = async(move,isEnemy) => {
 
         var total_delay = move.effects * move.milliseconds + 1300;
 
-        if(!isEnemy){
-          console.log(player_iterator,enemy_iterator);
-          clearInterval(player_iterator);
-          player_iterator = await SpriteAnimator2(player_element,saved_characters.player.animation_sheet.attack,200);
-            console.log(player_iterator,enemy_iterator);
-        }else{
-          clearInterval(enemy_iterator);
-          enemy_iterator = await SpriteAnimator2(enemy_element,saved_characters.enemy.animation_sheet.attack,200);
-        }
+        await AnimateCharacter(attacker_element,isEnemy,attacking_animation,200);
 
         GenerateMove(move,isEnemy,move.isRandom);
 
         await delay(total_delay);
 
-        if(!isEnemy){
-          clearInterval(player_iterator);
-          player_iterator = await SpriteAnimator2(player_element,saved_characters.player.animation_sheet.idle,200);
-        }else{
-          clearInterval(enemy_iterator);
-          enemy_iterator = await SpriteAnimator2(enemy_element,saved_characters.enemy.animation_sheet.idle,200);
-      }
+        await AnimateCharacter(attacker_element,isEnemy,idle_animation,200);
 
         DisplayDamageCalculations(move,isEnemy);
 
         return total_delay + 1300;
-
-
 
       }else{
         RenderMiss(isEnemy);

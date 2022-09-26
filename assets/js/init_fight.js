@@ -22,8 +22,7 @@ var enemy_element = null;
 var disable = false;
 
 music_active = true;
-var player_iterator = null;
-var enemy_iterator = null;
+
 var enemy_health = 100;
 var player_health = 100;
 
@@ -98,7 +97,8 @@ const AddEventToMoves = () =>{
 const IntializeGame = () =>{
 
   GetCharactersFromLocalStorage();
-
+  clearInterval(player_iterator)
+  clearInterval(enemy_iterator)
   // player_health = saved_characters.player.stats.health.stat;
   // enemy_health = saved_characters.enemy.stats.health.stat;
 
@@ -110,6 +110,8 @@ const IntializeGame = () =>{
   AddEventToMoves();
   player_element = document.querySelector(".player_character");
   enemy_element = document.querySelector(".enemy_character")
+  player_iterator = AnimateCharacter(player_element,false,saved_characters.player.animation_sheet.idle,200);
+  enemy_iterator = AnimateCharacter(enemy_element,true,saved_characters.enemy.animation_sheet.idle,200);
 
 }
 

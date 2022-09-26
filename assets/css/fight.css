@@ -44,6 +44,7 @@
   0%{
     top:30px;
     opacity:0;
+
     transform:scale(1)
   }
   50%{
@@ -53,6 +54,7 @@
   }
   100%{
     opacity:0;
+
   }
 }
 .miss_container{
@@ -320,7 +322,6 @@
 
   opacity:0;
   position: relative;
-  top:1000px;
   animation: death 1s 1 ease-in;
 }
 
@@ -328,17 +329,17 @@
   0%{
     filter:grayscale(0);
     opacity:1;
-      top:0px;
+    top:0px;
     z-index:2;
   }
   30%{
       filter:grayscale(40);
-      top:inherit;
 
       opacity:.5;
   }
   100%{
       opacity:0;
+      top:100px;
   }
 }
 
@@ -363,9 +364,7 @@
 
 
 .recharging {
-  animation: recharge 1 ease-in infinite !important;
-  opacity:.5 !important;
-  transform: scale(.6);
+  animation: recharge 1s ease-in infinite !important;
 }
 
 
