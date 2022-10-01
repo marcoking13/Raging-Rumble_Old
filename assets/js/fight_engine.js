@@ -291,15 +291,15 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
        if(!isEnemy){
 
-          player_engine.health = side_effects.effect(player_health,damage,query,character);
+          player_engine.health = side_effects.effect(player_engine.health,damage,query,character);
 
         }else{
 
-          enemy_engine.health = side_effects.effect(enemy_health,damage,query,character);
+          enemy_engine.health = side_effects.effect(enemy_engine.health,damage,query,character);
 
         }
 
-        var health = isEnemy ? enemy_health : player_health;
+        var health = isEnemy ? enemy_engine.health : player_engine.health;
 
         ChangeHealthBarWidth(query,health,character);
 
