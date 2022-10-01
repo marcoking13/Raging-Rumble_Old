@@ -1,11 +1,11 @@
 
-const Attack = async(move,isEnemy) => {
+const Attack = async(move,is_enemy) => {
 
-    var attacker_query = isEnemy ? "enemy_character" : "player_character";
-    var iterator = isEnemy ? enemy_iterator : player_iterator;
-    var attacker_health = isEnemy ? enemy_engine.health : player_engine.health;
-    var attacker_recharge = isEnemy ? enemy_engine.recharge_turns : player_engine.recharge_turns;
-    var attacker = isEnemy ? saved_characters.enemy :  saved_characters.player ;
+    var attacker_query = is_enemy ? "enemy_character" : "player_character";
+    var iterator = is_enemy ? enemy_iterator : player_iterator;
+    var attacker_health = is_enemy ? enemy_engine.health : player_engine.health;
+    var attacker_recharge = is_enemy ? enemy_engine.recharge_turns : player_engine.recharge_turns;
+    var attacker = is_enemy ? saved_characters.enemy :  saved_characters.player ;
     var attacking_animation = attacker.animation_sheet.attack;
     var idle_animation = attacker.animation_sheet.idle;
     var attacker_element = document.querySelector("."+attacker_query);
@@ -21,25 +21,25 @@ const Attack = async(move,isEnemy) => {
 
         var total_delay = move.effects * move.milliseconds + 1300;
 
-        await AnimateCharacter(attacker_element,isEnemy,attacking_animation,200);
+        await AnimateCharacter(attacker_element,is_enemy,attacking_animation,200);
 
-        GenerateMove(move,isEnemy,move.isRandom);
+        GenerateMove(move,is_enemy,move.isRandom);
 
         await delay(total_delay);
 
-        await AnimateCharacter(attacker_element,isEnemy,idle_animation,200);
+        await AnimateCharacter(attacker_element,is_enemy,idle_animation,200);
 
-        DisplayDamageCalculations(move,isEnemy);
+        DisplayDamageCalculations(move,is_enemy);
 
         return total_delay + 1300;
 
       }else{
-        RenderMiss(isEnemy);
+        RenderMiss(is_enemy);
       }
 
     }else{
 
-      if(isEnemy){
+      if(is_enemy){
 
         enemy_engine.recharge_turns--;
 
@@ -153,12 +153,12 @@ const BattleSequence = async(is_player_faster,selected_move) => {
 
   var enemy_args = {
     move : random_move,
-    isEnemy:true
+    is_enemy:true
   }
 
   var player_args = {
     move : selected_move,
-    isEnemy: false
+    is_enemy: false
   }
 
   if(is_player_faster){
@@ -169,9 +169,9 @@ const BattleSequence = async(is_player_faster,selected_move) => {
     attack_sequence.push(player_args);
   }
 
-  Attack(attack_sequence[0].move, attack_sequence[0].isEnemy);
+  Attack(attack_sequence[0].move, attack_sequence[0].is_enemy);
   await delay(2500);
-  Attack(attack_sequence[1].move, attack_sequence[1].isEnemy);
+  Attack(attack_sequence[1].move, attack_sequence[1].is_enemy);
 
 }
 
@@ -194,20 +194,20 @@ const IsPlayerFaster = (player_stats,enemy_stats) =>{
 
 
 
-const DisplayDamageCalculations = (selected_move,isEnemy) =>{
+const DisplayDamageCalculations = (selected_move,is_enemy) =>{
 
-    var defender_health = isEnemy ? player_engine.health : enemy_engine.health;
+    var defender_health = is_enemy ? player_engine.health : enemy_engine.health;
 
-    var attacker = isEnemy ? saved_characters.enemy :  saved_characters.player;
-    var defender = isEnemy ? saved_characters.player :  saved_characters.enemy;
+    var attacker = is_enemy ? saved_characters.enemy :  saved_characters.player;
+    var defender = is_enemy ? saved_characters.player :  saved_characters.enemy;
 
-    var defender_blood = isEnemy ? "player_blood" : "enemy_blood";
+    var defender_blood = is_enemy ? "player_blood" : "enemy_blood";
 
     var side_effects = selected_move.side_effects;
 
     var damage = CalculateDamage(defender_health,attacker,defender,selected_move.damage);
 
-    if(isEnemy){
+    if(is_enemy){
 
       player_engine.health -= damage;
 
@@ -228,25 +228,25 @@ const DisplayDamageCalculations = (selected_move,isEnemy) =>{
 
     }
 
-    defender_health = isEnemy ?   player_engine.health :   enemy_engine.health;
+    defender_health = is_enemy ?   player_engine.health :   enemy_engine.health;
 
     ChangeHealthBarWidth(defender_blood,defender_health,defender);
     ChangeHealthBarColor(defender_health,defender_blood,defender.stats.health.stat);
 
-    SideEffects(side_effects,isEnemy,damage);
+    SideEffects(side_effects,is_enemy,damage);
 
 }
 
 
 
-const SideEffects = (side_effects,isEnemy,damage) => {
+const SideEffects = (side_effects,is_enemy,damage) => {
 
   if(side_effects){
 
      if(side_effects.name == "recharge"){
        var recharge_turns = side_effects.turns;
 
-       if(!isEnemy){
+       if(!is_enemy){
 
          player_engine.recharge_turns = recharge_turns;
 
@@ -259,7 +259,7 @@ const SideEffects = (side_effects,isEnemy,damage) => {
      }
      else if(side_effects.name == "boost"){
 
-       if(isEnemy){
+       if(is_enemy){
 
           if(enemy_engine.stages < 4){
 
@@ -286,10 +286,10 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
      else if(side_effects.name == "drain"){
 
-       var query = isEnemy ? "enemy_blood" : "player_blood";
-       var character = isEnemy ? saved_characters.enemy : saved_characters.player;
+       var query = is_enemy ? "enemy_blood" : "player_blood";
+       var character = is_enemy ? saved_characters.enemy : saved_characters.player;
 
-       if(!isEnemy){
+       if(!is_enemy){
 
           player_engine.health = side_effects.effect(player_engine.health,damage,query,character);
 
@@ -299,7 +299,7 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
         }
 
-        var health = isEnemy ? enemy_engine.health : player_engine.health;
+        var health = is_enemy ? enemy_engine.health : player_engine.health;
 
         ChangeHealthBarWidth(query,health,character);
 
@@ -311,11 +311,11 @@ const SideEffects = (side_effects,isEnemy,damage) => {
 
 
 
-  const Death = (isEnemy) =>{
+  const Death = (is_enemy) =>{
 
-    var defender_health = isEnemy ? player_engine.health : enemy_engine.health;
+    var defender_health = is_enemy ? player_engine.health : enemy_engine.health;
 
-    var element =  isEnemy ? document.querySelector(".player_character") : document.querySelector(".enemy_character");
+    var element =  is_enemy ? document.querySelector(".player_character") : document.querySelector(".enemy_character");
 
     if(defender_health <=0){
       DeathAnimation(element)

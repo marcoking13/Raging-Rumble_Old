@@ -13,16 +13,16 @@ var disable = false;
 
 music_active = true;
 
-const MoveLoop = (moves,className,isEnemy) =>{
+const MoveLoop = (moves,class_name,is_enemy) =>{
 
   var html = ``;
 
-  if(!isEnemy){
+  if(!is_enemy){
 
     for(var i = 0; i < moves.length; i++){
 
       html +=   `
-        <div class="move_box ${className}_box col-6" id="${moves[i].name}" isEnemy = "${isEnemy}">
+        <div class="move_box ${class_name}_box col-6" id="${moves[i].name}" is_enemy = "${is_enemy}">
           ${moves[i].name}
         </div>`
 
@@ -34,7 +34,6 @@ const MoveLoop = (moves,className,isEnemy) =>{
 
 }
 
-
 const GetCharactersFromLocalStorage = () =>{
 
   var player = localStorage.getItem('player');
@@ -44,9 +43,6 @@ const GetCharactersFromLocalStorage = () =>{
   saved_characters.enemy = JSON.parse(enemy);
 
 }
-
-
-
 
 const AddEventToMoves = () =>{
 
@@ -76,19 +72,21 @@ const AddEventToMoves = () =>{
 const IntializeGame = () =>{
 
   GetCharactersFromLocalStorage();
+
   clearInterval(player_iterator)
   clearInterval(enemy_iterator)
-  // player_health = saved_characters.player.stats.health.stat;
-  // enemy_health = saved_characters.enemy.stats.health.stat;
 
   player_engine.health = saved_characters.player.stats.health.stat
   enemy_engine.health = saved_characters.enemy.stats.health.stat;
+
   RenderHeader();
   RenderFightRow(saved_characters.player,saved_characters.enemy);
   RenderDescriptionRow();
   AddEventToMoves();
+
   player_element = document.querySelector(".player_character");
   enemy_element = document.querySelector(".enemy_character")
+
   player_iterator = AnimateCharacter(player_element,false,saved_characters.player.animation_sheet.idle,200);
   enemy_iterator = AnimateCharacter(enemy_element,true,saved_characters.enemy.animation_sheet.idle,200);
 

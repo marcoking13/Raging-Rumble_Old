@@ -1,8 +1,8 @@
 
-const GenerateMove = async (move,isEnemy,isRandom) =>{
+const GenerateMove = async (move,is_enemy,isRandom) =>{
 
    var total_delay = 0;
-   var enemy_class_animation = isEnemy ? move.class_animation + "_enemy" : "";
+   var enemy_class_animation = is_enemy ? move.class_animation + "_enemy" : "";
 
    GenerateElementsLoop(move.class_animation,enemy_class_animation,move.audio,move.image,move.effects,move.milliseconds,move.playOnce,isRandom);
 
@@ -11,7 +11,7 @@ const GenerateMove = async (move,isEnemy,isRandom) =>{
    total_delay += move.milliseconds * move.effects + 500
    var character = null;
 
-   if(isEnemy){
+   if(is_enemy){
      character = "player_character";
    }else{
      character = "enemy_character";

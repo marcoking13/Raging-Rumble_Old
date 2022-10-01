@@ -14,7 +14,7 @@ const GenerateStartScreen = () =>{
       window.location.assign("./character_selection.html");
     })
 
-    const startScreenHTML = `
+    const html = `
     <div class="container-fluid witch_queen_vengence_container">
 
       <img class="app_background" src = "./assets/imgs/app_background.png" />
@@ -25,7 +25,7 @@ const GenerateStartScreen = () =>{
 
     </div>`;
 
-    game_container.innerHTML = startScreenHTML;
+    game_container.innerHTML = html;
 
     var start_screen = document.querySelector(".start_screen");
 

@@ -1,11 +1,11 @@
 class Recharge {
   
-  constructor(turns,isEnemy){
+  constructor(turns,is_enemy){
     this.turns = turns;
     this.name = "recharge";
-    this.isEnemy = isEnemy;
+    this.is_enemy = is_enemy;
 
-    this.effect = function recharge(turns,isEnemy){
+    this.effect = function recharge(turns,is_enemy){
 
       var turn_recharge =
       {
@@ -13,7 +13,7 @@ class Recharge {
         player:0
       }
 
-      if(this.isEnemy){
+      if(this.is_enemy){
         turn_recharge.enemy += this.turns;
       }else{
         turn_recharge.player += this.turns

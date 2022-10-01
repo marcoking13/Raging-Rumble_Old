@@ -69,27 +69,27 @@ const EmptyContainer = (element) =>{
 
    }
 
-const RemoveClassFromElements = (targetClass,className) =>{
+const RemoveClassFromElements = (target_class,class_name) =>{
 
-    var target = document.getElementsByClassName(targetClass);
+    var target = document.getElementsByClassName(target_class);
 
       for (var i = 0; i < target.length; ++i) {
 
          var item = target[i];
-         item.classList.remove(className);
+         item.classList.remove(class_name);
 
       }
 
   }
 
-function randomRotation(limit,rotationV){
+function randomRotation(limit,rotation){
 
   var arr = [];
-  var randomRotationValue = Math.floor(Math.random() * rotationV);
+  var random_rotation_value = Math.floor(Math.random() * rotation);
 
   for(var i = 0; i < limit; i++){
-    randomRotationValue = (-1 * Math.floor(Math.random() * rotationV));
-    arr.push(randomRotationValue)
+    random_rotation_value = (-1 * Math.floor(Math.random() * rotation));
+    arr.push(random_rotation_value)
   }
 
   return arr;
@@ -105,51 +105,21 @@ const SpriteDelay = (i,element,limit,folder,sprite_name,speed) =>{
 
 }
 
-// const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
-//
-//     ms_passed = 0;
-//
-//     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-//
-//     var k = 1;
-//
-//     for (let i = 1; i <= 3000;i++) {
-//       k++;
-//
-//       ms_passed += ms;
-//
-//       if(ms_passed >= total_ms){
-//         element.setAttribute("src",`${display}`);
-//         break;
-//       }
-//
-//       if(k >= sheet.animation_sheet.length){
-//         k = 1;
-//       }
-//
-//       await delay(ms);
-//       element.setAttribute("src",`${sheet.animation_sheet[k]}`);
-//
-//     }
-//
-// }
+const AnimateCharacter = async(element,is_enemy,sheet,ms) =>{
 
+  if(!is_enemy){
 
-const AnimateCharacter = async(element,isEnemy,sheet,ms) =>{
-
-  if(!isEnemy){
-    console.log(player_iterator,enemy_iterator);
     clearInterval(player_iterator);
     player_iterator = await SpriteAnimator(element,sheet,ms);
-      console.log(player_iterator,enemy_iterator);
+
   }else{
+
     clearInterval(enemy_iterator);
     enemy_iterator = await SpriteAnimator(element,sheet,ms);
+
   }
 
 }
-
-
 
 const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
 
@@ -170,6 +140,6 @@ const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
 
 }
 
-const  AddClassToElement =(element,classAdded)=>{
-    element.classList.add(classAdded);
+const  AddClassToElement =(element,class_added)=>{
+    element.classList.add(class_added);
  }

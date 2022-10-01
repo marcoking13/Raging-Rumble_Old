@@ -61,9 +61,9 @@ const RenderFightRow = (player,enemy) =>{
 
 }
 
-const RenderMiss = (isEnemy) =>{
+const RenderMiss = (is_enemy) =>{
 
-  is_enemy_class = isEnemy ? "enemy_miss" : "player_miss";
+  is_enemy_class = is_enemy ? "enemy_miss" : "player_miss";
 
   const div = document.createElement("div");
   const audio = document.querySelector(".miss_sound");
@@ -121,9 +121,9 @@ const ChangeHealthBarWidth = (query,health,character) =>{
 
 }
 
-const RenderBoost =(container, isEnemy, lower, stages)=>{
+const RenderBoost =(container, is_enemy, lower, stages)=>{
 
-  var float = isEnemy ? "right" : "left"
+  var float = is_enemy ? "right" : "left"
 
   var buff = lower > 0 ? "buff" : "debuff";
 
@@ -186,15 +186,15 @@ const DeathAnimation = async(characterElement) => {
 }
 
 
-const ReturnCharacterCol = (character,isEnemy) =>{
+const ReturnCharacterCol = (character,is_enemy) =>{
 
-  var enemy_addon = isEnemy ? true : false;
+  var enemy_addon = is_enemy ? true : false;
 
-  var character_class = isEnemy ? "enemy_character" : "player_character";
-  var character_blood = isEnemy ? "enemy_blood" : "player_blood";
-  var character_health = isEnemy ? enemy_engine.health : player_engine.health;
+  var character_class = is_enemy ? "enemy_character" : "player_character";
+  var character_blood = is_enemy ? "enemy_blood" : "player_blood";
+  var character_health = is_enemy ? enemy_engine.health : player_engine.health;
   var rotation = 0;
-  var rotate_other_side = isEnemy ? 180 : 0;
+  var rotate_other_side = is_enemy ? 180 : 0;
 
   var is_rotated = character.flip_sprite ? 180 : 0;
 
