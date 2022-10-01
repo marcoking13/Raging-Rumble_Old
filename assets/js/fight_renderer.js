@@ -192,7 +192,7 @@ const ReturnCharacterCol = (character,isEnemy) =>{
 
   var character_class = isEnemy ? "enemy_character" : "player_character";
   var character_blood = isEnemy ? "enemy_blood" : "player_blood";
-  var character_health = isEnemy ? enemy_health : player_health;
+  var character_health = isEnemy ? enemy_engine.health : player_engine.health;
   var rotation = 0;
   var rotate_other_side = isEnemy ? 180 : 0;
 

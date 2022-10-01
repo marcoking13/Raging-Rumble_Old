@@ -3,18 +3,8 @@ const saved_characters = {
   enemy:null
 }
 
-class Engine {
-  constructor(iterator,health,recharge,stages){
-    this.iterator = iterator;
-    this.health = health;
-    this.recharge = recharge;
-    this.stages = stages;
-  }
-}
-
-
-var player_engine = new Engine(null,0,0,0);
-var enemy_engine = new Engine(null,0,0,0);
+var player_engine = new Engine(0,0,0);
+var enemy_engine = new Engine(0,0,0);
 
 var player_element = null;
 var enemy_element = null;
@@ -22,17 +12,6 @@ var enemy_element = null;
 var disable = false;
 
 music_active = true;
-
-var enemy_health = 100;
-var player_health = 100;
-
-var enemy_recharge_turns = 0;
-var player_recharge_turns = 0;
-
-var enemy_stages = 0;
-var player_stages = 0;
-
-
 
 const MoveLoop = (moves,className,isEnemy) =>{
 
@@ -102,8 +81,8 @@ const IntializeGame = () =>{
   // player_health = saved_characters.player.stats.health.stat;
   // enemy_health = saved_characters.enemy.stats.health.stat;
 
-  player_health = saved_characters.player.stats.health.stat
-  enemy_health = saved_characters.enemy.stats.health.stat;
+  player_engine.health = saved_characters.player.stats.health.stat
+  enemy_engine.health = saved_characters.enemy.stats.health.stat;
   RenderHeader();
   RenderFightRow(saved_characters.player,saved_characters.enemy);
   RenderDescriptionRow();
