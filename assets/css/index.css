@@ -19,7 +19,7 @@
 }
 
 .app_background{
-  background:url('./../imgs/app_background.png');
+  background:url('./../imgs/landing_background.gif');
 }
 
 .title_1{
@@ -45,10 +45,10 @@
 
 .title_ani_1{
   -webkit-animation-name: title1;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: .5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-delay: 0s;
-   color:#38B6FF;
+   color:#FF5757;
    font-size:100px;
    opacity:1;
    left:0px
@@ -56,7 +56,7 @@
 
 .title_ani_2{
   -webkit-animation-name: title1;
-  color:#38B6FF;
+  color:#FF5757;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-duration: .5s;
   font-size:100px;
@@ -65,8 +65,27 @@
   bottom:0px;
 }
 
+.fireball_start{
+  position: absolute;
+  opacity:0;
+  left:-30%;
+  width:35%;
+  animation:fireball_start .75s ease-in 1;
+}
+
+@keyframes fireball_start{
+  0%{
+    left:-40%;
+    opacity:1;
+  }
+  100%{
+    left:110%;
+    opacity:1;
+  }
+}
+
 .app_subtitle{
-  color:white;
+  color:#FF5757;
   text-align: center;
   font-size: 30px;
   font-family: "Roboto Condensed";
@@ -80,7 +99,7 @@
   -webkit-animation-name: subtitle;
   opacity:1;
   -webkit-animation-iteration-count: 1;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: .7s;
 }
 
 .start_game{
@@ -121,17 +140,12 @@
 @keyframes subtitle{
 
   0%{
-    opacity:0;
-    top:40%;
-  }
 
-  50%{
-    opacity:.5;
+    color:black;
   }
 
   100%{
-    top:25%;
-    opacity:1;
+    color:#FF5757;
   }
 
 }
@@ -139,18 +153,13 @@
 @keyframes title1 {
 
   0%{
-    color:white;
-    left:-50px;
+    color:black;
     opacity:0;
   }
 
-  50%{
-    opacity:.5;
-  }
-
   100%{
-    color:#38B6FF;
-    left:0px;
+    color:#FF5757;
+
     opacity:1;
   }
 
@@ -159,14 +168,13 @@
 @keyframes title2 {
 
   0%{
-    color:white;
-    left:50px;
+    color:black;
+
     opacity:0;
   }
 
   100%{
-    color:#38B6FF;
-    left:0px;
+    color:#FF5757;
     opacity:1;
   }
 
@@ -175,7 +183,7 @@
 @keyframes white_to_light_blue {
 
   0%{
-    color:#38B6FF;
+    color:#FF5757;
   }
 
   100%{
