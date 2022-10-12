@@ -10,7 +10,7 @@ const CapitalizeFirstLetter =(string)=> {
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 
-const PlayerSelectedSpecialEffect = async (is_player) => {
+const PlayerSelectedSpecialEffect = async (is_player,src) => {
 
   var container_class = is_player ? "player_effects" : "enemy_effects";
 
@@ -26,23 +26,56 @@ const PlayerSelectedSpecialEffect = async (is_player) => {
     var random = plusOrMinus *(Math.random() * 150);
     var size = Math.floor(Math.random() * 100);
 
-    var g = Math.floor(Math.random() * 255);
-    var r = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
 
-    var effect = document.createElement("div");
+
+    var effect = document.createElement("img");
+    effect.setAttribute("src",src);
     var animation_class = "selected_box_animation";
 
-    effect.style.background = `rgb(${r},${g},${b})`;
+
     effect.classList.add(animation_class);
     effect.style.animationDuration = duration.toString() + "s";
     effect.style.left = random.toString() +"px";
     effect.style.width = size.toString() +'px';
     effect.style.height = size.toString() +'px';
-
+    console.log(effect);
     container.append(effect);
 
   }
+
+}
+
+
+
+const PlayerSelectedSpecialEffectSingle = async (className,is_player,src) => {
+
+  container = document.querySelector("."+className);
+  container.style.position = "relative";
+  container.style.zIndex =4;
+
+  var limit = 400;
+  var duration = Math.random() * 2;
+  var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+
+  var random =Math.random() * 90;
+  var size = Math.floor(Math.random() * 50);
+
+
+
+  var effect = document.createElement("img");
+  effect.setAttribute("src",src);
+  var animation_class = "effect_available";
+
+
+  effect.classList.add(animation_class);
+  effect.style.animationDuration = "1s";
+  effect.style.left = random.toString() +"%";
+  effect.style.width = size.toString() +'px';
+  effect.style.height = size.toString() +'px';
+
+  container.append(effect);
+
+
 
 }
 

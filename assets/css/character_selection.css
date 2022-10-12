@@ -9,6 +9,9 @@
 .player_modal_img{
   width:100%;
 }
+.character_selection_background{
+  background:url("./../imgs/character_selection_background.png") !important;
+}
 .app_background{
   padding-bottom:5%;
 }
@@ -61,14 +64,32 @@
 .no-point{
   pointer-events: none;
 }
+.effect_available{
+  position: absolute;
+  opacity:0;
+  width:10%;
+  z-index:0;
+  animation: effect_av 1 ease-in 1s;
+  top:50%;
+}
+@keyframes effect_av{
+  0%{
+    top:50%;
+    opacity:1;
+  }
 
+  100%{
+    top:0%;
+    opacity:0
+  }
+}
 .fight_btn{
     margin-top:5%;
 }
 
 .player_effects{
   position: absolute;
-  left:31%;
+  left:45%;
   top:15%;
 }
 
@@ -82,7 +103,7 @@
 
 .enemy_effects{
   position: absolute;
-  right:12%;
+  right:17.5%;
   top:15%;
 }
 
@@ -90,7 +111,7 @@
   position: absolute;
   padding-bottom:10%;
   opacity:0;
-  top:80px;
+  top:10%;
   animation: selected_box_animation  1 ease-out;
 }
 
@@ -99,19 +120,19 @@
 }
 
 .character_available_name{
-  text-align: center;
+  text-align: left;
   font-family:"Allerta Stencil";
-  font-size:25px;
+  margin-top:15% !important;
+  font-size:15px;
 
 }
 
 .character_available_box .description_text{
-  height:0px;
   opacity:0;
 }
 
 .selected_character_details{
-  font-size: 25px !important;
+  font-size: 20px !important;
 }
 
 .active_description{
@@ -131,7 +152,7 @@
 }
 
 .selected_specialty{
-  font-size: 25px !important;
+  font-size: 20px !important;
   margin-left:5% !important;
 }
 
@@ -177,12 +198,14 @@
 
 .character_available_box{
   background:black;
-  height:550px;
+  border-radius:30px;
   color:white;
   margin-bottom:2.5%;
   margin-top:2.5%;
   border: white 2px solid;
 }
+
+
 
 .selected_character_item_name{
   animation: text_select .6s 1 ease-in;
@@ -196,17 +219,18 @@
   color:#38B6FF !important;
 }
 
-.character_available_box:hover{
+ .character_available_box:hover{
   animation-iteration-count: infinite;
-  animation-name:rotateIt;
-  animation-timing-function: ease-in-out;
+  animation-name:border_change !important;
+  animation-timing-function: ease-in;
   animation-duration: 1s;
 }
 
 .active_character_available_box{
-  animation-iteration-count: infinite;
-  animation-name:rotateIt;
-  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite !important;
+  animation-name:border_change !important;
+  border-color:red;
+  animation-timing-function: ease-in !important;
   animation-duration: 1s;
 }
 
@@ -263,6 +287,7 @@
   height:300px;
   animation:select_character_appear 2s ease-in 1;
 }
+
 
 .selected_specialty{
   animation: select_character_appear .5s 1 ease-in;
@@ -409,14 +434,11 @@
 0%{
   top:350px;
   opacity:1;
-  border-radius:20%;
 }
 
 100%{
   top:50px;
   opacity:0;
-  border-radius:50%;
-  transform:rotateY(90deg);
  }
 
 }
@@ -453,18 +475,16 @@
 
 }
 
-@keyframes rotateIt {
+@keyframes border_change {
   0%{
-    transform:rotate(2deg);
-    border-color:white;
+    border-color:red;
   }
   50%{
-    transform:rotate(-2deg);
-    border-color:#38B6FF;
+    border-color:#FF5757;
   }
   100%{
-    transform:rotate(2deg);
-    border-color: white;
+
+    border-color:red;
   }
 
 }

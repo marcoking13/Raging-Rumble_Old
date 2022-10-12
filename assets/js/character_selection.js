@@ -5,6 +5,9 @@ var fight_starting = false;
 const available_characters = return_available_characters(6,available_boxes);
 const placeholder_character = return_placeholder_character();
 
+var enemy_interval = null
+var player_interval = null
+
 var selected_character  = {
   player:"",
   enemy:"",
@@ -28,12 +31,13 @@ const RenderStatBar = (stat,stats_point,color,show_bar) =>{
 
   const html = `
   <div class="row">
-    <div class="col-4">
+    <div class="col-6">
       <p class="stat_point_character_selection white">
         ${stat}
       </p>
     </div>
-    <div class="col-6">
+
+    <div class="col-4">
       ${bar}
     </div>
     <div class="col-2">
@@ -81,7 +85,6 @@ const RenderSelectedCharacterData = (character,is_player) => {
     <div class="selected_character_details">
 
       <p class="selected_character_detail_item width-100 ">
-        Specialty:
         <strong class="selected_specialty ${text_effect}">
          ${CapitalizeFirstLetter(character.type)}
         </strong>
@@ -100,7 +103,7 @@ const RenderSelectedCharacterData = (character,is_player) => {
 }
 
 
-const SelectCharacter = (character) =>{
+const SelectCharacter = (character,box_class) =>{
 
   selected_character.player = character;
   selected_character.enemy = available_characters[Math.floor(Math.random() * available_characters.length)];
@@ -113,8 +116,7 @@ const SelectCharacter = (character) =>{
 
   RemoveClassFromElements("character_available_box","active_character_available_box");
 
-  active_enemy_box.classList.add("active_character_available_box");
-  active_player_box.classList.add("active_character_available_box");
+
 
   var fight_btn = document.querySelector(".fight_btn");
 
@@ -128,15 +130,24 @@ const SelectCharacter = (character) =>{
   });
 
   ready = true;
+  var box = document.querySelector("."+box_class)
+  console.log(box)
+  RenderSelectedCharacters(player,enemy,true);
 
-  RenderSelectedCharacters(player,enemy,true,false);
-  RenderSelectedCharacters(player,enemy,true,true);
+  RenderCharactersAvailable(available_characters);
+  clearInterval(player_interval);
+  clearInterval(enemy_interval);
 
+  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("wizard_id_"+player.id,true,"./assets/imgs/flame_e.png")},200);
+  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png")},200);
+
+  document.querySelector(".wizard_id_"+player.id).classList.add("active_character_available_box");
+  document.querySelector(".wizard_id_"+enemy.id).classList.add("active_character_available_box");
   var selected_box = document.querySelector(`.selected_`+player.id);
   var selected_enemy_box = document.querySelector(`.selected_`+enemy.id);
 
-  AnimateCharacter(selected_box,false,selected_character.player.animation_sheet.idle,200)
-  AnimateCharacter(selected_enemy_box,true,selected_character.enemy.animation_sheet.idle,200)
+  AnimateCharacter(selected_box,false,selected_character.player.animation_sheet.idle,300)
+  AnimateCharacter(selected_enemy_box,true,selected_character.enemy.animation_sheet.idle,300)
 
   RefreshModal(player,enemy);
 
@@ -175,7 +186,7 @@ const RenderAvailableBox = (character,rotation) => {
 
     if(character.display_image){
       var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
-      return `<img class="width-100  ${enlarge} character_available_image${character.id}" src= ${character.display_image} />`
+      return `<img class="width-25 character_available_image ${character.id}" style="float:left;width:40%" src= ${character.display_image} />`
     }else{
       return `<div></div>`
     }
@@ -185,38 +196,25 @@ const RenderAvailableBox = (character,rotation) => {
   const image = returnImage();
 
   var html = document.createElement("div");
-  html.classList.add("col-2");
+  html.classList.add("col-6");
 
   var box_id  = character.id;
 
   html.addEventListener("click",(e)=>{
-    SelectCharacter(character);
+    SelectCharacter(character,`wizard_id_${character.id}`);
   });
 
    html.innerHTML = `
 
-  <div class="character_available_box ${character.type}_text width-100 wizard_id_${character.id}"style="transform:rotate(${rotation}deg)"  >
+  <div class="character_available_box ${character.type}_text width-100 wizard_id_${character.id}"style="height:100px;"  >
 
-    <div style="height:250px">
+
       ${image}
-    </div>
 
-      <p class="text-center character_available_name">${character.name}</p>
+      <p class="character_available_name" style="width:50%;float:left;margin-top:5%">${character.name}</p>
 
       <br />
 
-      <div class='row'>
-
-        <div class="col-10">
-          <div class="row">
-          <div class="col-1"></div>
-          <div class="col-10">
-         ${StatBarLoop([stats.health,stats.attack,stats.defense,stats.speed])}
-         </div>
-         </div>
-        </div>
-
-      </div>
 
   </div>
 
@@ -261,7 +259,7 @@ const RenderSelectedCharacterBox = (character,is_player) => {
       </div>
 
 
-      <div class="col-6">
+      <div class="col-12">
         <div class="selected_character_name">
           <p class="selected_character_item_name ${text_effect}">${character.name}</p>
         </div>
@@ -272,7 +270,7 @@ const RenderSelectedCharacterBox = (character,is_player) => {
 
 }
 
-const RenderSelectedCharacterColumn = (character,ease,is_player) => {
+const RenderSelectedCharacterColumn = (character,ease,is_player,playerSelected) => {
 
       if(character.id){
         ease = "";
@@ -282,9 +280,9 @@ const RenderSelectedCharacterColumn = (character,ease,is_player) => {
          <div class="col-5 character_box ${ease}">
 
             <div class="row">
-             ${RenderSelectedCharacterData(character,is_player)}
+             ${RenderSelectedCharacterData(character,is_player,playerSelected)}
               <div class="col-1"></div>
-             ${RenderSelectedCharacterBox(character,is_player)}
+             ${RenderSelectedCharacterBox(character,is_player,playerSelected)}
             </div>
 
           </div>
@@ -298,12 +296,16 @@ const RenderSelectedCharacters = (player,enemy,playerSelected) => {
 
   var container = document.querySelector(".selected_character_container");
   EmptyContainer(container);
-
+  console.log(playerSelected)
   var selected_character_html = `
     <div class="container-fluid selected_character_row">
       <div class="row">
+        <div class="col-4" style="background:black;position:relative;bottom:50px">
+          <div class="row characters_available_container" style="background:black">
 
-        <div class="col-12">
+          </div>
+        </div>
+        <div class="col-8">
           <div class="row">
             ${RenderSelectedCharacterColumn(player,"ease_left",true)}
             <div class="col-2"></div>
@@ -326,8 +328,8 @@ const RenderSelectedCharacters = (player,enemy,playerSelected) => {
 
   if(playerSelected){
 
-    PlayerSelectedSpecialEffect(true);
-    PlayerSelectedSpecialEffect(false);
+    PlayerSelectedSpecialEffect(true,"./assets/imgs/flame_e.png");
+    PlayerSelectedSpecialEffect(false,"./assets/imgs/flame_e.png");
 
     if(music_active){
       var audio = document.querySelector(".ui_sound");

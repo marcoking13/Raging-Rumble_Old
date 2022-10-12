@@ -34,7 +34,7 @@ var stat_config = {
 const characters =
   [
     {
-    name:"Ebin the Terrible",
+    name:"Ice Giant",
     folder:"./assets/imgs/eban_sprites/",
     id:"F0001",
     type:"power",
@@ -59,7 +59,7 @@ const characters =
     ]
   },
   {
- name:"Jack O' Latern",
+ name:"Fire Mage",
  folder:"./assets/imgs/jackolatern_sprites/",
  id:"F00031",
  type:"Defense",
@@ -85,7 +85,7 @@ const characters =
  ]
 },
   {
-   name:"Mr. Hands",
+   name:"Fire Ghoul",
    folder:"./assets/imgs/mrhands/",
    id:"F00035",
    type:"Strategy",
@@ -110,7 +110,7 @@ const characters =
    ]
   },
   {
-   name:"Rikon the Robotic Dragon",
+   name:"Metal Dragon",
    folder:"./assets/imgs/rikon_sprites/",
    flip_sprite:true,
    id:"F00236",
@@ -135,7 +135,7 @@ const characters =
    ]
   },
   {
-   name:"Jack Frost",
+   name:"Ice Mage",
    folder:"./assets/imgs/frost_sprites/",
    flip_sprite:false,
    id:"F02436",
@@ -160,7 +160,7 @@ const characters =
    ]
   },
    {
-  name:"Johnathan the Bat",
+  name:"Vampire Bat",
   folder:"./assets/imgs/johnathan_sprites/",
   id:"F0002",
   flip_sprite:false,

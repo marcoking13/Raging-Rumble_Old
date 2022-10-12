@@ -11,22 +11,26 @@ const UpdateDescription = (move) => {
 }
 
 
-const RenderDescriptionRow  = () =>{
+const RenderDescriptionRow  = (character) =>{
 
   const html = `
   <div class="row">
 
-    <div class="col-2">
-      <p class="detail_text attack_text"></p>
+
+    <div class="col-4"style="padding-bottom:5%">
+      <div class="row move_row">
+        ${MoveLoop(character.moves,"player_character",false)}
+      </div>
     </div>
 
-    <div class="col-8">
-      <p class="description_text">Hover over a move to learn more details</p>
+    <div class="col-8"style="margin-top:2.5%">
+      <span><p class="detail_text attack_text"style="float:left;margin-left:5%;"></p>   <p class="detail_text accuracy_text"style="margin-left:5%;float:left"></p></span>
+
+      <p class="description_text"style="clear:left;text-align:left;">Hover over a move to learn more details</p>
+
     </div>
 
-    <div class="col-2">
-      <p class="detail_text accuracy_text"></p>
-    </div>
+
 
     <br />
 
@@ -226,11 +230,7 @@ const ReturnCharacterCol = (character,is_enemy) =>{
 
     </div>
 
-    <div class="row margin-top-5 move_row" style="width:90%;margin-left:5%;">
 
-        ${MoveLoop(character.moves,character_class,enemy_addon)}
-
-    </div>
 
   </div>`;
 

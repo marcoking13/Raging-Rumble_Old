@@ -12,6 +12,9 @@
   animation:loser_effect 1s ease-in 1;
   opacity:0;
 }
+.fight_background{
+    background:url("./../imgs/character_selection_background.png") !important;
+}
 @keyfreames loser_effect {
   0%{
     left:0%;
@@ -174,11 +177,14 @@
 
 .detail_text{
   font-size: 20px;
+  float:left;
+  text-align: left;
   font-family: "Allerta Stencil"
 }
 
 .description_text{
-  font-size:30px;
+  font-size:20px;
+  margin-left:5%;
     font-family: "Allerta Stencil"
 }
 
@@ -196,10 +202,16 @@
 
 .move_box:hover{
   color:red;
-  border-color:white;
+transition: border-color 1s 1 ease-in 0;
+  border-color:red;
   position: relative;
 }
-
+.move_box{
+  border-width:2px;
+  margin-left:1%;
+  margin-top:10%;
+  border-radius:10px;
+}
 
 .move_box:hover > .boost_icon{
   position: relative;

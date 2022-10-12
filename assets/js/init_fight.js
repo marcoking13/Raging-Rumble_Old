@@ -22,8 +22,10 @@ const MoveLoop = (moves,class_name,is_enemy) =>{
     for(var i = 0; i < moves.length; i++){
 
       html +=   `
-        <div class="move_box ${class_name}_box col-6" id="${moves[i].name}" is_enemy = "${is_enemy}">
-          ${moves[i].name}
+        <div class="col-6">
+          <div class="move_box  ${class_name}_box" id="${moves[i].name}" is_enemy = "${is_enemy}">
+            ${moves[i].name}
+          </div>
         </div>`
 
     }
@@ -53,7 +55,7 @@ const AddEventToMoves = () =>{
       move.addEventListener('mouseover', e => {
 
         var id = e.target.getAttribute("id");
-
+        console.log(id);
         UpdateDescription(MoveBase[id]);
 
       });
@@ -81,7 +83,7 @@ const IntializeGame = () =>{
 
   RenderHeader();
   RenderFightRow(saved_characters.player,saved_characters.enemy);
-  RenderDescriptionRow();
+  RenderDescriptionRow(saved_characters.player);
   AddEventToMoves();
 
   player_element = document.querySelector(".player_character");
