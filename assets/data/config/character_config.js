@@ -86,7 +86,7 @@ const characters =
 },
   {
    name:"Fire Ghoul",
-   folder:"./assets/imgs/mrhands/",
+   folder:"./assets/imgs/mrhands_sprites/",
    id:"F00035",
    type:"Strategy",
    flip_sprite:false,

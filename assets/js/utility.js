@@ -4,7 +4,15 @@ const audioSource = "./assets/audio/gameMusic.wav";
 const audioExtension = audioSource.substring(audioSource.indexOf('c.') + 2);
 
 const CapitalizeFirstLetter =(string)=> {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+
+    const new_string = string.split(" ");
+
+    var word = ''
+    for (let i = 0; i < new_string.length; i++) {
+        new_string[i] = new_string[i][0].toUpperCase() + new_string[i].substr(1);
+        word += " " +new_string[i]
+      }
+    return word;
 }
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -47,31 +55,37 @@ const PlayerSelectedSpecialEffect = async (is_player,src) => {
 
 
 
-const PlayerSelectedSpecialEffectSingle = async (className,is_player,src) => {
+const PlayerSelectedSpecialEffectSingle = async (animationClass,className,is_player,src) => {
 
   container = document.querySelector("."+className);
   container.style.position = "relative";
   container.style.zIndex =4;
 
-  var limit = 400;
+  // var limit = 400;
   var duration = Math.random() * 2;
   var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
 
-  var random =Math.random() * 90;
+  var random = Math.random() *95;
+  // var multiplier = Math.random() * 100 > 50 ? 1 : -1;
+  // random *= multiplier;
+
   var size = Math.floor(Math.random() * 50);
 
 
 
-  var effect = document.createElement("img");
-  effect.setAttribute("src",src);
-  var animation_class = "effect_available";
+  var element_name = src ? "img" : "div";
+  var effect = document.createElement(element_name);
+  if(element_name == "img"){
+    effect.setAttribute("src",src);
+  }
+  var animation_class = animationClass;
 
 
   effect.classList.add(animation_class);
   effect.style.animationDuration = "1s";
   effect.style.left = random.toString() +"%";
-  effect.style.width = size.toString() +'px';
-  effect.style.height = size.toString() +'px';
+  // effect.style.width = size.toString() +'px';
+  // effect.style.height = size.toString() +'px';
 
   container.append(effect);
 

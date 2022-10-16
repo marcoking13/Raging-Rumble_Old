@@ -20,11 +20,12 @@ const MoveLoop = (moves,class_name,is_enemy) =>{
   if(!is_enemy){
 
     for(var i = 0; i < moves.length; i++){
-
+      var capital_name = CapitalizeFirstLetter(moves[i].name)
       html +=   `
         <div class="col-6">
           <div class="move_box  ${class_name}_box" id="${moves[i].name}" is_enemy = "${is_enemy}">
-            ${moves[i].name}
+            <img class="flame_hov" src = "./assets/imgs/flame_hover.gif"/>
+            ${capital_name}
           </div>
         </div>`
 

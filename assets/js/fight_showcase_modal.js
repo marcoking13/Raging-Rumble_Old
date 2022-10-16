@@ -1,5 +1,6 @@
 
 var countdown = 5;
+var effect_modal_interval = null;
 
 const ResetCountdown = () =>{
   countdown = 5;
@@ -8,11 +9,11 @@ const ResetCountdown = () =>{
 const RefreshModal = (player,enemy)=>{
 
     var container = document.querySelector(".fight_showcase_modal");
-
+    clearInterval(effect_modal_interval)
     EmptyContainer(container);
 
     container.innerHTML = GenerateModal(player,enemy,true);
-
+    effect_modal_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("countdown_effect","countdown_box",true,null)},100);
 }
 
 const Countdown = async(player,enemy) =>{
@@ -106,7 +107,7 @@ var header = is_vs_modal ? `Fight Starting in `: "Fight Has Ended";
         <div class="header margin-top-5">
           <h2 class="fight_modal_title text-center rubik"style="color:yellow;font-size:40px;padding-top:2.5%;padding-bottom:2.5%;border-top:1px solid yellow;border-bottom:1px solid yellow"><strong class='countdown_text'></strong></h2>
         </div>
-        <div class="row">
+        <div class="row countdown_box">
 
           ${modal}
 

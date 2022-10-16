@@ -138,8 +138,8 @@ const SelectCharacter = (character,box_class) =>{
   clearInterval(player_interval);
   clearInterval(enemy_interval);
 
-  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("wizard_id_"+player.id,true,"./assets/imgs/flame_e.png")},200);
-  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png")},200);
+  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+player.id,true,"./assets/imgs/flame_e.png")},200);
+  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png")},200);
 
   document.querySelector(".wizard_id_"+player.id).classList.add("active_character_available_box");
   document.querySelector(".wizard_id_"+enemy.id).classList.add("active_character_available_box");
@@ -180,8 +180,6 @@ const StartFight = (player,enemy)=>{
 
 const RenderAvailableBox = (character,rotation) => {
 
-  var stats = character.stats;
-
   function returnImage(){
 
     if(character.display_image){
@@ -193,29 +191,35 @@ const RenderAvailableBox = (character,rotation) => {
 
   }
 
+  var stats = character.stats;
+  var box_id  = character.id;
+  var active = character == selected_character.player || character == selected_character.enemy ? "active_figher_box" : "";
+  var activeBox = character == selected_character.player || character == selected_character.enemy ? "active_box" : "";
   const image = returnImage();
 
   var html = document.createElement("div");
   html.classList.add("col-6");
-
-  var box_id  = character.id;
 
   html.addEventListener("click",(e)=>{
     SelectCharacter(character,`wizard_id_${character.id}`);
   });
 
    html.innerHTML = `
+   <div class="container figher_box_wrapper relative ${active}">
+    <img class="fighter_box_img ${activeBox}" src = "./assets/imgs/fighter_box.png"/>
+     <div class="fighter_box row">
+       <div class="col-6 fighter_col mt5">
+          <img src = "${character.folder}/fighter.png" class="width-100 fighter_character_img"/>
+       </div>
+      <div class="character_available_box ${character.type}_text wizard_id_${character.id} col-6"  >
 
-  <div class="character_available_box ${character.type}_text width-100 wizard_id_${character.id}"style="height:100px;"  >
+          <p class="character_available_name">${character.name}</p>
+          <p class="character_available_health">HP: ${character.stats.health.stat}</p>
 
+          <br />
 
-      ${image}
-
-      <p class="character_available_name" style="width:50%;float:left;margin-top:5%">${character.name}</p>
-
-      <br />
-
-
+      </div>
+    </div>
   </div>
 
   `;
@@ -300,12 +304,13 @@ const RenderSelectedCharacters = (player,enemy,playerSelected) => {
   var selected_character_html = `
     <div class="container-fluid selected_character_row">
       <div class="row">
-        <div class="col-4" style="background:black;position:relative;bottom:50px">
-          <div class="row characters_available_container" style="background:black">
+        <div class="col-4" style="position:relative;bottom:50px;right:25px">
+          <div class="row characters_available_container">
 
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-1"></div>
+        <div class="col-7">
           <div class="row">
             ${RenderSelectedCharacterColumn(player,"ease_left",true)}
             <div class="col-2"></div>

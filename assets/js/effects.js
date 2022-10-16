@@ -4,7 +4,7 @@ const GenerateMove = async (move,is_enemy,isRandom) =>{
    var total_delay = 0;
    var enemy_class_animation = is_enemy ? move.class_animation + "_enemy" : "";
 
-   GenerateElementsLoop(move.class_animation,enemy_class_animation,move.audio,move.image,move.effects,move.milliseconds,move.playOnce,isRandom);
+   GenerateElementsLoop(`${move.class_animation} move_ef`,enemy_class_animation,move.audio,move.image,move.effects,move.milliseconds,move.playOnce,isRandom);
 
    await delay(move.milliseconds * move.effects + 500);
 

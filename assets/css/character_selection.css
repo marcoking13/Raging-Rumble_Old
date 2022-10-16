@@ -5,9 +5,37 @@
   font-size:25px;
   font-family:"Allerta Stencil";
 }
-
+.relative{
+  position: relative;
+}
 .player_modal_img{
   width:100%;
+}
+.fighter_box_img{
+  width:80%;
+  position: absolute;
+  top:0%;
+  left:25%;
+  z-index:2;
+}
+.countdown_effect{
+  width:1% !important;
+  transform: scale(.5);
+  position: absolute;
+  height:50px;
+  animation: rectangle_shift 1 ease-in 3s;
+  animation-duration: 5s !important;
+  top:100%;
+  opacity:0;
+  z-index:1;
+}
+.player_modal_img{
+  position: relative;
+  z-index:44;
+}
+.fighter_character_img{
+  position: relative;
+  z-index:99;
 }
 .character_selection_background{
   background:url("./../imgs/character_selection_background.png") !important;
@@ -64,6 +92,7 @@
 .no-point{
   pointer-events: none;
 }
+
 .effect_available{
   position: absolute;
   opacity:0;
@@ -76,11 +105,42 @@
   0%{
     top:50%;
     opacity:1;
+      z-index:1;
   }
 
   100%{
     top:0%;
+      z-index:1;
     opacity:0
+  }
+}
+@keyframes rectangle_shift{
+  0%{
+    top:120%;
+    opacity:0;
+
+  }
+  5%{
+    top:100%;
+    opacity:1;
+    width:2px !important;
+    z-index:0;
+    background:red;
+  }
+
+  50%{
+    background:orange;
+  }
+  90%{
+    background:crimson;
+    top:-20%;
+    opacity:1;
+  }
+  100%{
+    background:none;
+    opacity:0;
+    width:0px;
+    top:-20%;
   }
 }
 .fight_btn{
@@ -122,9 +182,21 @@
 .character_available_name{
   text-align: left;
   font-family:"Allerta Stencil";
-  margin-top:15% !important;
-  font-size:15px;
+  margin-top:32.5% !important;
+  font-size:11px;
+  right:30px;
+  position: relative;
+  z-index:4 !important;
 
+}
+.character_available_health{
+  text-align: left;
+  font-family:"Allerta Stencil";
+  position: absolute;
+  right:5%;
+  top:57.5%;
+  font-size:11px;
+  z-index:4 !important;
 }
 
 .character_available_box .description_text{
@@ -197,12 +269,9 @@
 }
 
 .character_available_box{
-  background:black;
-  border-radius:30px;
+  border-radius:0px !important;
   color:white;
-  margin-bottom:2.5%;
-  margin-top:2.5%;
-  border: white 2px solid;
+  margin-top:5%;
 }
 
 
@@ -219,11 +288,17 @@
   color:#38B6FF !important;
 }
 
- .character_available_box:hover{
+ .figher_box_wrapper:hover{
   animation-iteration-count: infinite;
   animation-name:border_change !important;
   animation-timing-function: ease-in;
   animation-duration: 1s;
+}
+.figher_box_wrapper:hover .fighter_box_img{
+  filter:brightness(0);
+}
+.active_box {
+  filter:brightness(0) !important;
 }
 
 .active_character_available_box{
@@ -313,7 +388,20 @@
 .width-100{
   width:100%;
 }
-
+.fighter_box:hover .character_available_box p{
+  color:red;
+}
+.fighter_box:hover .fighter_col img{
+  transform:scale(1.1);
+  transition:all 1s 1 ease-in;
+}
+.active_figher_box  .character_available_box p{
+  color:red;
+}
+.active_fighter_box .fighter_col img{
+  transform:scale(1.1);
+  transition:all 1s 1 ease-in;
+}
 .selected_character_details{
   width:100%;
   height:300px;
