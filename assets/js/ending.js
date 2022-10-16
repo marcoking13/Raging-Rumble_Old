@@ -48,9 +48,9 @@ const RenderEndPage = async(character,player_won) =>{
   var background = player_won ? "./assets/imgs/win.gif" : "./assets/imgs/lose.gif"
 
   var html = `
-  <div class="container-fluid ending_container" style="padding-bottom:10%;background:url('${background}')">
+  <div class="container-fluid ending_container relative" style="padding-bottom:10%;background:black;border-color:none;">
 
-    ${RenderWinnerEffect(player_won)}
+
 
     <div class="row">
 
@@ -73,13 +73,13 @@ const RenderEndPage = async(character,player_won) =>{
         <div class="col-4"></div>
 
         <div class="col-4">
-          <img class="width-100 ending_image"style="position:relative;bottom:50px" src="${character.display_image}"/>
+          <img class="width-100 ending_image"style="position:relative;bottom:50px;z-index:99" src="${character.display_image}"/>
         </div>
         <div class="col-4"></div>
 
       </div>
 
-      <h1 class="text-center winner_name"style="position:relative;bottom:50px">${character.name}</h1>
+      <h1 class="text-center winner_name"style="position:relative;bottom:50px;z-index:99">${character.name}</h1>
 
   </div>
   `
@@ -90,11 +90,16 @@ const RenderEndPage = async(character,player_won) =>{
   var container = document.createElement("div");
   container.classList.add("ending_page");
 
+
   container.innerHTML = html;
 
   page.append(container);
 
   var effect_container = document.querySelector(".effect_container");
+
+  var effect_class = player_won ? "winning_countdown_effect" : "countdown_effect";
+
+  setInterval(()=>{PlayerSelectedSpecialEffectSingle(effect_class,"ending_page",false,null,80,10)},50);
 
   await delay(5000);
 

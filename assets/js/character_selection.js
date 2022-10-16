@@ -138,8 +138,8 @@ const SelectCharacter = (character,box_class) =>{
   clearInterval(player_interval);
   clearInterval(enemy_interval);
 
-  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+player.id,true,"./assets/imgs/flame_e.png")},200);
-  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png")},200);
+  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+player.id,true,"./assets/imgs/flame_e.png",85,0)},200);
+  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png",85,0)},200);
 
   document.querySelector(".wizard_id_"+player.id).classList.add("active_character_available_box");
   document.querySelector(".wizard_id_"+enemy.id).classList.add("active_character_available_box");

@@ -18,17 +18,7 @@
   left:25%;
   z-index:2;
 }
-.countdown_effect{
-  width:1% !important;
-  transform: scale(.5);
-  position: absolute;
-  height:50px;
-  animation: rectangle_shift 1 ease-in 3s;
-  animation-duration: 5s !important;
-  top:100%;
-  opacity:0;
-  z-index:1;
-}
+
 .player_modal_img{
   position: relative;
   z-index:44;
@@ -114,35 +104,7 @@
     opacity:0
   }
 }
-@keyframes rectangle_shift{
-  0%{
-    top:120%;
-    opacity:0;
 
-  }
-  5%{
-    top:100%;
-    opacity:1;
-    width:2px !important;
-    z-index:0;
-    background:red;
-  }
-
-  50%{
-    background:orange;
-  }
-  90%{
-    background:crimson;
-    top:-20%;
-    opacity:1;
-  }
-  100%{
-    background:none;
-    opacity:0;
-    width:0px;
-    top:-20%;
-  }
-}
 .fight_btn{
     margin-top:5%;
 }

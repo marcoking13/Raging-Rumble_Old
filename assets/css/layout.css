@@ -9,7 +9,95 @@
 .padding-right-20{
   padding-right:20%;
 }
+.countdown_effect{
+  width:1% !important;
+  transform: scale(.5);
+  position: absolute;
+  height:50px;
+  animation: rectangle_shift 1 ease-in 3s;
+  animation-duration: 5s !important;
+  top:100%;
+  opacity:0;
+  z-index:1;
+}
+.winning_countdown_effect{
+  width:1% !important;
+  transform: scale(.5);
+  position: absolute;
+  height:50px;
+  animation: rectangle_shift_rainbow 1 ease-in 3s;
+  animation-duration: 5s !important;
+  top:100%;
+  opacity:0;
+  z-index:1 !important;
+}
+@keyframes rectangle_shift{
+  0%{
+    top:90%;
+    opacity:0;
 
+  }
+  5%{
+    top:80%;
+    opacity:1;
+    width:2px !important;
+    z-index:0;
+    background:red;
+  }
+
+  50%{
+    background:orange;
+  }
+  90%{
+    background:crimson;
+    top:-20%;
+    opacity:1;
+  }
+  100%{
+    background:none;
+    opacity:0;
+    width:0px;
+    top:-20%;
+  }
+}
+@keyframes rectangle_shift_rainbow{
+  0%{
+    top:90%;
+    opacity:0;
+
+  }
+  5%{
+    top:80%;
+    opacity:1;
+    width:2px !important;
+    z-index:0;
+    background:red;
+  }
+  20{
+    background:purple
+  }
+  35%{
+    background:aqua;
+  }
+
+  50%{
+    background:orange;
+  }
+  70%{
+    background:gold;
+  }
+  90%{
+    background:crimson;
+    top:-20%;
+    opacity:1;
+  }
+  100%{
+    background:none;
+    opacity:0;
+    width:0px;
+    top:-20%;
+  }
+}
 .square-list-style{
   list-style-type:square;
 }

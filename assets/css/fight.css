@@ -29,6 +29,9 @@
 .move_ef{
   z-index:99;
 }
+.ending_image{
+  z-index:99;
+}
 .fight_background{
     background:url("./../imgs/character_selection_background.png") !important;
 }
@@ -218,7 +221,10 @@
 .margin-top-5{
   margin-top:5%;
 }
-
+.ending_page{
+  position: relative;
+  width:100%;
+}
 .move_box:hover{
   color:red;
 transition: border-color 1s 1 ease-in 0;

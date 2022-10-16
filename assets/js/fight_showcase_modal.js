@@ -9,16 +9,16 @@ const ResetCountdown = () =>{
 const RefreshModal = (player,enemy)=>{
 
     var container = document.querySelector(".fight_showcase_modal");
-    clearInterval(effect_modal_interval)
+
     EmptyContainer(container);
 
     container.innerHTML = GenerateModal(player,enemy,true);
-    effect_modal_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("countdown_effect","countdown_box",true,null)},100);
+
 }
 
 const Countdown = async(player,enemy) =>{
   var countdown = 5;
-
+  effect_modal_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("countdown_effect","countdown_box",true,null,95,0)},100);
   while(countdown >= 0){
 
     countdown = countdown-1;

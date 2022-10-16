@@ -55,7 +55,7 @@ const PlayerSelectedSpecialEffect = async (is_player,src) => {
 
 
 
-const PlayerSelectedSpecialEffectSingle = async (animationClass,className,is_player,src) => {
+const PlayerSelectedSpecialEffectSingle = async (animationClass,className,is_player,src,pos,buf) => {
 
   container = document.querySelector("."+className);
   container.style.position = "relative";
@@ -65,7 +65,7 @@ const PlayerSelectedSpecialEffectSingle = async (animationClass,className,is_pla
   var duration = Math.random() * 2;
   var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
 
-  var random = Math.random() *95;
+  var random = (Math.random() *pos) + buf;
   // var multiplier = Math.random() * 100 > 50 ? 1 : -1;
   // random *= multiplier;
 
