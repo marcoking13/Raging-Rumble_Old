@@ -4,6 +4,7 @@ const Attack = async(move,is_enemy) => {
     var attacker_query = is_enemy ? "enemy_character" : "player_character";
     var iterator = is_enemy ? enemy_iterator : player_iterator;
     var attacker_health = is_enemy ? enemy_engine.health : player_engine.health;
+    var defender_health = !is_enemy ? enemy_engine.health : player_engine.health;
     var attacker_recharge = is_enemy ? enemy_engine.recharge_turns : player_engine.recharge_turns;
     var attacker = is_enemy ? saved_characters.enemy :  saved_characters.player ;
     var attacking_animation = attacker.animation_sheet.attack;
@@ -13,7 +14,7 @@ const Attack = async(move,is_enemy) => {
     Recharging(player_engine.recharge_turns,document.querySelector(".player_character"))
     Recharging(enemy_engine.recharge_turns,document.querySelector(".enemy_character"))
 
-    if(attacker_health > 0){
+    if(attacker_health > 0 && defender_health > 0 ){
 
      if(attacker_recharge <= 0){
 
@@ -30,6 +31,12 @@ const Attack = async(move,is_enemy) => {
         await AnimateCharacter(attacker_element,is_enemy,idle_animation,200);
 
         DisplayDamageCalculations(move,is_enemy);
+
+        await Death(is_enemy);
+        await delay(1000);
+        var winner = DetermineWinner();
+
+        EndGame(winner);
 
         return total_delay + 1300;
 
@@ -96,6 +103,22 @@ const DetermineWinner = () =>{
 
 }
 
+const EndGame = (winner) =>{
+    if(winner){
+
+     saved_characters = {
+        player:null,
+        enemy:null
+      }
+
+      RenderEndPage(winner.character,winner.win);
+
+    }
+
+  }
+
+
+
 const Battle = async (id) =>{
 
   if(!disable){
@@ -117,32 +140,16 @@ const Battle = async (id) =>{
 
     EmptyContainer(document.querySelector(".effect_box"));
 
-    var winner = DetermineWinner();
+    disable = false;
 
-    Death(true);
-    Death(false);
+    move_row.style.opacity = "100%";
 
-    await delay(1000);
+    document.body.classList.remove("no-point");
 
-    if(winner){
+ }
 
-      RenderEndPage(winner.character,winner.win);
-
-    }else{
-
-      disable = false;
-
-      move_row.style.opacity = "100%";
-
-      document.body.classList.remove("no-point");
-
-    }
-
-  }
 
 }
-
-
 
 const BattleSequence = async(is_player_faster,selected_move) => {
 
@@ -189,10 +196,6 @@ const IsPlayerFaster = (player_stats,enemy_stats) =>{
   }
 
 }
-
-
-
-
 
 const DisplayDamageCalculations = (selected_move,is_enemy) =>{
 
@@ -241,9 +244,19 @@ const DisplayDamageCalculations = (selected_move,is_enemy) =>{
 
 const SideEffects = (side_effects,is_enemy,damage) => {
 
+  function boost(side_effects,character,is_enemy){
+    var class_name = is_enemy ? "boost_enemy" : "boost_player";
+    var element = document.querySelector("."+class_name)
+
+    RenderBoost(element,is_enemy,side_effects.lower,side_effects.stages);
+
+    return side_effects.effect(character.stats,side_effects.stat_type);
+  }
+
   if(side_effects){
 
      if(side_effects.name == "recharge"){
+
        var recharge_turns = side_effects.turns;
 
        if(!is_enemy){
@@ -262,10 +275,9 @@ const SideEffects = (side_effects,is_enemy,damage) => {
        if(is_enemy){
 
           if(enemy_engine.stages < 4){
-
-            saved_characters.enemy.stats =  side_effects.effect(saved_characters.enemy.stats,side_effects.stat_type)
-            enemy_engine.stages += side_effects.stages;
-            RenderBoost(document.querySelector(".boost_enemy"),true,side_effects.lower,side_effects.stages)
+            var boost_data =  boost(side_effects,saved_characters.enemy,true);
+            saved_characters.enemy.stats = boost_data;
+            enemy_engine.stages += 1;
 
           }
 
@@ -274,9 +286,9 @@ const SideEffects = (side_effects,is_enemy,damage) => {
 
           if(player_engine.stages < 4){
 
-            saved_characters.player.stats = side_effects.effect(saved_characters.player.stats,side_effects.stat_type);
-            player_engine.stages += side_effects.stages;
-            RenderBoost(document.querySelector(".boost_player"),false,side_effects.lower,side_effects.stages)
+            var boost_data =  boost(side_effects,saved_characters.player,false);
+            saved_characters.player.stats = boost_data;
+            player_engine.stages += 1;
 
           }
 
@@ -311,7 +323,7 @@ const SideEffects = (side_effects,is_enemy,damage) => {
 
 
 
-  const Death = (is_enemy) =>{
+  const Death = async(is_enemy) =>{
 
     var defender_health = is_enemy ? player_engine.health : enemy_engine.health;
 

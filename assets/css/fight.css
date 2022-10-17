@@ -4,6 +4,7 @@
   margin-top:2.5%;
   border-color:black;
 }
+
 .loser_effect{
   background: red;
   border-radius:20px;
@@ -12,48 +13,34 @@
   animation:loser_effect 1s ease-in 1;
   opacity:0;
 }
+
 .move_box{
   text-align: left;
 }
+
 .flame_hov{
   opacity:0;
+  pointer-events: none;
   position: relative;
   bottom:1px;
   width:15%;
   float:left;
 }
-.move_box:hover .flame_hov{
-    opacity:1 !important;
 
+.move_box:hover .flame_hov{
+  opacity:1 !important;
 }
+
 .move_ef{
-  z-index:99;
+  z-index:33;
 }
+
 .ending_image{
-  z-index:99;
+  z-index:99 !important;
 }
+
 .fight_background{
     background:url("./../imgs/character_selection_background.png") !important;
-}
-@keyfreames loser_effect {
-  0%{
-    left:0%;
-
-  }
-  90%{
-    left:90%;
-
-  }
-  100%{
-    opacity:0%;
-    left:100%;
-  }
-}
-.text-center{
-  text-align: center;
-}
-.width-100{
-  width:100%;
 }
 
 .miss_icon{
@@ -63,30 +50,15 @@
   animation: miss 1s ease-in 1;
 }
 
-@keyframes miss {
-  0%{
-    top:30px;
-    opacity:0;
-
-    transform:scale(1)
-  }
-  50%{
-      top:0px;
-      opacity:1;
-      transform:scale(1.5)
-  }
-  100%{
-    opacity:0;
-
-  }
-}
 .miss_container{
   position: absolute;
   top:20%;
 }
+
 .enemy_miss{
   left:30%;
 }
+
 .player_miss{
   left:50%;
 }
@@ -104,33 +76,44 @@
 }
 
 .winner_name{
-  z-index:9;font-family:"Rubik Moonrocks";color:white;text-align:center
-}
-
-.width-100{
-  width:100%;
+  z-index:9;
+  position:relative;
+  bottom:50px;
+  z-index:99;
+  font-family:"Rubik Moonrocks";
+  color:white;
+  text-align:center;
 }
 
 .ending_image{
   animation: .5s image_trans 1 ease-in;
+  position:relative;
+  bottom:50px;
+  z-index:99
 }
 
 .ending_win{
-  z-index:9;text-align:right;font-family:"Allerta Stencil";font-size:26px;
+  z-index:9;
+  text-align:right;
+  font-family:"Allerta Stencil";
+  font-size:26px;
   animation: .5s left_trans 1 ease-in;
   position: relative;
 }
 
 .ending_container{
-  border:3px solid purple;
-  animation: ending_border infinite 2s ease-in;
-  position:absolute;
-  width:80%;
-  margin-left:10%;
-  margin-top:5% !important;
+  position:relative;
+  width:100%;
+  animation: end_modal .5s 1 ease-in;
+  height:400px;
+  border-radius:10px;
+  margin-top:10% !important;
   z-index:99;
   padding-bottom:5%;
   height:600px !important;
+  padding-bottom:10%;
+  background:black;
+  border-color:none;
 }
 
 .ending_title{
@@ -140,26 +123,6 @@
   font-family:'Allerta Stencil';
   animation: .5s left_trans 1 ease-in;
   position: relative;
-}
-
-.ending_container{
-  z-index:-5;
-  position:relative;
-  background:black;
-  padding-top:2.5%;
-  padding-bottom:2.5%;
-}
-
-.width-50{
-  width:50%;
-}
-
-.margin-left-25{
-  margin-left:25%;
-}
-
-.margin-top-2_5{
-  margin-top:2.5%;
 }
 
 .quit_button:hover{
@@ -218,16 +181,14 @@
   padding-bottom:0;
 }
 
-.margin-top-5{
-  margin-top:5%;
-}
 .ending_page{
   position: relative;
   width:100%;
 }
+
 .move_box:hover{
   color:red;
-transition: border-color 1s 1 ease-in 0;
+  transition: border-color 1s 1 ease-in 0;
   border-color:red;
   position: relative;
 }
@@ -242,8 +203,6 @@ transition: border-color 1s 1 ease-in 0;
   position: relative;
   top:20px;
 }
-
-
 
 .fight_row{
   margin-top:5%;
@@ -268,66 +227,18 @@ transition: border-color 1s 1 ease-in 0;
   font-family: "Allerta Stencil"
 }
 
-@keyframes left_trans{
-  0%{
-    opacity:0%;
-    left:-20px;
-    position: relative;
-  }
-  100%{
-    opacity:100%;
-    left:0px;
-      position: relative;
-  }
-}
-
-@keyframes image_trans{
-  0%{
-    opacity:100%;
-  transform:rotateY(90deg);
-  }
-  100%{
-    transform:rotateY(0deg);
-  }
-}
-
-@keyframes winner_effect {
-  0%{
-    opacity:0;
-    bottom:0%;
-    transform:rotateX(0deg);
-  }
-  0%{
-    opacity:.5;
-  }
-  50%{
-    transform:rotateX(480deg);
-    opacity:1;
-  }
-
-  90%{
-    opacity:.5;
-  }
-  100%{
-    transform:rotateX(-480deg);
-    opacity:0;
-    bottom:98%;
-  }
-}
-
 .boost_container{
   position: absolute;
   top:60%;
   height:100px;
   width:20%;
-
 }
+
 .boost_icon{
   width:20%;
-
   float:left;
-
 }
+
 .boost_enemy{
   left:50%;
 }
@@ -339,14 +250,13 @@ transition: border-color 1s 1 ease-in 0;
 .buff{
   filter:invert(100%) sepia(42%) saturate(2621%) hue-rotate(38deg) brightness(90%) contrast(87%);
   transform:rotateY(0deg) !important;
-
 }
+
 .debuff{
   transform:rotateZ(180deg) !important;
   filter:invert(71%) sepia(17%) saturate(3153%) hue-rotate(325deg) brightness(103%) contrast(101%);
-
-
 }
+
 .fall_overlay{
   position: absolute;
   z-index: -1;
@@ -355,68 +265,17 @@ transition: border-color 1s 1 ease-in 0;
   width:100%;
   left:0;
 }
-.death {
 
+.death {
   opacity:0;
   position: relative;
   animation: death 1s 1 ease-in;
 }
 
-@keyframes death {
-  0%{
-    filter:grayscale(0);
-    opacity:1;
-    top:0px;
-    z-index:2;
-  }
-  30%{
-      filter:grayscale(40);
-
-      opacity:.5;
-  }
-  100%{
-      opacity:0;
-      top:100px;
-  }
-}
-
-@keyframes ending_border {
-  0%{
-    border-color:red;
-  }
-  30%{
-    border-color:purple;
-  }
-  60%{
-    border-color:teal;
-  }
-  90%{
-    border-color:yellow;
-  }
-  100%{
-    border-color:red;
-  }
-}
-
-
-
 .recharging {
   animation: recharge 1s ease-in infinite !important;
 }
 
+.ending_container{
 
-@keyframes recharge {
-  0%{
-    filter:grayscale(0);
-    opacity:1
-  }
-  50%{
-      filter:grayscale(60);
-      opacity:.5
-
-  }
-  100%{
-    filter:grayscale(0);
-    opacity:1
-  }
 }

@@ -16,7 +16,6 @@ const RenderDescriptionRow  = (character) =>{
   const html = `
   <div class="row">
 
-
     <div class="col-4"style="padding-bottom:5%">
       <div class="row move_row">
         ${MoveLoop(character.moves,"player_character",false)}
@@ -30,10 +29,7 @@ const RenderDescriptionRow  = (character) =>{
 
     </div>
 
-
-
     <br />
-
 
   </div>`;
 
@@ -184,8 +180,7 @@ const RenderHeader = () =>{
 
 const DeathAnimation = async(characterElement) => {
   characterElement.classList.add("death");
-  var audio = document.querySelector(".death_sound");
-  audio.play();
+  StopOrPlayAudio(document.querySelector(".death_sound"),true);
   await delay(1000);
 }
 

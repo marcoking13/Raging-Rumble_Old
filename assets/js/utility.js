@@ -18,83 +18,35 @@ const CapitalizeFirstLetter =(string)=> {
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 
-const PlayerSelectedSpecialEffect = async (is_player,src) => {
+const PlayerSelectedSpecialEffect = async (limit,animation_class,container_class,src,pos) => {
 
-  var container_class = is_player ? "player_effects" : "enemy_effects";
+  container = document.querySelector("."+container_class);
+  container.style.position = "relative";
+  container.style.zIndex =4;
 
-  var container = document.querySelector("."+container_class);
-
-  var limit = 400;
-
-  for (let i =0; i <= 100; i++){
+  for (let i =0; i <= limit; i++){
 
     var duration = Math.random() * 2;
     var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
 
-    var random = plusOrMinus *(Math.random() * 150);
-    var size = Math.floor(Math.random() * 100);
+    var random = Math.random() * pos;
 
+    var element_name = src ? "img" : "div";
+    var effect = document.createElement(element_name);
 
-
-    var effect = document.createElement("img");
-    effect.setAttribute("src",src);
-    var animation_class = "selected_box_animation";
-
+    if(element_name == "img"){
+      effect.setAttribute("src",src);
+    }
 
     effect.classList.add(animation_class);
     effect.style.animationDuration = duration.toString() + "s";
-    effect.style.left = random.toString() +"px";
-    effect.style.width = size.toString() +'px';
-    effect.style.height = size.toString() +'px';
-    console.log(effect);
+    effect.style.left = random.toString() +"%";
+
     container.append(effect);
 
   }
 
 }
-
-
-
-const PlayerSelectedSpecialEffectSingle = async (animationClass,className,is_player,src,pos,buf) => {
-
-  container = document.querySelector("."+className);
-  container.style.position = "relative";
-  container.style.zIndex =4;
-
-  // var limit = 400;
-  var duration = Math.random() * 2;
-  var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-
-  var random = (Math.random() *pos) + buf;
-  // var multiplier = Math.random() * 100 > 50 ? 1 : -1;
-  // random *= multiplier;
-
-  var size = Math.floor(Math.random() * 50);
-
-
-
-  var element_name = src ? "img" : "div";
-  var effect = document.createElement(element_name);
-  if(element_name == "img"){
-    effect.setAttribute("src",src);
-  }
-  var animation_class = animationClass;
-
-
-  effect.classList.add(animation_class);
-  effect.style.animationDuration = "1s";
-  effect.style.left = random.toString() +"%";
-  // effect.style.width = size.toString() +'px';
-  // effect.style.height = size.toString() +'px';
-
-  container.append(effect);
-
-
-
-}
-
-
-
 
 
 const SaveCharacters = (player,enemy) =>{
@@ -103,7 +55,6 @@ const SaveCharacters = (player,enemy) =>{
   localStorage.setItem('enemy', JSON.stringify(enemy));
 
 }
-
 
 const EmptyContainer = (element) =>{
 

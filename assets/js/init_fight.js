@@ -1,4 +1,4 @@
-const saved_characters = {
+var saved_characters = {
   player:null,
   enemy:null
 }

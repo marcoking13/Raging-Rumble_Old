@@ -5,10 +5,31 @@
 .width-50{
   width:50%;
 }
-
+.relative{
+  position: relative;
+}
 .padding-right-20{
   padding-right:20%;
 }
+.light_red{
+  color:#FF5757
+}
+
+.light_blue{
+  color:#38B6FF;
+}
+.margin-top-5{
+  margin-top:5%;
+}
+
+.rubik{
+  font-family: "Rubik Moonrocks"
+}
+
+.text-center{
+  text-align: center;
+}
+
 .countdown_effect{
   width:1% !important;
   transform: scale(.5);
@@ -20,6 +41,98 @@
   opacity:0;
   z-index:1;
 }
+
+.active{
+  opacity:1
+}
+
+.inactive{
+  opacity:.5;
+}
+.width-100{
+  width:100%;
+}
+.ease_left{
+  animation: ease_left .5s 1 ease-in;
+}
+
+
+.width-50{
+  width:50%;
+}
+
+.margin-left-25{
+  margin-left:25%;
+}
+
+.margin-top-2_5{
+  margin-top:2.5%;
+}
+
+.ease_right{
+  animation: ease_right .5s 1 ease-in;
+}
+
+.margin-top-5{
+  margin-top:5%;
+}
+
+.float-left{
+  float:left;
+}
+
+.float-right{
+  float:right;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.ice_background p{
+  background:rgb(200,233,233) !important;
+}
+.rotate-180{
+  transform:rotateY(180deg);
+}
+.ice_text p{
+  color:rgb(200,233,233) !important;
+}
+
+.ice_text {
+  color:rgb(200,233,233) !important;
+}
+
+.ice_text strong {
+  color:rgb(200,233,233) !important;
+}
+
+.ice_border_color{
+  border-color:rgb(200,233,233) !important;
+}
+
+.width-100{
+  width:100%;
+}
+.active{
+  opacity:1;
+}
+.margin-left-10{
+  margin-left: 10%;
+}
+
+.margin-left-5{
+  margin-left: 5%;
+}
+
+.no-point{
+  pointer-events: none;
+}
+
 .winning_countdown_effect{
   width:1% !important;
   transform: scale(.5);
@@ -31,73 +144,7 @@
   opacity:0;
   z-index:1 !important;
 }
-@keyframes rectangle_shift{
-  0%{
-    top:90%;
-    opacity:0;
 
-  }
-  5%{
-    top:80%;
-    opacity:1;
-    width:2px !important;
-    z-index:0;
-    background:red;
-  }
-
-  50%{
-    background:orange;
-  }
-  90%{
-    background:crimson;
-    top:-20%;
-    opacity:1;
-  }
-  100%{
-    background:none;
-    opacity:0;
-    width:0px;
-    top:-20%;
-  }
-}
-@keyframes rectangle_shift_rainbow{
-  0%{
-    top:90%;
-    opacity:0;
-
-  }
-  5%{
-    top:80%;
-    opacity:1;
-    width:2px !important;
-    z-index:0;
-    background:red;
-  }
-  20{
-    background:purple
-  }
-  35%{
-    background:aqua;
-  }
-
-  50%{
-    background:orange;
-  }
-  70%{
-    background:gold;
-  }
-  90%{
-    background:crimson;
-    top:-20%;
-    opacity:1;
-  }
-  100%{
-    background:none;
-    opacity:0;
-    width:0px;
-    top:-20%;
-  }
-}
 .square-list-style{
   list-style-type:square;
 }

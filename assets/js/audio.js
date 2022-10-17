@@ -11,6 +11,7 @@ const CreateAudioSound = (sound,type) => {
   source.setAttribute("src",sound);
 
   audio.append(source);
+  
   document.body.append(audio);
 
 }

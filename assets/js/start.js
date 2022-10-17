@@ -9,10 +9,9 @@ const FireballEffect = () => {
     element.setAttribute("src","./assets/imgs/fire_ball_start.gif")
     element.classList.add("fireball_start");
 
-
     element.style.top = y_pos[fireball_counters].toString() + "%";
     fireball_counters ++;
-    console.log(element.style.top);
+
     var interval;
     var audio = document.querySelector(".fire_sound");
     audio.play();
@@ -30,7 +29,6 @@ const GenerateStartScreen = async() =>{
     var start_game_button = document.createElement("p");
     const start_game_button_text = document.createTextNode("Start Game");
 
-
     const html = `
     <div class="container-fluid witch_queen_vengence_container">
 
@@ -47,13 +45,13 @@ const GenerateStartScreen = async() =>{
     var start_screen = document.querySelector(".start_screen");
 
     await delay(1000);
+
     start_game_button.append(start_game_button_text);
     start_game_button.classList.add("start_game");
 
     start_game_button.addEventListener("click",(e)=>{
       window.location.assign("./character_selection.html");
     })
-
 
     start_screen.append(start_game_button);
 
@@ -78,11 +76,6 @@ if(window.innerWidth >= 680){
      interval = setInterval(()=>{FireballEffect()},800);
   }
 
-
-
   GenerateStartScreen();
-
-
-
 
 }

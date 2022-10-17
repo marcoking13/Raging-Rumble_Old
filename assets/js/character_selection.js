@@ -21,7 +21,7 @@ const ResetStatPoint = (current_point,limit,reset_to) =>{
       return current_point;
     }
 
-  }
+}
 
 const RenderStatBar = (stat,stats_point,color,show_bar) =>{
 
@@ -116,8 +116,6 @@ const SelectCharacter = (character,box_class) =>{
 
   RemoveClassFromElements("character_available_box","active_character_available_box");
 
-
-
   var fight_btn = document.querySelector(".fight_btn");
 
   fight_btn.classList.add("active");
@@ -131,23 +129,26 @@ const SelectCharacter = (character,box_class) =>{
 
   ready = true;
   var box = document.querySelector("."+box_class)
-  console.log(box)
+
   RenderSelectedCharacters(player,enemy,true);
 
   RenderCharactersAvailable(available_characters);
   clearInterval(player_interval);
   clearInterval(enemy_interval);
 
-  player_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+player.id,true,"./assets/imgs/flame_e.png",85,0)},200);
-  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffectSingle("effect_available","wizard_id_"+enemy.id,false,"./assets/imgs/flame_e.png",85,0)},200);
+  player_interval = setInterval(()=>{PlayerSelectedSpecialEffect(1,"effect_available","wizard_id_"+player.id,"./assets/imgs/flame_e.png",80)},200);
+  enemy_interval = setInterval(()=>{PlayerSelectedSpecialEffect(1,"effect_available","wizard_id_"+enemy.id,"./assets/imgs/flame_e.png",80)},200);
 
   document.querySelector(".wizard_id_"+player.id).classList.add("active_character_available_box");
   document.querySelector(".wizard_id_"+enemy.id).classList.add("active_character_available_box");
+
   var selected_box = document.querySelector(`.selected_`+player.id);
   var selected_enemy_box = document.querySelector(`.selected_`+enemy.id);
 
   AnimateCharacter(selected_box,false,selected_character.player.animation_sheet.idle,300)
-  AnimateCharacter(selected_enemy_box,true,selected_character.enemy.animation_sheet.idle,300)
+  AnimateCharacter(selected_enemy_box,true,selected_character.enemy.animation_sheet.idle,300);
+
+  SaveCharacters(player,enemy)
 
   RefreshModal(player,enemy);
 
@@ -167,8 +168,7 @@ const StartFight = (player,enemy)=>{
     var vs = document.querySelector(".vs_text");
     vs.classList.add("active_vs");
 
-    SaveCharacters(player,enemy);
-
+    // SaveCharacters(player,enemy);
     ResetCountdown();
 
     Countdown(player,enemy);
@@ -250,12 +250,13 @@ const RenderSelectedCharacterBox = (character,is_player) => {
     var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
     var flip = character.flip_sprite ? 180 : 0;
     var is_enemy_flip = is_player ?  0  : 180;
+    var class_name = is_player ? "selected_player_container" : "selected_enemy_container";
 
     flip += is_enemy_flip;
 
     const html = `
 
-      <div class="col-5 selected_player_container">
+      <div class="col-5 ${class_name}">
         <div class="${active_class}">
           <img style="transform:rotateY(${flip.toString()}deg)" class=" ${enlarge} width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
         </div>
@@ -280,6 +281,7 @@ const RenderSelectedCharacterColumn = (character,ease,is_player,playerSelected) 
         ease = "";
       }
 
+
       const html = `
          <div class="col-5 character_box ${ease}">
 
@@ -300,7 +302,7 @@ const RenderSelectedCharacters = (player,enemy,playerSelected) => {
 
   var container = document.querySelector(".selected_character_container");
   EmptyContainer(container);
-  console.log(playerSelected)
+
   var selected_character_html = `
     <div class="container-fluid selected_character_row">
       <div class="row">
@@ -332,9 +334,10 @@ const RenderSelectedCharacters = (player,enemy,playerSelected) => {
   container.append(selected_character_row);
 
   if(playerSelected){
+    var random_pos = Math.random() * 100;
 
-    PlayerSelectedSpecialEffect(true,"./assets/imgs/flame_e.png");
-    PlayerSelectedSpecialEffect(false,"./assets/imgs/flame_e.png");
+    PlayerSelectedSpecialEffect(500,"selected_box_animation","selected_player_container","./assets/imgs/flame_e.png",100);
+    PlayerSelectedSpecialEffect(500,"selected_box_animation","selected_enemy_container","./assets/imgs/flame_e.png",100);
 
     if(music_active){
       var audio = document.querySelector(".ui_sound");

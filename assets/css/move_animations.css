@@ -1,156 +1,216 @@
-.fire_strike_ani{
-  position: absolute;
-  width:40%;
-  animation: move_left_then_get_big 2s 1 ease-in;
-  opacity:0;
-}
 
-.venom_boost_ani{
-  position: absolute;
-  left:140%;
-  top:20%;
-  animation: venom_boost .5s 1 ease-in-out;
-  filter:saturate(180);
-  opacity:0;
-  width:20%;
-}
-
-.blood_ani{
-  animation:blood_ani .5s 1 ease-in;
-}
-
-.flying_rush_ani{
-  position: absolute;
-  left:140%;
-  top:20%;
-  z-index:999;
-  animation: move_left 1s 1 ease-in;
-  opacity:0;
-  width:20%;
-}
-
-.flying_rush_ani_enemy{
-  left:-65%;
-  animation: move_right 1s 1 ease-in !important;
-}
-
-
-.life_drain_ani{
-  position: absolute;
-  left:135%;
-  width:30%;
-  top:20%;
-  animation: life_drain_player .5s 1 ease-in;
-  opacity:0;
-}
-
-.life_drain_ani_enemy{
-  left:-40%;
-  animation: life_drain_enemy .5s 1 ease-in !important;
-}
-
-.venom_boost_ani_enemy{
-  left:-60%;
-}
-
-.effect_box{
-  position: relative;
-}
-
-.hurt{
-  filter:contrast(1);
-  animation: hurt 3 .4s ease-in-out;
-}
-
-.fire_strike_ani_enemy{
-  animation: move_right_then_get_big 2s 1 ease-in;
-}
-
-.glacier_thrust_ani{
-  position: absolute;
-  width:30%;
-  animation: move_left_then_get_big 3s 1 ease-in;
-  opacity:0;
-  top:20%;
+@keyframes ghost_claw{
+  0%{
+    opacity:100%;
+  }
+  20%{
+    transform:scale(2);
+    opacity:20%;
+  }
+  40%{
+    opacity:100%;
+  }
+  60%{
+    opacity:20%;
+    transform:scale(3);
+  }
+  80%{
+    opacity:100%;
+  }
+  100%{
+    opacity:0%;
+    transform:scale(1);
+  }
 
 }
 
-.glacier_thrust_ani_enemy{
-  animation: move_right_then_get_big 3s 1 ease-in !important;
+@keyframes ice_punch{
+  0%{
+    opacity:50%;
+    transform:scale(0);
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(720deg);
+    opacity:100%;
+  }
+  80%{
+    transform:scale(5);
+
+  }
+  100%{
+    opacity:0%;
+    transform:scale(5);
+
+  }
+
 }
 
-.ice_sling_ani{
-  position: absolute;
-  width:40%;
-  animation: move_left_then_get_big 2s 1 ease-in;
-  opacity:0;
+
+@keyframes spirit_chant {
+
+  0%{
+    transform: scale(1);
+    opacity:1;
+    top:40%;
+    transform:rotate(0deg);
+  }
+
+  50%{
+    top:20%;
+    transform: scale(2);
+    opacity:.5;
+  }
+  100%{
+    opacity:0;
+    transform: scale(2);
+    transform:rotate(0deg);
+  }
+
 }
 
-.enemy_character{
-  transform:rotateY(180deg);
+@keyframes raging_thunder {
+
+  0%{
+    transform: scale(2);
+    opacity:1;
+    top:5%;
+    transform:rotate(0deg);
+
+  }
+
+  50%{
+    top:30%;
+    transform: scale(2.5);
+    opacity:.5;
+  }
+  100%{
+    opacity:0;
+    transform:rotate(0deg);
+  }
+
 }
 
-.ice_sling_ani_enemy{
-    animation: move_right_then_get_big 1s 1 ease-in !important;
+
+@keyframes ghost_fire {
+
+  0%{
+    left:-50%;
+    transform: scale(2);
+    opacity:.5;
+    top:20%;
+    transform:rotate(0deg);
+  }
+
+  10%{
+    top:25%;
+    transform: scale(1.2);
+    opacity:1;
+
+
+  }
+
+  20%{
+    top:20%;
+    transform: scale(1);
+
+  }
+
+  30%{
+    top:25%;
+    transform: scale(1.2);
+
+  }
+
+  40%{
+    top:20%;
+    transform: scale(1);
+    opacity:1;
+  }
+
+  50%{
+    top:25%;
+    transform: scale(1.2);
+  }
+
+  60%{
+    top:20%;
+    transform: scale(1);
+  }
+
+  70%{
+    top:25%;
+    transform: scale(1.2);
+    left:145%;
+  }
+
+  100%{
+    transform: scale(2);
+    opacity:.5;
+    top:20%;
+    transform:rotate(0deg);
+
+  }
+
 }
 
-.fire_sling_ani{
-  position: absolute;
-  width:40%;
-  z-index:999;
-  left:130%;
-  animation: explosion 2s 1 ease-in;
-  opacity:0;
-  top:20%;
+@keyframes ghost_fire_enemy {
+
+  0%{
+    left:120%;
+    transform: scale(2);
+    opacity:.5;
+    top:20%;
+    transform:rotate(0deg);
+  }
+
+  10%{
+    top:25%;
+    transform: scale(1.2);
+    opacity:1;
+  }
+
+  20%{
+    top:20%;
+    transform: scale(1);
+  }
+
+  30%{
+    top:25%;
+    transform: scale(1.2);
+  }
+
+  40%{
+    top:20%;
+    transform: scale(1);
+    opacity:1;
+  }
+
+  50%{
+    top:25%;
+    transform: scale(1.2);
+  }
+
+  60%{
+    top:20%;
+    transform: scale(1);
+  }
+
+  70%{
+    top:25%;
+    transform: scale(1.2);
+    left:-70%;
+  }
+
+  100%{
+    transform: scale(2);
+    opacity:.5;
+    top:20%;
+    transform:rotate(0deg);
+  }
+
 }
 
-.fire_sling_ani_enemy{
-    animation: explosion 2s 1 ease-in !important;
-    left:-70% !important;
-}
-
-.blinding_light_ani_enemy{
-    left:-70% !important;
-    animation: blinding_light 1s 1 ease-in;
-}
-
-.blinding_light_ani{
-  position: absolute;
-  width:45%;
-  left:130%;
-  animation: blinding_light 1s 1 ease-in;
-  opacity:0%;
-  top:15%;
-}
-
-.hypno_stare_ani{
-  position: absolute;
-  width:35%;
-  left:130%;
-  border-radius:50%;
-  animation: hypno_stare 2s 1 ease-in;
-  opacity:0%;
-  top:15%;
-  z-index:99;
-}
-
-.hypno_stare_ani_enemy{
-  left:-70%;
-}
-
-.hells_escape_ani{
-  position: absolute;
-  width:45%;
-  left:130%;
-  animation: hells_escape 2s 1 ease-in;
-  opacity:0%;
-  top:15%;
-}
-
-.hells_escape_ani_enemy{
-  left:-70% !important;
-  animation: hells_escape 2s 1 ease-in;
-}
 
 @keyframes explosion{
   0%{

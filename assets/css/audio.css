@@ -10,14 +10,6 @@
   width:100%;
 }
 
-.inactive{
-  opacity:.5;
-}
-
-.active{
-  opacity:1
-}
-
 .audio_icon_character{
   position:absolute;
   width:3%;
