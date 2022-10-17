@@ -137,14 +137,18 @@
 
 @keyframes end_modal {
   0%{
-    margin-top:0%;
+   top:-600px;
+   margin-top:0%;
     opacity:0;
+    border-color:red;
   }
   50%{
     opacity:.5;
+    border-color:orange;
   }
   100%{
-    margin-top:10%
+    top:100px;
+    border-color:red;
   }
 
 }

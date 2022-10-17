@@ -103,17 +103,16 @@
 
 .ending_container{
   position:relative;
-  width:100%;
+  width:50%;
+  margin-left:25%;
   animation: end_modal .5s 1 ease-in;
   height:400px;
   border-radius:10px;
-  margin-top:10% !important;
+  top:100px;
   z-index:99;
-  padding-bottom:5%;
-  height:600px !important;
-  padding-bottom:10%;
+  padding-bottom:15%;
   background:black;
-  border-color:none;
+  border:red 2px solid;
 }
 
 .ending_title{

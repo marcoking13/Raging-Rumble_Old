@@ -79,8 +79,8 @@ const IntializeGame = () =>{
   clearInterval(player_iterator)
   clearInterval(enemy_iterator)
 
-  player_engine.health = saved_characters.player.stats.health.stat
-  enemy_engine.health = saved_characters.enemy.stats.health.stat;
+  player_engine.health = 5;
+  enemy_engine.health = 5;
 
   RenderHeader();
   RenderFightRow(saved_characters.player,saved_characters.enemy);

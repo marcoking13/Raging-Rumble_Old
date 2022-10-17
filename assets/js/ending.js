@@ -1,37 +1,4 @@
-// const RenderWinnerEffect = (won) =>{
-//
-//   var html = `<div class="effect_container"> `
-//   var left = 10;
-//   var duration = .1;
-//
-//   if(won){
-//
-//     for(var i = 0; i <= 500;i++){
-//
-//       var x = Math.random() * 100;
-//       var y = Math.random() * 100;
-//
-//       var g = Math.floor(Math.random() * 255);
-//       var r = Math.floor(Math.random() * 255);
-//       var b = Math.floor(Math.random() * 255);
-//
-//       html += `
-//       <div class="winner_effect"
-//         style="left:${y.toString()}%;animation-duration:${duration.toString()}s;background:rgb(${r.toString()},${g.toString()},${b.toString()})">
-//       </div>
-//       `
-//       duration += .02;
-//       left += 1;
-//
-//     }
-//
-// }
-//
-//   html += `</div>`;
-//
-//   return html;
-//
-// }
+var ending_effect_interval = null;
 
 const RenderEndPage = async(character,player_won) =>{
 
@@ -75,10 +42,8 @@ const RenderEndPage = async(character,player_won) =>{
 
       <h1 class="text-center winner_name">${character.name}</h1>
 
-  </div>
-  `
+  </div>`
 
-  // var html = GenerateModal(null,null,false,character);
 
   EmptyContainer(page);
 
@@ -88,17 +53,18 @@ const RenderEndPage = async(character,player_won) =>{
 
   page.append(container);
 
-  var effect_container = document.querySelector(".ending_container");
+  var ending_container = document.querySelector(".ending_container");
   var effect_class = player_won ? "winning_countdown_effect" : "countdown_effect";
   var random_pos = Math.random() * 80;
-  setInterval(()=>{PlayerSelectedSpecialEffect(10,effect_class,"effect_container",false,null,100)},1000);
+
+  clearInterval(ending_effect_interval);
+  
+  ending_effect_interval = setInterval(()=>{PlayerSelectedSpecialEffect(10,effect_class,"ending_container",null,100)},1000);
 
   await delay(5000);
 
   window.location.assign("./character_selection.html");
 
-  EmptyContainer(effect_container);
-
-
+  EmptyContainer(ending_container);
 
 }
