@@ -124,14 +124,19 @@ const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
     var ms_passed = 0;
 
     var k = 1;
+    
     ms_passed += ms;
 
     var animation_iterator = setInterval(()=>{
+
       if(k >= sheet.animation_sheet.length - 1){
           k = 1;
       }
+
       k++;
+
       element.setAttribute("src",`${sheet.animation_sheet[k]}`);
+
     },ms);
 
     return animation_iterator

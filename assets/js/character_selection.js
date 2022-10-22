@@ -1,10 +1,8 @@
 const available_boxes = 6;
 var ready = false;
 var fight_starting = false;
-
 const available_characters = return_available_characters(6,available_boxes);
 const placeholder_character = return_placeholder_character();
-
 var enemy_interval = null
 var player_interval = null
 

@@ -1,3 +1,4 @@
+
 const game_container = document.querySelector(".game_container");
 var fireball_counters = 0;
 var y_pos = [-5,15];
@@ -64,8 +65,6 @@ const GenerateStartScreen = async() =>{
     setTimeout(()=>{AddClassToElement(start_text,"start_game_ani")},1000);
 
 }
-
-
 
 if(window.innerWidth >= 680){
 

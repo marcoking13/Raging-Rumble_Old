@@ -5,10 +5,8 @@ var saved_characters = {
 
 var player_engine = new Engine(0,0,0);
 var enemy_engine = new Engine(0,0,0);
-
 var player_element = null;
 var enemy_element = null;
-
 var disable = false;
 
 music_active = true;

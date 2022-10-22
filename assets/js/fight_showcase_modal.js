@@ -22,14 +22,16 @@ const Countdown = async(player,enemy) =>{
   var countdown = 5;
 
   clearInterval(effect_modal_interval);
-  
+
   var countdown_text = document.querySelector(".countdown_text");
 
   countdown_text.innerHTML = countdown.toString();
 
   effect_modal_interval = setInterval(()=>{
+
     PlayerSelectedSpecialEffect(10,"countdown_effect","countdown_box",null,90)
     countdown--;
+
     if(countdown <= 0){
 
       countdown = 0;
