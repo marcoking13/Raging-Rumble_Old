@@ -360,7 +360,7 @@
   }
 }
 .countdown_effect_{
-  animation:1 ease-in effect_av_s .5s;
+  animation:1 ease-in effect_av_s 2.5s !important;
   position:absolute;
   top:100%;
 }
@@ -394,7 +394,7 @@
   }
   100%{
     opacity:0%;
-        top:0%;
+        top:-5%;
   }
 }
 @keyframes effect_av{
