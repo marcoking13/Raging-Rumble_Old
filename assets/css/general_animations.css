@@ -11,70 +11,8 @@
   }
 }
 
-@keyframes rectangle_shift{
 
-  0%{
-  left:0%;
-    opacity:1;
-    width:2px !important;
-    z-index:0;
-    background:red;
-  }
 
-  50%{
-    background:orange;
-  }
-  90%{
-    background:crimson;
-
-    opacity:1;
-  }
-  100%{
-    background:none;
-    opacity:0;
-    width:0px;
-    left:100%;
-  }
-}
-
-@keyframes rectangle_shift_rainbow{
-  0%{
-    top:90%;
-    opacity:0;
-
-  }
-  5%{
-    top:80%;
-    opacity:1;
-    width:2px !important;
-    z-index:0;
-    background:red;
-  }
-  20{
-    background:purple
-  }
-  35%{
-    background:aqua;
-  }
-
-  50%{
-    background:orange;
-  }
-  70%{
-    background:gold;
-  }
-  90%{
-    background:crimson;
-    top:-20%;
-    opacity:1;
-  }
-  100%{
-    background:none;
-    opacity:0;
-    width:0px;
-    top:-20%;
-  }
-}
 
 
 @keyframes ease_left {
@@ -311,6 +249,12 @@
       top:100px;
   }
 }
+.countdown_effect__{
+  animation: effect_av_ 2s 1 ease-in;
+  position: absolute !important;
+  bottom:100%;
+}
+
 
 @keyframes miss {
   0%{
@@ -329,6 +273,7 @@
 
   }
 }
+
 
 @keyframes effect_av_selected{
   0%{
@@ -360,9 +305,34 @@
   }
 }
 .countdown_effect_{
-  animation:1 ease-in effect_av_s 2.5s !important;
+  animation:1 ease-in effect_av_s 5s !important;
   position:absolute;
   top:100%;
+}
+
+.countdown_effect__{
+  animation:1 ease-in effect_av_s_ 5s !important;
+  position:absolute;
+  width:300px !important;
+  height:300px !important;
+  top:600%;
+}
+
+@keyframes effect_av_s_{
+  0%{
+    top:100%;
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(115%) contrast(81%);
+    opacity:1;
+      z-index:1;
+  }
+
+  100%{
+    opacity:0;
+    top:55%;
+    filter:invert(24%) sepia(47%) saturate(4062%) hue-rotate(334deg) brightness(115%) contrast(81%);
+
+  }
+
 }
 @keyframes effect_av_s{
   0%{

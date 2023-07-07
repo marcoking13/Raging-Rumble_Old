@@ -33,7 +33,6 @@ const GenerateStartScreen = async() =>{
     const html = `
     <div class="container-fluid witch_queen_vengence_container">
 
-      <img class="app_background" src = "./assets/imgs/landing_background.png" />
       <div class='start_screen'>
           <h1 class="app_title title_1"> Raging <strong class="app_title title_2 title_ani_2 ">Rumble </strong></h1>
           <p class="app_subtitle"> <strong class="purple">Can You Defeat All the Fighters? </p>
@@ -63,6 +62,9 @@ const GenerateStartScreen = async() =>{
     setTimeout(()=>{AddClassToElement(title_1,"title_ani_1")},500);
     setTimeout(()=>{AddClassToElement(subtitle,"subtitle_ani")},1000);
     setTimeout(()=>{AddClassToElement(start_text,"start_game_ani")},1000);
+    setInterval(()=>{
+       PlayerSelectedSpecialEffect(1,"countdown_effect__","x_","./assets/imgs/flame_e.png",(Math.floor(Math.random() * 100) -5),false);
+    },10)
 
 }
 

@@ -12,7 +12,15 @@ img{
 .fight_modal{
   height:300px;
 }
+.XS{
+  transform: scale(1);
+  transition:  transform .5s ;
 
+}
+.XS:hover{
+    transform: scale(1.2);
+    transition:  transform .5s ;
+}
 .player_modal_img{
   width:100%;
 }

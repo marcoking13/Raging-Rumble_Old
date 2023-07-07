@@ -72,9 +72,9 @@ const RenderEndPage = async(character,player_won) =>{
       left += 2;
     }
 
-    PlayerSelectedSpecialEffect(10,"countdown_effect_","ending_container","./assets/imgs/flame_e.png",Math.floor(Math.random() * 100),false);
+    PlayerSelectedSpecialEffect(5,"countdown_effect_","ending_container","./assets/imgs/flame_e.png",Math.floor(Math.random() * 100),false);
 
-  },10);
+  },100);
 
   await delay(5000);
 

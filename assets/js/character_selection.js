@@ -5,7 +5,7 @@ const available_characters = return_available_characters(6,available_boxes);
 const placeholder_character = return_placeholder_character();
 var enemy_interval = null
 var player_interval = null
-
+var hasRendered = false;
 var _enemy_interval = null
 var _player_interval = null
 
@@ -107,7 +107,7 @@ const SelectCharacter = (character,box_class) =>{
 
   selected_character.player = character;
   selected_character.enemy = available_characters[Math.floor(Math.random() * available_characters.length)];
-
+  hasRendered = true;
   var enemy = selected_character.enemy;
   var player = selected_character.player;
 
@@ -131,7 +131,7 @@ const SelectCharacter = (character,box_class) =>{
   var box = document.querySelector("."+box_class)
 
   RenderSelectedCharacters(player,enemy,true);
-
+  console.log("s")
   RenderCharactersAvailable(available_characters);
   clearInterval(player_interval);
   clearInterval(enemy_interval);
@@ -196,7 +196,9 @@ const StartFight = (player,enemy)=>{
 */
 
 const RenderAvailableBox = (character,rotation) => {
-
+  if(hasRendered){
+    return;
+  }
   function returnImage(){
 
     if(character.display_image){
@@ -224,7 +226,7 @@ const RenderAvailableBox = (character,rotation) => {
    html.innerHTML = `
 
       <div class="width-100 margin-left-5 ${active}">
-        <div style="background:black;border-radius:5px;padding:5%;color:white;border:2px solid orange;height::400px;margin-top:5%;margin-left:-15%">
+        <div style="background:black;border-radius:5px;padding:5%;color:white;border:2px solid orange;height::400px;margin-top:5%;" class="XS">
         <div style="height:200px">
         <img class="width-100 relative " style="z-index:999"  src = "${character.display_image}" />
         </div>
@@ -246,7 +248,8 @@ const RenderAvailableBox = (character,rotation) => {
 }
 
 const RenderCharactersAvailable = (characters) => {
-
+console.log(hasRendered);
+if(!hasRendered){
   var container = document.querySelector(".characters_available_container_");
 
   var rotations = randomRotation(characters.length,3);
@@ -256,7 +259,7 @@ const RenderCharactersAvailable = (characters) => {
    container.append(RenderAvailableBox(characters[i],rotations[i]));
 
   }
-
+}
 }
 
 const RenderSelectedCharacterBox = (character,is_player) => {
@@ -272,10 +275,10 @@ const RenderSelectedCharacterBox = (character,is_player) => {
     flip += is_enemy_flip;
 
     const html = `
-    <div class="selected_character_name">
-      <p class="selected_character_item_name ${text_effect}">${character.name}</p>
-    </div>
-      <div class="col-3"></div>
+
+      <div class="col-3 selected_character_name">
+          <p class="selected_character_item_name ${text_effect}">${character.name}</p>
+      </div>
       <div class="col-6 ${class_name}">
         <div class="${active_class}">
           <img style="transform:rotateY(${flip.toString()}deg)" class=" ${enlarge} width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
