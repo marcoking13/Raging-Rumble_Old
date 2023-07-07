@@ -48,6 +48,7 @@ const RenderEndPage = async(character,player_won) =>{
   EmptyContainer(page);
 
   var container = document.createElement("div");
+
   container.classList.add("ending_page");
   container.innerHTML = html;
 
@@ -55,11 +56,16 @@ const RenderEndPage = async(character,player_won) =>{
 
   var ending_container = document.querySelector(".ending_container");
   var effect_class = player_won ? "winning_countdown_effect" : "countdown_effect";
-  var random_pos = Math.random() * 80;
+  var random_pos = Math.random() * 250;
+  if(random_pos <= 0){
+    random_pos = 0;
+  }else if(random_pos >=150){
+    random_pos = 150;
+  }
 
   clearInterval(ending_effect_interval);
-  
-  ending_effect_interval = setInterval(()=>{PlayerSelectedSpecialEffect(10,effect_class,"ending_container",null,100)},1000);
+
+  ending_effect_interval = setInterval(()=>{PlayerSelectedSpecialEffect(5,"countdown_effect_","ending_container","./assets/imgs/flame_e.png",random_pos,false)},100);
 
   await delay(5000);
 

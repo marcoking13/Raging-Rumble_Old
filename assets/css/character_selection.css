@@ -1,3 +1,6 @@
+img{
+  z-index:99;
+}
 .go_back_text{
   float:left;
   color:white;
@@ -21,6 +24,7 @@
   border-top:1px solid yellow;
   border-bottom:1px solid yellow
 }
+
 .game_modal{
   padding:2%;
   background:black;
@@ -52,7 +56,7 @@
 }
 
 .character_selection_background{
-  background:url("./../imgs/character_selection_background.png") !important;
+  background:url("./../imgs/hex.png") !important;
 }
 
 .app_background{
@@ -99,26 +103,34 @@
   position: absolute;
   opacity:0;
   width:10%;
-  z-index:0;
+  z-index:1;
   animation: effect_av 1 ease-in 1s;
-  top:50%;
+  top:70%;
 }
 
+.effect_av_s{
+  position: absolute;
+  opacity:0;
+  width:10%;
+  z-index:1;
+  animation: effect_av_s 1 ease-in 1s;
+  top:00%;
+}
+.effect_available_select{
+  position: absolute;
+  display: inline;
+  opacity:0;
+  width:10%;
+z-index:9;
+  animation: effect_av_selected 1 ease-in 1s;
+
+  left:5%;
+}
 .fight_btn{
     margin-top:5%;
 }
 
-.player_effects{
-  position: absolute !important;
-  left:45%;
-  top:15%;
-}
 
-.enemy_effects{
-  position: absolute !important;
-  right:17.5%;
-  top:15%;
-}
 
 .selected_box_animation{
   position: absolute;
@@ -301,6 +313,12 @@
   width:100%;
 }
 
+.player_effects{
+  position: relative !important;
+}
+.enemy_effects{
+  position: relative !important;
+}
 .fighter_box:hover .character_available_box p{
   color:red;
 }

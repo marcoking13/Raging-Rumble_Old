@@ -17,6 +17,7 @@ const RefreshModal = (player,enemy)=>{
 
 }
 
+var _in ;
 const Countdown = async(player,enemy) =>{
 
   var countdown = 5;
@@ -29,7 +30,7 @@ const Countdown = async(player,enemy) =>{
 
   effect_modal_interval = setInterval(()=>{
 
-    PlayerSelectedSpecialEffect(10,"countdown_effect","countdown_box",null,90)
+
     countdown--;
 
     if(countdown <= 0){
@@ -58,9 +59,9 @@ const RenderVSModal = (player,enemy) => {
   var html = `
   <div class="col-5 margin-top-5">
   <div class="fight_modal">
-    <img src=${player.display_image} class="player_modal_img"style="transform:rotateY(${flip_player.toString()}deg)"/>
+    <img src=${player.display_image} class="player_modal_img" style="z-index:999;transform:rotateY(${flip_player.toString()}deg)"/>
   </div>
-    <h3 class="player_modal_name text-center rubik margin-top-5 light_blue">${player.name}</h3>
+    <h3 class="player_modal_name text-center rubik margin-top-5 light_blue" style="relative;z-index:999">${player.name}</h3>
   </div>
 
   <div class="col-2 margin-top-5">
@@ -69,9 +70,9 @@ const RenderVSModal = (player,enemy) => {
 
   <div class="col-5 margin-top-5">
     <div class="fight_modal">
-      <img src=${enemy.display_image} class="player_modal_img rotate-180"style="transform:rotateY(${flip_enemy.toString()}deg)"/>
+      <img src=${enemy.display_image} class="player_modal_img rotate-180"style="z-index:99;position:relative;transform:rotateY(${flip_enemy.toString()}deg)"/>
     </div>
-    <h3 class="player_modal_name margin-top-5 text-center rubik light_red">${enemy.name}</h3>
+    <h3 class="player_modal_name margin-top-5 text-center rubik light_red" style="z-index:999; position:relative">${enemy.name}</h3>
   </div>`
 
   return html;

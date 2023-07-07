@@ -17,6 +17,9 @@
 .move_box{
   text-align: left;
 }
+html{
+  height:100vh;
+}
 
 .flame_hov{
   opacity:0;
@@ -100,19 +103,22 @@
   animation: .5s left_trans 1 ease-in;
   position: relative;
 }
+html{
+  overflow-x: hidden;
+}
 
 .ending_container{
   position:relative;
-  width:50%;
-  margin-left:25%;
+  width:70%;
+  padding:5%;
+  height:100vh;
+  margin-left:15%;
   animation: end_modal .5s 1 ease-in;
-  height:400px;
-  border-radius:10px;
-  top:100px;
   z-index:99;
   padding-bottom:15%;
   background:black;
-  border:red 2px solid;
+  border-left:2px solid red;
+  border-right:2px solid red;
 }
 
 .ending_title{

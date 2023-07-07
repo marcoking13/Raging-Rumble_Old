@@ -18,15 +18,15 @@ const CapitalizeFirstLetter =(string)=> {
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 
-const PlayerSelectedSpecialEffect = async (limit,animation_class,container_class,src,pos) => {
+const PlayerSelectedSpecialEffect = async (limit,animation_class,container_class,src,pos,isHoriz) => {
 
   container = document.querySelector("."+container_class);
   container.style.position = "relative";
-  container.style.zIndex =4;
+  container.style.zIndex = 1;
 
   for (let i =0; i <= limit; i++){
 
-    var duration = Math.random() * 2;
+    var duration = 5;
     var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
 
     var random = Math.random() * pos;
@@ -39,14 +39,22 @@ const PlayerSelectedSpecialEffect = async (limit,animation_class,container_class
     }
 
     effect.classList.add(animation_class);
-    effect.style.animationDuration = duration.toString() + "s";
-    effect.style.left = random.toString() +"%";
+    effect.style.height = "100px";
+      effect.style.width = "100px";
+    effect.style.animationDuration ="5s";
+    if(!isHoriz){
+      effect.style.left = random.toString() +"%";
+    }else{
+        effect.style.top = random.toString() +"%";
+    }
 
     container.append(effect);
 
   }
 
 }
+
+
 
 
 const SaveCharacters = (player,enemy) =>{
@@ -124,7 +132,7 @@ const SpriteAnimator = async (element,sheet,ms,total_ms,display) => {
     var ms_passed = 0;
 
     var k = 1;
-    
+
     ms_passed += ms;
 
     var animation_iterator = setInterval(()=>{

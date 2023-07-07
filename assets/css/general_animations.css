@@ -14,7 +14,7 @@
 @keyframes rectangle_shift{
 
   0%{
-    top:90%;
+  left:0%;
     opacity:1;
     width:2px !important;
     z-index:0;
@@ -26,16 +26,17 @@
   }
   90%{
     background:crimson;
-    top:0%;
+
     opacity:1;
   }
   100%{
     background:none;
     opacity:0;
     width:0px;
-    top:0%;
+    left:100%;
   }
 }
+
 @keyframes rectangle_shift_rainbow{
   0%{
     top:90%;
@@ -137,18 +138,15 @@
 
 @keyframes end_modal {
   0%{
-   top:-600px;
-   margin-top:0%;
-    opacity:0;
-    border-color:red;
+   transform:translateX(-1000px);
+   opacity:0;
   }
   50%{
     opacity:.5;
-    border-color:orange;
   }
   100%{
-    top:100px;
-    border-color:red;
+    transform:translateX(0px);
+    opacity:1;
   }
 
 }
@@ -332,19 +330,115 @@
   }
 }
 
+@keyframes effect_av_selected{
+  0%{
+    top:-100px;
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(115%) contrast(81%);
+    opacity:1;
+      z-index:1;
+  }
+30%{
+  filter:invert(67%) sepia(60%) saturate(3764%) hue-rotate(178deg) brightness(105%) contrast(101%);
+}
+40%{
+  filter: invert(99%) sepia(80%) saturate(923%) hue-rotate(27deg) brightness(91%) contrast(129%);
+  opacity:.2;
+}
+  80%{
+
+
+      z-index:0;
+      opacity:.1
+  }
+
+  100%{
+    opacity:0;
+
+    top:-1000px;
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(15%) contrast(101%);
+
+  }
+}
+.countdown_effect_{
+  animation:1 ease-in effect_av_s .5s;
+  position:absolute;
+  top:100%;
+}
+@keyframes effect_av_s{
+  0%{
+    top:100%;
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(115%) contrast(81%);
+    opacity:1;
+      z-index:1;
+  }
+30%{
+  filter:invert(67%) sepia(60%) saturate(3764%) hue-rotate(178deg) brightness(105%) contrast(101%);
+}
+40%{
+  filter: invert(99%) sepia(80%) saturate(923%) hue-rotate(27deg) brightness(91%) contrast(129%);
+  opacity:.5;
+}
+  80%{
+
+
+      z-index:0;
+
+  }
+
+  90%{
+    opacity:.4;
+
+
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(15%) contrast(101%);
+
+  }
+  100%{
+    opacity:0%;
+        top:0%;
+  }
+}
 @keyframes effect_av{
   0%{
     top:50%;
+    filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(115%) contrast(81%);
     opacity:1;
       z-index:1;
   }
 
-  100%{
-    top:0%;
+  50%{
+
       z-index:1;
-    opacity:0
+      opacity:.5
+  }
+
+  100%{
+    opacity:0;
+      filter:invert(24%) sepia(47%) saturate(2062%) hue-rotate(334deg) brightness(15%) contrast(101%);
+    top:-300%;
   }
 }
+
+.border_ani{
+  animation:.5s ease-in 1 border_ani;
+}
+@keyframes border_ani{
+  0%{
+  border-color:orange;
+  border-width:1px;
+  }
+
+  50%{
+
+    border-color:red;
+    border-width:3px;
+  }
+
+  100%{
+    border-color:orange;
+    border-width:1px;
+  }
+}
+
 
 @keyframes border_change {
   0%{

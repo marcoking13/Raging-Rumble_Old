@@ -22,6 +22,7 @@
   margin-top:5%;
 }
 
+
 .rubik{
   font-family: "Rubik Moonrocks"
 }
@@ -31,13 +32,13 @@
 }
 
 .countdown_effect{
-  width:1% !important;
+  width:5% !important;
   transform: scale(.5);
   position: absolute;
-  height:50px;
+  height:10px;
   animation: rectangle_shift 1 ease-in 3s;
   animation-duration: 5s !important;
-  top:100%;
+  left:0%;
   opacity:0;
   z-index:1;
 }
