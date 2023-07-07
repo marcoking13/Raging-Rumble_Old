@@ -14,7 +14,7 @@ const RenderEndPage = async(character,player_won) =>{
   var background = player_won ? "./assets/imgs/win.gif" : "./assets/imgs/lose.gif"
 
   var html = `
-  <div class="container-fluid ending_container relative">
+  <div class="container-fluid ending_container  ending_container_ relative">
 
     <div class="row">
 
@@ -32,7 +32,7 @@ const RenderEndPage = async(character,player_won) =>{
 
     </div>
 
-      <div class="row">
+      <div class="row margin-top-10">
 
         <div class="col-4"></div>
 

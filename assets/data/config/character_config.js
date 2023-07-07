@@ -42,7 +42,7 @@ const characters =
       idle: new AnimationSheet(eban_dir,4,animation_key.idle),
       attack: new AnimationSheet(eban_dir,4,animation_key.attack),
     },
-    display_image : `${eban_dir}${animation_key.idle}_1.png`,
+    display_image : `${eban_dir}icon.png`,
     description:"",
     flip_sprite:false,
     stats:{
@@ -75,7 +75,7 @@ const characters =
    attack: new AnimationSheet(jackolatern_dir,4,animation_key.attack),
  },
  flip_sprite:false,
- display_image : `${jackolatern_dir}${animation_key.idle}_1.png`,
+ display_image : `${jackolatern_dir}icon.png`,
  description:"",
  moves:[
    new Moves(MoveBase["fire strike"]),
@@ -100,7 +100,7 @@ const characters =
      idle: new AnimationSheet(mrhands_dir,6,animation_key.idle),
      attack: new AnimationSheet(mrhands_dir,4,animation_key.attack),
    },
-   display_image : `${mrhands_dir}${animation_key.idle}_1.png`,
+   display_image : `${mrhands_dir}icon.png`,
    description:"",
    moves:[
      new Moves(MoveBase["ghost claw"]),
@@ -125,7 +125,7 @@ const characters =
      idle: new AnimationSheet(rikon_dir,14,animation_key.idle),
      attack: new AnimationSheet(rikon_dir,10,animation_key.idle),
    },
-   display_image : `${rikon_dir}${animation_key.idle}_1.png`,
+   display_image : `${rikon_dir}icon.png`,
    description:"",
    moves:[
      new Moves(MoveBase["fire strike"]),
@@ -150,7 +150,7 @@ const characters =
      idle: new AnimationSheet(frost_dir,3,animation_key.idle),
      attack: new AnimationSheet(frost_dir,4,animation_key.attack),
    },
-   display_image : `${frost_dir}${animation_key.idle}_1.png`,
+   display_image : `${frost_dir}icon.png`,
    description:"",
    moves:[
      new Moves(MoveBase["ice sling"]),
@@ -176,7 +176,7 @@ const characters =
     idle: new AnimationSheet(johnathan_dir,3,animation_key.idle),
     attack: new AnimationSheet(johnathan_dir,4,animation_key.attack),
   },
-  display_image : `${johnathan_dir}${animation_key.idle}_1.png`,
+  display_image : `${johnathan_dir}icon.png`,
   description:"",
   moves:[
     new Moves(MoveBase["gorgon stare"]),

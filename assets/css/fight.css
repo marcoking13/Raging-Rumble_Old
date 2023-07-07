@@ -112,8 +112,8 @@ html{
   width:70%;
   padding:5%;
   height:100vh;
+  animation:enlarge .5s 1 ease-in !important;
   margin-left:15%;
-  animation: end_modal .5s 1 ease-in;
   z-index:99;
   padding-bottom:15%;
   background:black;
@@ -281,6 +281,6 @@ html{
   animation: recharge 1s ease-in infinite !important;
 }
 
-.ending_container{
-
+.ending_container_ani{
+  animation:enlarge .5s 1 ease-in !important;
 }

@@ -178,23 +178,6 @@ const StartFight = (player,enemy)=>{
 
 }
 
-/*
-<img class="fighter_box_img ${activeBox}" src = "./assets/imgs/fighter_box.png"/>
- <div class="fighter_box row">
-   <div class="col-6 fighter_col mt5">
-      <img src = "${character.folder}/fighter.png" class="width-100 fighter_character_img"/>
-   </div>
-  <div class="character_available_box ${character.type}_text wizard_id_${character.id} col-6"  >
-
-      <p class="character_available_name">${character.name}</p>
-      <p class="character_available_health">HP: ${character.stats.health.stat}</p>
-
-      <br />
-
-  </div>
-</div>
-*/
-
 const RenderAvailableBox = (character,rotation) => {
   if(hasRendered){
     return;
@@ -202,8 +185,7 @@ const RenderAvailableBox = (character,rotation) => {
   function returnImage(){
 
     if(character.display_image){
-      var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
-      return `<img class="width-25 character_available_image ${character.id}" style="float:left;width:40%" src= ${character.display_image} />`
+      return `<img class="width-25 character_available_image ${character.id} width-40 float-left" src= ${character.display_image} />`
     }else{
       return `<div></div>`
     }
@@ -226,14 +208,14 @@ const RenderAvailableBox = (character,rotation) => {
    html.innerHTML = `
 
       <div class="width-100 margin-left-5 ${active}">
-        <div style="background:black;border-radius:5px;padding:5%;color:white;border:2px solid orange;height::400px;margin-top:5%;" class="XS">
-        <div style="height:200px">
-        <img class="width-100 relative " style="z-index:999"  src = "${character.display_image}" />
+        <div  class="XS">
+        <div class="height-200px">
+        <img class="width-100 relative max-z"   src = "${character.display_image}" />
         </div>
-        <div class="${character.type}_text wizard_id_${character.id} margin-top-20" style='padding-top:30%'  >
+        <div class="${character.type}_text wizard_id_${character.id} margin-top-20 padding-top-30"  >
 
-            <p class="text-center relative" style="z-index:99;font-size:20px">${character.name}</p>
-            <p class="text-center relative"  style="z-index:99;font-size:20px">HP: ${character.stats.health.stat}</p>
+            <p class="text-center relative xs" >${character.name}</p>
+            <p class="text-center relative xs"  >HP: ${character.stats.health.stat}</p>
 
 
             </div>
@@ -267,7 +249,6 @@ const RenderSelectedCharacterBox = (character,is_player) => {
     var active_class = character.id ? "active_selected_character_box" : "selected_character_box right_selected_box";
     var effects = is_player? "player_effects" : "enemy_effects";
     var text_effect = is_player? "player_name" : "enemy_name";
-    var enlarge = character.name == "Ebin the Terrible"? "enlarge" : "";
     var flip = character.flip_sprite ? 180 : 0;
     var is_enemy_flip = is_player ?  0  : 180;
     var class_name = is_player ? "selected_player_container" : "selected_enemy_container";
@@ -281,7 +262,7 @@ const RenderSelectedCharacterBox = (character,is_player) => {
       </div>
       <div class="col-6 ${class_name}">
         <div class="${active_class}">
-          <img style="transform:rotateY(${flip.toString()}deg)" class=" ${enlarge} width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
+          <img style="transform:rotateY(${flip.toString()}deg)" class=" width-100 selected_character_image selected_${character.id}"  src = "${character.display_image}"/>
         </div>
         <div class=${effects}></div>
       </div>
