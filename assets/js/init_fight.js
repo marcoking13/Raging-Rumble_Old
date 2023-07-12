@@ -81,6 +81,8 @@ const IntializeGame = () =>{
   enemy_engine.health = saved_characters.enemy.stats.health.stat;
 
   RenderHeader();
+
+  var interval =setInterval(()=>{GenerateBackgroundEffect()},100)
   RenderFightRow(saved_characters.player,saved_characters.enemy);
   RenderDescriptionRow(saved_characters.player);
   AddEventToMoves();

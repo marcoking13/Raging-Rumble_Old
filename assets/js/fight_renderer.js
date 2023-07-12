@@ -155,12 +155,37 @@ const Recharging = (charging_turns,element) =>{
 
 }
 
+const GenerateBackgroundEffect =()=>{
+    var container = document.body;
+    for (let i =0; i <= 2; i++){
+
+      var randomX = Math.random() * 100;
+      var randomY = Math.random() * 100;
+
+      var effect = document.createElement("img");
+
+
+        effect.setAttribute("src","./assets/imgs/glow.png");
+
+
+      effect.classList.add("glow_main");
+
+
+        effect.style.left = randomX.toString() +"%";
+
+          effect.style.top = randomY.toString() +"%";
+
+        container.append(effect);
+}
+}
+
+
 const RenderHeader = () =>{
 
     const html = `
     <div class="row menu_header margin-top-2_5">
-      <div class="col-1"></div>
-        <div class="col-2">
+
+        <div class="col-2 margin-left-2_5">
           <button class="btn btn-secondary quit_button">Quit Game</button>
         </div>
     </div>`;
@@ -193,6 +218,8 @@ const ReturnCharacterCol = (character,is_enemy) =>{
   var character_blood = is_enemy ? "enemy_blood" : "player_blood";
   var character_health = is_enemy ? enemy_engine.health : player_engine.health;
   var rotation = 0;
+  var right = is_enemy ? "character_fight_name_right" : "";
+  var bar_right = is_enemy ? "bar_right" : "";
   var rotate_other_side = is_enemy ? 180 : 0;
 
   var is_rotated = character.flip_sprite ? 180 : 0;
@@ -205,7 +232,7 @@ const ReturnCharacterCol = (character,is_enemy) =>{
 
   const html = `
   <div class="character_fight_column width-100">
-    <p class="character_fight_name">${character.name}</p>
+    <p class="character_fight_name ${right}">${character.name}</p>
 
     <div class="row">
       <div class="col-3"></div>
@@ -214,11 +241,11 @@ const ReturnCharacterCol = (character,is_enemy) =>{
         <img style = "transform:rotateY(${rotation.toString()}deg)" src = "${character.display_image}" class="width-100 character_image ${character_class} ${enlarge}"/>
       </div>
 
-      <div class="col-3"></div>
-      <div class="col-2"></div>
+      <div class="col-6"></div>
 
-      <div class="col-10 margin-top-5">
-        <div class="health_bar width-100">
+
+      <div class="col-12 margin-top-5 bar_left ${bar_right}" >
+        <div class="health_bar width-100 ">
           <div class="blood ${character_blood}" style="width:${starting_width}%;text-align:center">${character_health.toString()}</div>
         </div>
       </div>

@@ -2,6 +2,9 @@ var hasPlayed = false;
 
 var music_active = false;
 
+
+var sound_effects_active = false;
+
 const CreateAudioSound = (sound,type) => {
 
   var audio = document.createElement("audio");
@@ -11,7 +14,7 @@ const CreateAudioSound = (sound,type) => {
   source.setAttribute("src",sound);
 
   audio.append(source);
-  
+
   document.body.append(audio);
 
 }
@@ -41,12 +44,14 @@ audio_button.addEventListener("click",(e)=>{
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
     music_active = true;
+    sound_effects_active = true;
 
   }else{
 
     e.target.classList.remove("active");
     e.target.classList.add("inactive");
     music_active = false;
+    sound_effects_active = false;
 
   }
 

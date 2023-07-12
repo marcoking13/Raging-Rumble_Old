@@ -1,7 +1,7 @@
 .quit_button{
   background:black;
   color:red;
-  margin-top:2.5%;
+  margin-top:0%;
   border-color:black;
 }
 
@@ -13,7 +13,10 @@
   animation:loser_effect 1s ease-in 1;
   opacity:0;
 }
-
+.blood{
+  box-shadow:0px 0px 5px 15px sgreen;
+border-width:0px !important;
+}
 .move_box{
   text-align: left;
 }
@@ -43,7 +46,7 @@ html{
 }
 
 .fight_background{
-    background:url("./../imgs/character_selection_background.png") !important;
+    background:url("./../imgs/main_game.png") !important;
 }
 
 .miss_icon{
@@ -137,11 +140,36 @@ html{
 }
 
 .character_fight_name{
-  text-align: center;
+  text-align: left;
+  background:black;
+  width:50%;
+
+  margin-top:-5%;
+  margin-bottom:15%;
+padding-left:5%;
   font-size: 30px;
   font-family: "Rubik Moonrocks";
   color:white;
 }
+
+.character_fight_name_right{
+  text-align: right;
+  background:black;
+  width:50%;
+  padding-right:5%;
+  padding-left:0% !important;
+  margin-left:50%;
+}
+.bar_right{
+  margin-left:20% !important;
+}
+.bar_left{
+  margin-left: -5%
+}
+.enemy_blood{
+  transform:scaleX(1) !important;
+}
+
 
 .enlarge{
   width:120% !important;
@@ -178,7 +206,7 @@ html{
 
 .description_container{
   background:black;
-  margin-top:2.5%;
+  margin-top:5%;
   color:white;
   text-align: center;
   padding-left:2.5%;
@@ -216,17 +244,24 @@ html{
 .health_bar{
   width:80%;
   background:black;
-  height:30px;
-  border:5px solid black;
+  height:4vh;
 }
 
+.enemy_bar{
+  transform: scaleX(-1);
+}
 .fight_page{
   z-index:-5;
 }
-
+.enemy_blood{
+  transform: scaleX(-1);
+}
 .blood{
   background:#62B63F;
-  height:20px;
+  height:4vh;
+  padding:1%;
+
+  box-shadow: 0px 0px 4px 4px black;
   font-size:15px;
   font-weight: bold;
   font-family: "Allerta Stencil"
@@ -243,7 +278,29 @@ html{
   width:20%;
   float:left;
 }
+.glow_main{
 
+  width:.5%;
+  z-index:-1;
+  position: absolute;
+  opacity:0;
+  filter:invert(37%) sepia(46%) saturate(1472%) hue-rotate(324deg) brightness(123%) contrast(103%);
+  animation:glow 1 ease-in 5s;
+}
+@keyframes glow{
+  0%{
+    opacity:0%;
+    transform:scale(1)
+  }
+  50%{
+    transform: scale(3);
+    opacity:.5;
+  }
+  100%{
+    opacity:0%;
+    transform:scale(2);
+  }
+}
 .boost_enemy{
   left:50%;
 }
@@ -253,13 +310,11 @@ html{
 }
 
 .buff{
-  filter:invert(100%) sepia(42%) saturate(2621%) hue-rotate(38deg) brightness(90%) contrast(87%);
   transform:rotateY(0deg) !important;
 }
 
 .debuff{
   transform:rotateZ(180deg) !important;
-  filter:invert(71%) sepia(17%) saturate(3153%) hue-rotate(325deg) brightness(103%) contrast(101%);
 }
 
 .fall_overlay{
